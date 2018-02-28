@@ -1,6 +1,6 @@
 <?php
 include '../login/accesscontroladmin.php';
-$ausername=$_SESSION['ausername'];
+$username=$_SESSION['username'];
 require('connect.php');
 if (isset($_POST['docsubmit']))
 	{
@@ -17,9 +17,9 @@ if (isset($_POST['docsubmit']))
 		$repassword= md5($_POST['retypepassword']);
 		//sqll query
 		//double quotes outside so we can use single quotes inside
-		if($password == $repassword) 
+		if($password == $repassword)
 		{
-			
+
 			$usersql="SELECT * FROM `doctors` WHERE username='$username'";
 			$checkuser=mysqli_query($connection, $usersql);
 			$countu=mysqli_num_rows($checkuser);
@@ -32,10 +32,10 @@ if (isset($_POST['docsubmit']))
 			}
 			else
 			{
-			
+
 				$query="INSERT INTO `doctors`(fname, lname, username, email, gender, qualification, specialist, phone, password) VALUES ('$fname','$lname','$username','$email','$gender','$qualification','$specialist',$phone,'$password')";
-				$result = mysqli_query($connection, $query); 
-				//takes two arguments 
+				$result = mysqli_query($connection, $query);
+				//takes two arguments
 				if($result)
 				{
 					$smsg = "User Created Successfully.";
@@ -48,7 +48,7 @@ if (isset($_POST['docsubmit']))
 		}
 		else
 		{
-			$fmsg="Password Doesn't Match"; 
+			$fmsg="Password Doesn't Match";
 		}
 	}
 
@@ -116,7 +116,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     </div>
                     <!-- /.col-lg-12 -->
                 </div>
-				
+
 				<!--- imported add-doctors---->
 				<!--Script to copy the input from fname to username-->
 				<script>
@@ -125,7 +125,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 					document.getElementById("username").value = text1;
 					}
 				</script>
-				
+
 				<div class="row">
 				<div class="col-sm-12">
                         <div class="white-box">
@@ -135,15 +135,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
 									<div class="alert alert-danger alert-dismissable">
 										<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
 										 <?php echo $fmsg; ?>
-									</div> 
-					            <?php }?> 
+									</div>
+					            <?php }?>
 							<?php if(isset($smsg)) { ?>
 									<div class="alert alert-success alert-dismissable">
 										<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
 										 <?php echo $smsg; ?>
-									</div> 
+									</div>
 							<?php }?>
-                              
+
                          		<div class="row">
                                 	<div class="col-md-6">
                                        <div class="form-group">
@@ -167,7 +167,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 									 </div>
                                     <!--/span-->
                                  </div>
-                               
+
                                 <div class="form-group">
                                     <label for="inputName1" class="control-label">Username</label>
                                     <input type="text" class="form-control" autocomplete="off" id="username" name="username" placeholder="Username is used to login" required>
@@ -193,26 +193,26 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                         </select>
                                     </div>
                                 </div>
-                                
+
                                 <div class="form-group">
                                     <label  for="special">Speciality</span>
                                     </label>
-                                    
+
                                         <input type="text" id="special" name="special" class="form-control" placeholder="e.g. Dentist" value="<?php if(isset($specialist) & !empty($specialist)){ echo $specialist; }?>" required>
-                          
+
                                 </div>
                                 <div class="form-group">
                                     <label>Qualification</label>
-                                    
+
                                         <input type="text" id="qualif" name="qualif" class="form-control" placeholder="e.g. MBBS" value="<?php if(isset($qualification) & !empty($qualification)){ echo $qualification; }?>" >
-                                    
+
                                 </div>
                                 <div class="form-group">
                                     <label for="example-phone">Phone</span>
                                     </label>
-                                    
+
                                         <input type="text" required id="example-phone" name="phone" class="form-control" placeholder="enter your phone number">
-                                    
+
                                 </div>
                                 <div class="form-group">
                                     <label for="inputPassword" class="control-label">Password</label>
