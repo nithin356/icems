@@ -1,7 +1,7 @@
 <?php
 include '../login/accesscontroladmin.php';
 require('connect.php');
-$ausername=$_SESSION['ausername'];
+$username=$_SESSION['username'];
 
 ?>
 <!DOCTYPE html>
@@ -47,7 +47,7 @@ $ausername=$_SESSION['ausername'];
                     <!-- /.breadcrumb -->
                 </div>
                 <!--DNS added Dashboard content-->
-                
+
                  <!--DNS Added Model-->
                 <div id="responsive-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
                                 <div class="modal-dialog">
@@ -59,7 +59,7 @@ $ausername=$_SESSION['ausername'];
                                         <div class="modal-body">
                                        	 To Edit Admin information or to delete Admin account you need to login to that admin account and go to "My Profile".
 										</div>
-                                        <div class="modal-footer">
+                                    <div class="modal-footer">
                                             <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Close</button>
                                             <a href="logout.php" class="btn btn-danger waves-effect waves-light">Proceed for login</a>
                                         </div>
@@ -67,8 +67,8 @@ $ausername=$_SESSION['ausername'];
                                 </div>
                             </div>
                          <!--DNS model END-->
-                
-                
+
+
                 <!--row -->
                 <div class="row">
                     <div class="col-sm-12">
@@ -85,22 +85,22 @@ $ausername=$_SESSION['ausername'];
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        
+
 										<?php
-												$sql = "SELECT a_id, username, email FROM admin";
+												$sql = "SELECT id, username, email FROM admin";
 												$result = mysqli_query($connection, $sql);
 												foreach($result as $key=>$result)
 												{ ?>
-													<tr> 
+													<tr>
 														<td> <?php echo $key+1; ?> </td>
 														<td> <?php echo $result["username"]; ?> </td>
 														<td> <?php echo $result["email"]; ?> </td>
 														<td class="text-nowrap">
 															<a data-original-title="Edit" data-toggle="modal" data-target="#responsive-modal" > <i class="fa fa-pencil text-inverse m-r-10"></i> </a>
 															<a data-toggle="modal" data-target="#responsive-modal" data-original-title="Delete"><i class="fa fa-close text-danger"></i> </a>
-														</td> 
+														</td>
 													</tr>
-										  <?php 
+										  <?php
 												}
 										  ?>
                                     </tbody>
@@ -109,11 +109,11 @@ $ausername=$_SESSION['ausername'];
                         </div>
                     </div>
                 </div>
-                
+
                 <!--/row -->
-                
+
                 <!--DNS End-->
-                
+
                 <!-- .right-sidebar -->
                  <!-- Removed Service Panel DNS-->
                 <!-- /.right-sidebar -->

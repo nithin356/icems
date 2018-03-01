@@ -12,8 +12,8 @@ if($check!=1)
 $email=$row["email"];
 if(isset($_POST['password']) && isset($_POST['cpassword']))
 {
-	$password=md5($_POST['password']);
-	$repassword=md5($_POST['cpassword']);
+	$password=$_POST['password'];
+	$repassword=$_POST['cpassword'];
 	if($password == $repassword)
 	{
 		$query1="SELECT * FROM admin WHERE email='$email'";
@@ -47,8 +47,8 @@ if(isset($_POST['password']) && isset($_POST['cpassword']))
 				}
 			}
 		}
-		
-		
+
+
 	}
 	else
 	{
@@ -102,17 +102,17 @@ function dissableForm() {
         <div class="login-box">
             <div class="white-box">
                 <form class="form-horizontal form-material" id="loginform" method="post">
-                   
+
                 <?php if(isset($fmsg)) { ?><div class="alert alert-danger"> <?php echo $fmsg; ?> </div> <?php }?>
                 <!--DNS Added Expired link with disable function-->
 				<?php if(isset($emsg)) { echo '<BODY onLoad="dissableForm()">'; ?>
-				<div class="alert alert-danger"> <?php echo $emsg; ?> </div> 
+				<div class="alert alert-danger"> <?php echo $emsg; ?> </div>
 				<?php }?>
 				<!--end-->
 				<?php if(isset($smsg)) { ?> <div class="alert alert-success"> <?php echo $smsg; ?> </div>
 				<a href="../login/" class="btn btn-success btn-lg btn-block waves-effect waves-light">Proceed for Login</a>
                 <?php }?>
-                   
+
                     <h3 class="box-title m-b-20">Reset your password</h3>
                     <div class="form-group ">
                         <div class="col-xs-12">
@@ -124,15 +124,15 @@ function dissableForm() {
                             <input class="form-control" type="password" name="cpassword" id="pw2" required="" placeholder="Confirm Password">
                         </div>
                     </div>
-                    
+
                     <div class="form-group text-center m-t-20">
                         <div class="col-xs-12">
                             <button class="btn btn-info btn-lg btn-block text-uppercase waves-effect waves-light" type="submit" id="reset-button">Reset password</button>
                         </div>
                     </div>
-                    
+
                 </form>
-                
+
             </div>
         </div>
     </section>

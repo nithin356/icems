@@ -1,7 +1,7 @@
 <?php
 include '../login/accesscontroladmin.php';
 require('connect.php');
-$ausername=$_SESSION['ausername'];
+$username=$_SESSION['username'];
 
 if (isset($_POST['username']) && isset($_POST['password']))
 	{
@@ -12,9 +12,9 @@ if (isset($_POST['username']) && isset($_POST['password']))
 		$repassword= md5($_POST['retypepassword']);
 		//sqll query
 		//double quotes outside so we can use single quotes inside
-		if($password == $repassword) 
+		if($password == $repassword)
 		{
-			
+
 			$usersql="SELECT * FROM `admin` WHERE username='$username'";
 			$checkuser=mysqli_query($connection, $usersql);
 			$countu=mysqli_num_rows($checkuser);
@@ -27,10 +27,10 @@ if (isset($_POST['username']) && isset($_POST['password']))
 			}
 			else
 			{
-			
+
 				$query="INSERT INTO `admin`(username, email, password) VALUES ('$username','$email','$password')";
-				$result = mysqli_query($connection, $query); 
-				//takes two arguments 
+				$result = mysqli_query($connection, $query);
+				//takes two arguments
 				if($result)
 				{
 					$smsg = "User Created Successfully.";
@@ -43,7 +43,7 @@ if (isset($_POST['username']) && isset($_POST['password']))
 		}
 		else
 		{
-			$fmsg="Password Doesn't Match"; 
+			$fmsg="Password Doesn't Match";
 		}
 	}
 
@@ -64,7 +64,7 @@ if (isset($_POST['username']) && isset($_POST['password']))
     <meta name="author" content="Dhanush KT, Nishanth Bhat">
     <!--csslink.php includes fevicon and title-->
     <?php include 'assets/csslink.php'; ?>
-      
+
       <!-- username check js start -->
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.8.2.js"></script>
 <script type="text/javascript">
@@ -89,8 +89,8 @@ if (isset($_POST['username']) && isset($_POST['password']))
 	} //finishAjax
 </script>
 <!-- username check js end -->
-      
-      
+
+
 </head>
 
 <body class="fix-sidebar">
@@ -119,7 +119,7 @@ if (isset($_POST['username']) && isset($_POST['password']))
                 </div>
                 <!--DNS added Dashboard content-->
                 <!--row -->
-                
+
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="white-box">
@@ -129,13 +129,13 @@ if (isset($_POST['username']) && isset($_POST['password']))
 									<div class="alert alert-danger alert-dismissable">
 										<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
 										 <?php echo $fmsg; ?>
-									</div> 
-					            <?php }?> 
+									</div>
+					            <?php }?>
 								<?php if(isset($smsg)) { ?>
 										<div class="alert alert-success alert-dismissable">
 											<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
 											 <?php echo $smsg; ?>
-										</div> 
+										</div>
 								<?php }?>
                                 <div class="form-group">
                                     <label for="inputName1" class="control-label">Userame</label>
@@ -153,7 +153,7 @@ if (isset($_POST['username']) && isset($_POST['password']))
                                     <input name="email" type="email" class="form-control" id="inputEmail" placeholder="Enter your email" data-error="This email address is invalid" required>
                                     <div class="help-block with-errors"></div>
                                 </div>
-                                
+
                                 <div class="form-group">
                                     <label for="inputPassword" class="control-label">Password</label>
                                     <div class="row">
@@ -180,11 +180,11 @@ if (isset($_POST['username']) && isset($_POST['password']))
                         </div>
                     </div>
 				</div>
-              
+
                 <!--/row -->
-                
+
                 <!--DNS End-->
-                
+
                 <!-- .right-sidebar -->
                  <!-- Removed Service Panel DNS-->
                 <!-- /.right-sidebar -->

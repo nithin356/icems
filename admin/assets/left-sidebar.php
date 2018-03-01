@@ -1,62 +1,48 @@
 <!-- Left navbar-sidebar -->
 <div class="navbar-default sidebar" role="navigation">
-	<div class="sidebar-nav navbar-collapse slimscrollsidebar">
-		<ul class="nav" id="side-menu">
-			<li class="sidebar-search hidden-sm hidden-md hidden-lg">
-				<!-- Search input-group this is only view in mobile -->
-				<div class="input-group custom-search-form">
-					<input type="text" class="form-control" placeholder="Search...">
-					<span class="input-group-btn">
-				<button class="btn btn-default" type="button"> <i class="fa fa-search"></i> </button>
-				</span>
+		<div class="sidebar-nav navbar-collapse slimscrollsidebar">
+				<div class="user-profile">
+						<div class="dropdown user-pro-body">
+								<div><img src="../plugins/images/users/varun.jpg" alt="user-img" class="img-circle"></div>
+								<a href="#" class="dropdown-toggle u-dropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Steave Gection <span class="caret"></span></a>
+								<ul class="dropdown-menu animated flipInY">
+										<li><a href="#"><i class="ti-user"></i> My Profile</a></li>
+										<li><a href="#"><i class="ti-wallet"></i> My Balance</a></li>
+										<li><a href="#"><i class="ti-email"></i> Inbox</a></li>
+										<li role="separator" class="divider"></li>
+										<li><a href="#"><i class="ti-settings"></i> Account Setting</a></li>
+										<li role="separator" class="divider"></li>
+										<li><a href="logout.php"><i class="fa fa-power-off"></i> Logout</a></li>
+								</ul>
+						</div>
 				</div>
-				<!-- / Search input-group this is only view in mobile-->
-			</li>
-			<!-- User profile-->
-			<li class="user-pro">
-				<a href="#" class="waves-effect"><img src="../plugins/images/users/user(2).png" alt="user-img" class="img-circle"> <span class="hide-menu"><?php echo $username; ?><span class="fa arrow"></span></span>
-				</a>
-				<ul class="nav nav-second-level">
-					<li><a href="javascript:void(0)"><i class="ti-user"></i> My Profile</a></li>
-					<li><a href="javascript:void(0)"><i class="ti-wallet"></i> My Balance</a></li>
-					<li><a href="javascript:void(0)"><i class="ti-email"></i> Inbox</a></li>
-					<li><a href="javascript:void(0)"><i class="ti-settings"></i> Account Setting</a></li>
-					<li><a href="logout.php"><i class="fa fa-power-off"></i> Logout</a></li>
-				</ul>
-			</li>
-			<!-- User profile-->
-			<li class="nav-small-cap m-t-10">--- Main Menu</li>
-			<!---DNS Added Dashboard menu --->
-			<li> <a href="index.html" class="waves-effect active"><i class="ti-dashboard p-r-10"></i> <span class="hide-menu">Dashboard</span></a> </li>
-
-			<!---PNB Added Doctors menu --->
-			<li> <a href="javascript:void(0);" class="waves-effect"><i class="fa fa-user-md p-r-10"></i> <span class="hide-menu"> Doctors <span class="fa arrow"></span></span></a>
-				<ul class="nav nav-second-level">
-					<li> <a href="add-doctor.php">Add Doctor</a> </li>                            
-					<li> <a href="view-doctors.php">View Doctors</a> </li>
-				</ul>
-			</li>
-			<!---PNB Added Patient menu --->
-			<li> <a href="javascript:void(0);" class="waves-effect"><i class="icon-people p-r-10"></i> <span class="hide-menu"> Patients <span class="fa arrow"></span></span></a>
-				<ul class="nav nav-second-level">
-					<li> <a href="patients.html">View Patients</a> </li>
-					<li> <a href="add-patient.html">Add Patient</a> </li>
-					<li> <a href="edit-patient.html">Edit Patient</a> </li>
-					<li> <a href="patient-profile.html">Patient Profile</a> </li>
-				</ul>
-			</li>
-
-		  <!--DNS Added Admin menu-->
-		   <li> <a href="javascript:void(0);" class="waves-effect"><i class="fa fa-user p-r-10"></i> <span class="hide-menu"> Admin <span class="fa arrow"></span></span></a>
-				<ul class="nav nav-second-level">
-					<li> <a href="add-admin.php">Add Admin</a> </li>                            
-					<li> <a href="view-admin.php">View Admins</a> </li>
-				</ul>
-			</li>
-		   <!---PNB Added logout menu --->
-			<li><a href="logout.php" class="waves-effect"><i class="icon-logout fa-fw"></i> <span class="hide-menu">Log out</span></a></li>
-
-		</ul>
-	</div>
+				<ul class="nav" id="side-menu">
+								<!-- /input-group -->
+						</li>
+						<li class="nav-small-cap m-t-10"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Main Menu</li>
+						<li> <a href="index.html"><i class="linea-icon linea-basic fa-fw" data-icon="v"></i> <span class="hide-menu"> Event</span></a>
+								<ul class="nav nav-second-level">
+										<li> <a href="add-event.php">Add Event</a> </li>
+										<li> <a href="view-event.php">View Event</a> </li>
+										<li> <a href="index3.html">Update Event</a> </li>
+								</ul>
+						</li>
+						<li> <a href="javascript:void(0);" class="waves-effect"><i class="linea-icon linea-basic fa-fw text-danger" data-icon="7"></i> <span class="hide-menu text-danger"> Admin <span class="fa arrow"></span> <span class="label label-rouded label-danger pull-right"></span></span></a>
+								<ul class="nav nav-second-level">
+										<li> <a href="../admin/add-admin.php">Add Admin</a> </li>
+										<li> <a href="../admin/view-admin.php">View Admin</a> </li>
+										<li> <a href="../eliteadmin-university/index.html">Update Admin</a> </li>
+								</ul>
+						</li>
+						<li><a href="inbox.html" class="waves-effect"><i data-icon=")" class="linea-icon linea-basic fa-fw"></i> <span class="hide-menu">Event Head<span class="fa arrow"></span></span></a>
+								<ul class="nav nav-second-level">
+										<li><a href="chat.html">Add Event Head</a></li>
+														<li> <a href="inbox.html">Update Event Head</a></li>
+														<li> <a href="inbox-detail.html">View Event Head</a></li>
+												</ul>
+										</li>
+						<li><a href="login.html" class="waves-effect"><i class="icon-logout fa-fw"></i> <span class="hide-menu">Log out</span></a></li>
+		</div>
 </div>
+
 <!-- Left navbar-sidebar end -->
