@@ -2,7 +2,6 @@
 include '../login/accesscontroladmin.php';
 require('connect.php');
 $username=$_SESSION['username'];
-
 ?>
 <!DOCTYPE html>
 <!--
@@ -36,7 +35,7 @@ $username=$_SESSION['username'];
                 <div class="row bg-title">
                     <!-- .page title -->
                     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                        <h4 class="page-title">Doctors</h4>
+                        <h4 class="page-title">Events</h4>
                     </div>
                     <!-- /.page title -->
                     <!-- .breadcrumb -->
@@ -46,33 +45,9 @@ $username=$_SESSION['username'];
                     </div>
                     <!-- /.breadcrumb -->
                 </div>
-                <!--DNS added Dashboard content-->
-
-                 <!--DNS Added Model-->
-                <div id="responsive-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                            <h4 class="modal-title">EDIT Instructions</h4>
-                                        </div>
-                                        <div class="modal-body">
-                                       	 To Edit Admin information or to delete Admin account you need to login to that admin account.
-										</div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Close</button>
-                                            <a href="logout.php" class="btn btn-danger waves-effect waves-light">Proceed for login</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                         <!--DNS model END-->
-
-
-                <!--row -->
-                <div class="row">
+				<div class="row">
                 <?php
-					$query = "SELECT 	e_eventname,e_desc,e_heads FROM add_event";
+					$query = "SELECT e_eventname,e_desc,e_heads FROM add_event";
 					$result = mysqli_query($connection, $query);
 					foreach($result as $key=>$result)
 				{ ?>
@@ -83,11 +58,11 @@ $username=$_SESSION['username'];
                                     <h3 class="box-title m-b-0"><?php echo $result["e_eventname"]; ?></h3>
                                     <p>
 
-                                      <i class="fa fa-phone"></i><?php echo $result["e_heads"]; ?>
-                                      <i class="fa fa-phone"></i><?php echo $result["e_desc"]; ?>
+                                      <i class="fa fa-edge"></i><?php echo $result["e_heads"]; ?>
+                                      <i class="fa fa-edge"></i><?php echo $result["e_desc"]; ?>
                   										<div class="p-t-5">
-											<a href="edit-docprofile.php?id=<?php echo $result["doc_id"]; ?>" class="fcbtn btn btn-info">Edit</a>
-											<a href="#" class="fcbtn btn btn-danger model_img deleteDoctor" data-id="<?php echo $result["doc_id"]; ?>" id="deleteDoc">Delete</a>
+											<a href="edit-docprofile.php<?php echo $result["e_id"]; ?>" class="fcbtn btn btn-info">Edit</a>
+											<a href="#" class="fcbtn btn btn-danger model_img deleteDoctor" data-id="<?php echo $result["e_id"]; ?>" id="deleteDoc">Delete</a>
 									    </div>
                                     </p>
                                 </div>
@@ -149,12 +124,12 @@ $(document).ready(function() {
 		 {
            if (isConfirm) {
 			   $.ajax({
-			  url: 'delete.php?id='+id,
+			  url: 'delete.php?id='+e_id,
 			  type: 'DELETE',
-			  data: {id:id},
+			  data: {e_id:e_id},
 			  success: function(){
 				swal("Deleted!", "User has been deleted.", "success");
-				window.location.replace("view-doctors.php");
+				window.location.replace("view-event.php");
           }
         });
             } else {

@@ -7,7 +7,7 @@ if (isset($_POST['eventsubmit']))
 		// real eacape sting is used to prevent sql injection hacking
 		$event_name=mysqli_real_escape_string($connection,$_POST['event_name']);
 		$e_desc=mysqli_real_escape_string($connection,$_POST['e_desc']);
-		$e_heads= mysqli_real_escape_string($connection,$_POST['e_heads']);
+		$e_heads= mysqli_real_escape_striang($connection,$_POST['e_heads']);
 		//sqll query
 		//double quotes outside so we can use single quotes inside
 				$query="INSERT INTO `add_event`(e_eventname, e_desc, e_heads) VALUES ('$event_name','$e_desc','$e_heads')";
@@ -44,23 +44,23 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.8.2.js"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
-		$('#usernameLoading').hide();
-		$('#username').keyup(function(){
-		  $('#usernameLoading').show();
+		$('#e_eventnameLoading').hide();
+		$('#e_eventname').keyup(function(){
+		  $('#e_eventnameLoading').show();
 	      $.post("check-docusername.php", {
-	        username: $('#username').val()
+	        e_eventname: $('#e_eventname').val()
 	      }, function(response){
-	        $('#usernameResult').fadeOut();
-	        setTimeout("finishAjax('usernameResult', '"+escape(response)+"')", 500);
+	        $('#e_eventnameResult').fadeOut();
+	        setTimeout("finishAjax('e_eventnameResult', '"+escape(response)+"')", 500);
 	      });
 	    	return false;
 		});
 	});
 
 	function finishAjax(id, response) {
-	  $('#usernameLoading').hide();
-	  $('#'+id).html(unescape(response));
-	  $('#'+id).fadeIn();
+	  $('#e_eventnameLoading').hide();
+	  $('#'+e_id).html(unescape(response));
+	  $('#'+e_id).fadeIn();
 	} //finishAjax
 </script>
 <!-- username check js end -->
@@ -79,7 +79,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <div class="container-fluid">
                 <div class="row bg-title">
                     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                        <h4 class="page-title">Add Doctor</h4>
+                        <h4 class="page-title">Add Event</h4>
                     </div>
                     <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
                         <a href="../index.html" target="_blank" class="btn btn-info pull-right m-l-20 btn-rounded btn-outline hidden-xs hidden-sm waves-effect waves-light">Home</a>
@@ -92,7 +92,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 				<!--Script to copy the input from fname to username-->
 				<script>
 					function copyTextValue() {
-					var text1 = document.getElementById("fname").value;
+					var text1 = document.getElementById("e_eventname").value;
 					document.getElementById("username").value = text1;
 					}
 				</script>
@@ -121,7 +121,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                         	 <label class="control-label">Event Name</label>
 											<div class="col-sm-12 p-l-0">
 												<div class="input-group">
-																<input type="text" name="event_name" class="form-control" id="fname" placeholder="Enter the Event name" required>
+																<input type="text" name="e_eventname" class="form-control" id="fname" placeholder="Enter the Event name" required>
 													<!--onKeyUp="copyTextValue();"-->
 												</div>
 											</div>
@@ -141,19 +141,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 <div class="form-group">
                                     <label for="inputName1" class="control-label">Event Description</label>
                                     <textarea  class="form-control" autocomplete="off" id="username" name="e_desc" placeholder="Description of the Event " required>
-																		</textarea>
-                                    <!-- username check start -->
-										<div>
-										                    </div>
-                                    </div>
+									</textarea>
+                                    <!-- username check start -->								
+								<div>
+			                    </div>
                                 </div>
-                                <!--<div class="form-group">
-                                    <div class="checkbox">
-                                        <input type="checkbox" id="terms" data-error="Before you wreck yourself" required>
-                                        <label for="terms"> Check yourself </label>
-                                        <div class="help-block with-errors"></div>
-                                    </div>
-                                </div>-->
+                                </div>
                                 <div class="form-group">
                                     <button type="submit" name="eventsubmit" class="btn btn-info">Submit</button>
                                 </div>
