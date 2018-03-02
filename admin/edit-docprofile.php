@@ -118,10 +118,7 @@ if(isset($_POST['updateprofile']))
                             <div class="user-bg"> <img width="100%" height="100%" alt="user" src="../plugins/images/profile-menu.png">
                                 <div class="overlay-box">
                                     <div class="user-content">
-                                        <a href="javascript:void(0)"><?php if($row["gender"]=='male') { ?> <img src="../plugins/images/users/doctor-male.jpg" class="thumb-lg img-circle" ><?php } else { ?> <img src="../plugins/images/users/doctor-female.jpg" class="thumb-lg img-circle" > <?php } ?> </a>
-                                        <h4 class="text-white"><?php echo $row["username"]; ?></h4>
-                                        <h5 class="text-white"><?php echo $row["email"]; ?></h5>
-                                    </div>
+                                       </div>
                                 </div>
                             </div>
                             <!--<div class="user-btm-box">
@@ -190,7 +187,7 @@ if(isset($_POST['updateprofile']))
                                         	 <label class="control-label">Event Name</label>
 											<div class="col-sm-12 p-l-0">
 												<div class="input-group">
-											<input type="text" name="e_eventname" class="form-control" id="fname" placeholder="Enter your Event name" value="<?php echo $row["e_eventname"]; ?>" required>
+											<input type="text" name="e_eventname" class="form-control" id="fname" placeholder="<?php echo $row['e_eventname']; ?>" value="<?php echo $row['e_eventname']; ?>" required>
 													<!--onKeyUp="copyTextValue();"-->
 												</div>
 											</div>
@@ -209,7 +206,7 @@ if(isset($_POST['updateprofile']))
                                
                                 <div class="form-group">
                                     <label for="inputName1" class="control-label">Event Description</label>
-                                    <textarea type="text" class="form-control" autocomplete="off" id="username" name="e_desc" placeholder="Your Description" value="<?php echo $row["e_desc"]; ?>" required></textarea>
+                                    <textarea type="text" class="form-control" autocomplete="off" id="username" name="e_desc" placeholder="Your Description" value="<?php echo $row["e_desc"]; ?>" required><?php echo $row["e_desc"]; ?></textarea>
                                     <!-- username check start -->
 										<div>
 						                </div>

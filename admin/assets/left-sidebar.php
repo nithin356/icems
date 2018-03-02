@@ -41,7 +41,17 @@
 														<li> <a href="inbox-detail.html">View Event Head</a></li>
 												</ul>
 										</li>
-						<li><a href="login.html" class="waves-effect"><i class="icon-logout fa-fw"></i> <span class="hide-menu">Log out</span></a></li>
+						<li><a href="inbox.html" class="waves-effect"><i data-icon=")" class="linea-icon linea-basic fa-fw"></i> <span class="hide-menu">Results<span class="fa arrow"></span></span></a>
+								<ul class="nav nav-second-level">
+										<li><a href="chat.html">Add Result</a></li>
+												</ul>
+										</li>
+						<li><a href="inbox.html" class="waves-effect"><i data-icon=")" class="linea-icon linea-basic fa-fw"></i> <span class="hide-menu">Feedback<span class="fa arrow"></span></span></a>
+								<ul class="nav nav-second-level">
+										<li><a href="chat.html">View FeedBack</a></li>
+										</ul>
+										</li>
+						<li><a href="login.php" class="waves-effect"><i class="icon-logout fa-fw"></i> <span class="hide-menu">Log out</span></a></li>
 		</div>
 </div>
 

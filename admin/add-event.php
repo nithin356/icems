@@ -44,23 +44,23 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.8.2.js"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
-		$('#e_eventnameLoading').hide();
-		$('#e_eventname').keyup(function(){
-		  $('#e_eventnameLoading').show();
+		$('#usernameLoading').hide();
+		$('#username').keyup(function(){
+		  $('#usernameLoading').show();
 	      $.post("check-docusername.php", {
-	        e_eventname: $('#e_eventname').val()
+	        username: $('#username').val()
 	      }, function(response){
-	        $('#e_eventnameResult').fadeOut();
-	        setTimeout("finishAjax('e_eventnameResult', '"+escape(response)+"')", 500);
+	        $('#usernameResult').fadeOut();
+	        setTimeout("finishAjax('usernameResult', '"+escape(response)+"')", 500);
 	      });
 	    	return false;
 		});
 	});
 
 	function finishAjax(id, response) {
-	  $('#e_eventnameLoading').hide();
-	  $('#'+e_id).html(unescape(response));
-	  $('#'+e_id).fadeIn();
+	  $('#usernameLoading').hide();
+	  $('#'+id).html(unescape(response));
+	  $('#'+id).fadeIn();
 	} //finishAjax
 </script>
 <!-- username check js end -->
@@ -120,9 +120,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                        <div class="form-group">
                                         	 <label class="control-label">Event Name</label>
 											<div class="col-sm-12 p-l-0">
-												<div class="input-group">
-																<input type="text" name="e_eventname" class="form-control" id="fname" placeholder="Enter the Event name" required>
+												<div class="form-group">
+																<input autocomplete="off" type="text" name="e_eventname" class="form-control " id="username" placeholder="Enter the Event name" required>
 													<!--onKeyUp="copyTextValue();"-->
+													<!-- username check start -->
+										<div>
+										<span id="usernameLoading"><img src="../plugins/images/busy.gif" alt="Ajax Indicator" height="15" width="15" /></span>
+										<span id="usernameResult" style="color: #E40003"></span>
+										</div>
+				                     <!-- username check end -->
 												</div>
 											</div>
                                          </div>
