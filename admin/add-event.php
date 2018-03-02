@@ -5,9 +5,9 @@ require('connect.php');
 if (isset($_POST['eventsubmit']))
 	{
 		// real eacape sting is used to prevent sql injection hacking
-		$event_name=mysqli_real_escape_string($connection,$_POST['event_name']);
+		$event_name=mysqli_real_escape_string($connection,$_POST['e_eventname']);
 		$e_desc=mysqli_real_escape_string($connection,$_POST['e_desc']);
-		$e_heads= mysqli_real_escape_striang($connection,$_POST['e_heads']);
+		$e_heads= mysqli_real_escape_string($connection,$_POST['e_heads']);
 		//sqll query
 		//double quotes outside so we can use single quotes inside
 				$query="INSERT INTO `add_event`(e_eventname, e_desc, e_heads) VALUES ('$event_name','$e_desc','$e_heads')";

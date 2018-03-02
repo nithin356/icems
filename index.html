@@ -45,12 +45,15 @@
                 <div class="collapse navbar-collapse navbar-right">
                   <ul class="nav navbar-nav">
                    <li><a href="index.html"> | Home |</a></li>
-                        <li><a href="">| About Us |</a></li>
-                        <li><a href="login/" class="A"><span>Log in / Sign up</span></a></li>
+                      <li><a href="#info">| About Us |</a></li>
+					  <li><a href="">| View Results |</a></li>
+					  <li><a href="">| View Events |</a></li>
+					  <li><a href="login/" class="A"><span>Log in / Sign up</span></a></li>
                    </ul>
                 </div>
             </div>
             </nav>
+
 
     <section id="main-slider" class="no-margin">
         <div class="carousel slide">
@@ -133,7 +136,7 @@
     </section>
 
 
-    <section id="conatcat-info">
+    <section id="info">
         <div class="container">
             <div class="row">
                 <div class="col-sm-8">
@@ -168,7 +171,23 @@
             </div>
         </div>
     </footer><!--/#footer-->
-
+<script>
+$(function() {
+  // Smooth Scrolling
+  $('a[href*="#"]:not([href="#"])').click(function() {
+    if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+      var target = $(this.hash);
+      target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+      if (target.length) {
+        $('html, body').animate({
+          scrollTop: target.offset().top
+        }, 1000);
+        return false;
+      }
+    }
+  });
+});
+</script>
     <script src="landerpage/js/jquery.js"></script>
     <script src="landerpage/js/bootstrap.min.js"></script>
     <script src="landerpage/js/jquery.prettyPhoto.js"></script>

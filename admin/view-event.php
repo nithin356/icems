@@ -4,12 +4,7 @@ require('connect.php');
 $username=$_SESSION['username'];
 ?>
 <!DOCTYPE html>
-<!--
-   This is a starter template page. Use this page to start your new project from
-   scratch. This page gets rid of all links and provides the needed markup only.
-   -->
 <html lang="en">
-
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -47,7 +42,7 @@ $username=$_SESSION['username'];
                 </div>
 				<div class="row">
                 <?php
-					$query = "SELECT e_eventname,e_desc,e_heads FROM add_event";
+					$query = "SELECT * FROM add_event";
 					$result = mysqli_query($connection, $query);
 					foreach($result as $key=>$result)
 				{ ?>
@@ -55,14 +50,14 @@ $username=$_SESSION['username'];
                         <div class="white-box">
                             <div class="row">
                                   <div class="col-md-8 col-sm-8">
-                                    <h3 class="box-title m-b-0"><?php echo $result["e_eventname"]; ?></h3>
+                                    <h3 class="box-title m-b-0"><?php echo $result['e_eventname']; ?></h3>
                                     <p>
 
-                                      <i class="fa fa-edge"></i><?php echo $result["e_heads"]; ?>
-                                      <i class="fa fa-edge"></i><?php echo $result["e_desc"]; ?>
+                                      <i class="fa fa-edge"></i><?php echo $result['e_heads']; ?>
+                                      <i class="fa fa-edge"></i><?php echo $result['e_desc']; ?>
                   										<div class="p-t-5">
-											<a href="edit-docprofile.php<?php echo $result["e_id"]; ?>" class="fcbtn btn btn-info">Edit</a>
-											<a href="#" class="fcbtn btn btn-danger model_img deleteDoctor" data-id="<?php echo $result["e_id"]; ?>" id="deleteDoc">Delete</a>
+											<a href="edit-docprofile.php?id=<?php echo $result['e_id']; ?>" class="fcbtn btn btn-info">Edit</a>
+											<a href="#" class="fcbtn btn btn-danger model_img deleteevent" data-id="<?php echo $result['e_id']; ?>" id="deleteDoc">Delete</a>
 									    </div>
                                     </p>
                                 </div>
@@ -109,7 +104,7 @@ $username=$_SESSION['username'];
 </html>
 <script>
 $(document).ready(function() {
-  $('.deleteDoctor').click(function(){
+  $('.deleteevent').click(function(){
     id = $(this).attr('data-id');
       swal({
           title: "Are you sure?",
@@ -124,9 +119,9 @@ $(document).ready(function() {
 		 {
            if (isConfirm) {
 			   $.ajax({
-			  url: 'delete.php?id='+e_id,
+			  url: 'delete.php?id='+id,
 			  type: 'DELETE',
-			  data: {e_id:e_id},
+			  data: {id:id},
 			  success: function(){
 				swal("Deleted!", "User has been deleted.", "success");
 				window.location.replace("view-event.php");

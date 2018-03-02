@@ -2,7 +2,7 @@
 include '../login/accesscontroladmin.php';
 require('connect.php');
 $username=$_SESSION['username'];
-$e_id = $_GET['e_id'];
+$e_id = $_GET['id'];
 
 $query="SELECT e_eventname, e_desc, e_heads FROM add_event WHERE e_id='$e_id'";
 $result = mysqli_query($connection, $query);
@@ -153,7 +153,7 @@ if(isset($_POST['updateprofile']))
                                     <div class="row">
                                         <div class="col-md-3 col-xs-6 b-r"> <strong>Event Name</strong>
                                             <br>
-                                            <p class="text-muted"><?php echo $row["e_eventname"]." ".$row["lname"]; ?></p>
+                                            <p class="text-muted"><?php echo $row["e_eventname"]; ?></p>
                                         </div>
                                         <div class="col-md-3 col-xs-6 b-r"> <strong>Event Head</strong>
                                             <br>
