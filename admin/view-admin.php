@@ -5,20 +5,14 @@ $username=$_SESSION['username'];
 
 ?>
 <!DOCTYPE html>
-<!--
-   This is a starter template page. Use this page to start your new project from
-   scratch. This page gets rid of all links and provides the needed markup only.
-   -->
 <html lang="en">
-
 <head>
-    <meta charset="utf-8">
+<meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <!-- Tell the browser to be responsive to screen width -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="AlphaCare Online Hospital Management System">
-    <meta name="author" content="Dhanush KT, Nishanth Bhat">
-    <!--csslink.php includes fevicon and title-->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="ICEMS Inter Collegiate Event Management System">
+    <meta name="author" content="Nithin">
+        <!--csslink.php includes fevicon and title-->
     <?php include 'assets/csslink.php'; ?>
 </head>
 
@@ -109,24 +103,13 @@ $username=$_SESSION['username'];
                         </div>
                     </div>
                 </div>
-
-                <!--/row -->
-
-                <!--DNS End-->
-
-                <!-- .right-sidebar -->
-                 <!-- Removed Service Panel DNS-->
-                <!-- /.right-sidebar -->
             </div>
-            <!-- /.container-fluid -->
             <!--footer.php contains footer-->
             <?php include'assets/footer.php'; ?>
         </div>
-        <!-- /#page-wrapper -->
     </div>
     <!-- /#wrapper -->
     <!--jslink has all the JQuery links-->
     <?php include'assets/jslink.php'; ?>
 </body>
-
 </html>

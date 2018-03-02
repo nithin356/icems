@@ -17,12 +17,10 @@ $username=$_SESSION['username'];
 </head>
 
 <body>
-    <!-- Preloader -->
+
     <div><?php include 'assets/header.php'; ?>
-</div>                <!-- /.dropdown -->
-                    <!-- .Megamenu -->
-        <!-- Left navbar-header -->
-<?php include 'assets/left-sidebar.php'; ?>
+	</div>
+	<?php include 'assets/left-sidebar.php'; ?>
         <!-- Left navbar-header end -->
         <!-- Page Content -->
         <div id="page-wrapper">

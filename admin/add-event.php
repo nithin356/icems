@@ -4,16 +4,12 @@ $username=$_SESSION['username'];
 require('connect.php');
 if (isset($_POST['eventsubmit']))
 	{
-		// real eacape sting is used to prevent sql injection hacking
 		$event_name=mysqli_real_escape_string($connection,$_POST['e_eventname']);
 		$e_desc=mysqli_real_escape_string($connection,$_POST['e_desc']);
-		$e_heads= mysqli_real_escape_string($connection,$_POST['e_heads']);
-		//sqll query
-		//double quotes outside so we can use single quotes inside
-				$query="INSERT INTO `add_event`(e_eventname, e_desc, e_heads) VALUES ('$event_name','$e_desc','$e_heads')";
-				$result = mysqli_query($connection, $query);
-				//takes two arguments
-				if($result)
+		$query="INSERT INTO `add_event`(e_eventname, e_desc) VALUES ('$event_name','$e_desc')";
+		$result = mysqli_query($connection, $query);
+
+	if($result)
 				{
 					$smsg = "Event Created Successfully.";
 				}
@@ -24,25 +20,20 @@ if (isset($_POST['eventsubmit']))
 			}
 
 ?>
-<!DOCTYPE html>
-<!--
-This is a starter template page. Use this page to start your new project from
-scratch. This page gets rid of all links and provides the needed markup only.
--->
-<html lang="en">
 
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <!-- Tell the browser to be responsive to screen width -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="AlphaCare Online Hospital Management System">
-    <meta name="author" content="Dhanush KT, Nishanth Bhat">
-    <!--csslink.php includes fevicon and title-->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="ICEMS Inter Collegiate Event Management System">
+    <meta name="author" content="Nithin">
+	<!--csslink.php includes fevicon and title-->
     <?php include 'assets/csslink.php'; ?>
 <!-- username check js start -->
-<script type="text/javascript" src="http://code.jquery.com/jquery-1.8.2.js"></script>
-<script type="text/javascript">
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.8.2.js"></script>
+	<script type="text/javascript">
 	$(document).ready(function() {
 		$('#usernameLoading').hide();
 		$('#username').keyup(function(){
@@ -115,63 +106,36 @@ scratch. This page gets rid of all links and provides the needed markup only.
 									</div>
 							<?php }?>
 
-                         		<div class="row">
-                                	<div class="col-md-6">
-                                       <div class="form-group">
-                                        	 <label class="control-label">Event Name</label>
-											<div class="col-sm-12 p-l-0">
-												<div class="form-group">
-																<input autocomplete="off" type="text" name="e_eventname" class="form-control " id="username" placeholder="Enter the Event name" required>
-													<!--onKeyUp="copyTextValue();"-->
-													<!-- username check start -->
+                         		<div class="form-group">
+                                    <label for="inputName1" class="control-label">Event name</label>
+                                    <input type="text" autocomplete="off" name="username" class="form-control" id="username" placeholder="Enter your Event name" required >
+                                    <!--value="<?php // if(isset($username) & !empty($username)){ echo $username; }?>"-->
+                                    <!-- username check start -->
 										<div>
 										<span id="usernameLoading"><img src="../plugins/images/busy.gif" alt="Ajax Indicator" height="15" width="15" /></span>
 										<span id="usernameResult" style="color: #E40003"></span>
 										</div>
 				                     <!-- username check end -->
-												</div>
-											</div>
-                                         </div>
-                                    </div>
-                                    <!--/span-->
-									 <div class="col-md-6">
-										  <div class="form-group">
-											   <label class="control-label">Event head</label>
-											   <input type="text" name="e_heads" id="lastName" class="form-control" placeholder="If there is two Event Heads then drop a comma(,)" required>
-											   <!--<span class="help-block"> This field has error. </span>-->
-										   </div>
-									 </div>
-                                    <!--/span-->
-                                 </div>
-
+                                </div>
+				        
                                 <div class="form-group">
                                     <label for="inputName1" class="control-label">Event Description</label>
-                                    <textarea  class="form-control" autocomplete="off" id="username" name="e_desc" placeholder="Description of the Event " required>
-									</textarea>
-                                    <!-- username check start -->								
-								<div>
+                                    <textarea type="text" class="form-control" autocomplete="off" id="username" name="e_desc" placeholder="Enter Event Description" value="" required></textarea>
+								</div>
 			                    </div>
                                 </div>
                                 </div>
                                 <div class="form-group">
-                                    <button type="submit" name="eventsubmit" class="btn btn-info">Submit</button>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button type="submit" name="eventsubmit" class="btn btn-info">Submit</button>
                                 </div>
                             </form>
                         </div>
                     </div>
 				</div>
-				<!---End of impoted--->
-                <!-- .right-sidebar -->
-                <!--DNS Removed Service Panel-->
-                <!-- /.right-sidebar -->
-            </div>
-            <!-- /.container-fluid -->
-            <!--footer.php contains footer-->
+			</div>
             <?php include'assets/footer.php'; ?>
         </div>
-        <!-- /#page-wrapper -->
-    </div>
-    <!-- /#wrapper -->
+	</div>
     <!--jslink has all the JQuery links-->
     <?php include'assets/jslink.php'; ?>
 </body>

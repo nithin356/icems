@@ -10,9 +10,9 @@ if(isset($_POST) & !empty($_POST))
 	{
 		echo "Username already taken";
 	}
-	//else
-	//{
-	//	echo "Username available";
-	//}
+	else
+	{
+		echo "Username available";
+	}
 }
 ?>

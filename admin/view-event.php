@@ -8,10 +8,9 @@ $username=$_SESSION['username'];
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <!-- Tell the browser to be responsive to screen width -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="AlphaCare Online Hospital Management System">
-    <meta name="author" content="Dhanush KT, Nishanth Bhat">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="ICEMS Inter Collegiate Event Management System">
+    <meta name="author" content="Nithin">
     <!--csslink.php includes fevicon and title-->
     <?php include 'assets/csslink.php'; ?>
 </head>
@@ -53,10 +52,9 @@ $username=$_SESSION['username'];
                                     <h3 class="box-title m-b-0"><?php echo $result['e_eventname']; ?></h3>
                                     <p>
 
-                                      <i class="fa fa-edge"></i><?php echo $result['e_heads']; ?>
                                       <i class="fa fa-edge"></i><?php echo $result['e_desc']; ?>
                   										<div class="p-t-5">
-											<a href="edit-docprofile.php?id=<?php echo $result['e_id']; ?>" class="fcbtn btn btn-info">Edit</a>
+											<a href="edit-event.php?id=<?php echo $result['e_id']; ?>" class="fcbtn btn btn-info">Edit</a>
 											<a href="#" class="fcbtn btn btn-danger model_img deleteevent" data-id="<?php echo $result['e_id']; ?>" id="deleteDoc">Delete</a>
 									    </div>
                                     </p>
@@ -69,25 +67,8 @@ $username=$_SESSION['username'];
 				  ?>
 
 				</div>
-
-                <!--/row -->
-
-                <!--DNS End-->
-                <!-- .row -->
-                <!--<div class="row">
-                    <div class="col-md-12">
-                        <div class="white-box">
-                            <h3 class="box-title">Blank Starter page</h3>
-                        </div>
-                    </div>
-                </div>-->
-                <!-- /.row -->
-                <!-- .right-sidebar -->
-                 <!-- Removed Service Panel DNS-->
-                <!-- /.right-sidebar -->
             </div>
-            <!-- /.container-fluid -->
-            <!--footer.php contains footer-->
+			<!--footer.php contains footer-->
             <?php include'assets/footer.php'; ?>
         </div>
         <!-- /#page-wrapper -->
@@ -95,10 +76,6 @@ $username=$_SESSION['username'];
     <!-- /#wrapper -->
     <!--jslink has all the JQuery links-->
     <?php include'assets/jslink.php'; ?>
-
-    <!--    function(){
-            swal("Deleted!", "User has been deleted.", "success");
-            window.location.replace("view-doctors.php");     -->
 </body>
 
 </html>

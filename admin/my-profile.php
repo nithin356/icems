@@ -53,25 +53,19 @@ if(isset($_POST['changepw']))
 
 ?>
 <!DOCTYPE html>
-<!--
-   This is a starter template page. Use this page to start your new project from
-   scratch. This page gets rid of all links and provides the needed markup only.
-   -->
 <html lang="en">
-
 <head>
-    <meta charset="utf-8">
+    <<meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <!-- Tell the browser to be responsive to screen width -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="AlphaCare Online Hospital Management System">
-    <meta name="author" content="Dhanush KT, Nishanth Bhat">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="ICEMS Inter Collegiate Event Management System">
+    <meta name="author" content="Nithin">
     <!--csslink.php includes fevicon and title-->
     <?php include 'assets/csslink.php'; ?>
       
       <!-- username check js start -->
-<script type="text/javascript" src="http://code.jquery.com/jquery-1.8.2.js"></script>
-<script type="text/javascript">
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.8.2.js"></script>
+    <script type="text/javascript">
 	$(document).ready(function() {
 		$('#usernameLoading').hide();
 		$('#username').keyup(function(){
@@ -99,10 +93,7 @@ if(isset($_POST['changepw']))
 </head>
 
 <body class="fix-sidebar">
-    <!--header.php includes preloader, top navigarion, logo, user dropdown-->
-    <!--div id wrapper in header.php-->
-    <!--left-sidebar.php includes mobile search bar, user profile, menu-->
-    <?php include 'assets/header.php';
+      <?php include 'assets/header.php';
 	include 'assets/left-sidebar.php';
 	include 'assets/breadcrumbs.php';
 	?>
@@ -122,15 +113,12 @@ if(isset($_POST['changepw']))
                     </div>
                     <!-- /.breadcrumb -->
                 </div>
-                <!--DNS added Dashboard content-->
-                
-                 <!--DNS Added Model-->
                 <div id="responsive-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                            <h4 class="modal-title">Importent Instruction</h4>
+                                            <h4 class="modal-title">Important Instruction</h4>
                                         </div>
                                         <div class="modal-body">
                                        	 To Edit Admin information or to delete Admin account you need to login to that admin account.

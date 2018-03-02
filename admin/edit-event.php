@@ -4,7 +4,7 @@ require('connect.php');
 $username=$_SESSION['username'];
 $e_id = $_GET['id'];
 
-$query="SELECT e_eventname, e_desc, e_heads FROM add_event WHERE e_id='$e_id'";
+$query="SELECT e_eventname, e_desc FROM add_event WHERE e_id='$e_id'";
 $result = mysqli_query($connection, $query);
 $row = mysqli_fetch_assoc($result);
 
@@ -12,14 +12,12 @@ $row = mysqli_fetch_assoc($result);
 if(isset($_POST['updateprofile']))
 {
 	$e_eventname=mysqli_real_escape_string($connection,$_POST['e_eventname']);
-	$e_heads=mysqli_real_escape_string($connection,$_POST['e_heads']);
 	$e_desc= mysqli_real_escape_string($connection,$_POST['e_desc']);
-	
-	$uquery="UPDATE add_event SET e_eventname='$e_eventname', e_heads='$e_heads', e_heads='$e_heads' WHERE e_id='$e_id'";
+	$uquery="UPDATE add_event SET e_eventname='$e_eventname', e_desc='$e_desc' WHERE e_id='$e_id'";
 	$uresult = mysqli_query($connection, $uquery);
 	if($uresult)
 	{
-		$squery="SELECT e_eventname, e_desc, e_heads FROM add_event WHERE e_id='$e_id'";
+		$squery="SELECT e_eventname, e_desc FROM add_event WHERE e_id='$e_id'";
 		$sresult = mysqli_query($connection, $squery);
 		$row = mysqli_fetch_assoc($sresult);
 		$smsg="Profile updated successfully!";
@@ -53,7 +51,7 @@ if(isset($_POST['updateprofile']))
 		$('#e_eventnameLoading').hide();
 		$('#e_eventname').keyup(function(){
 		  $('#e_eventnameLoading').show();
-	      $.post("check-docusername.php", {
+	      $.post("check-eventname.php", {
 	        username: $('#e_eventname').val()
 	      }, function(response){
 	        $('#e_eventnameResult').fadeOut();
@@ -152,10 +150,7 @@ if(isset($_POST['updateprofile']))
                                             <br>
                                             <p class="text-muted"><?php echo $row["e_eventname"]; ?></p>
                                         </div>
-                                        <div class="col-md-3 col-xs-6 b-r"> <strong>Event Head</strong>
-                                            <br>
-                                            <p class="text-muted"><?php echo $row["e_heads"]; ?></p>
-                                        </div>
+                                        
                                         <div class="col-md-6 col-xs-6 "> <strong>Event Description</strong>
                                             <br>
                                             <p class="text-muted"><?php echo $row["e_desc"]; ?></p>
@@ -194,13 +189,7 @@ if(isset($_POST['updateprofile']))
                                          </div>
                                     </div>
                                     <!--/span-->
-									 <div class="col-md-6">
-										  <div class="form-group">
-											   <label class="control-label">Event Heads</label>
-											   <input type="text" name="e_heads" id="lastName" class="form-control" placeholder="Enter Event head name" value="<?php echo $row["e_heads"]; ?>" required>
-											   <!--<span class="help-block"> This field has error. </span>-->
-										   </div>
-									 </div>
+									 
                                     <!--/span-->
                                  </div>
                                
@@ -214,7 +203,7 @@ if(isset($_POST['updateprofile']))
                                   
                                 <div class="form-group p-t-0">
                                     
-                                        <button class="btn btn-success" name="updateprofile">Update </button>
+                                        <button class="btn btn-success" name="updateprofile">Update Event </button>
 								 </div>
 								 </div>
 								</div>

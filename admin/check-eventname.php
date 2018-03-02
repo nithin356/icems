@@ -10,9 +10,9 @@ if(isset($_POST) & !empty($_POST))
 	{
 		echo "Event name already Exists";
 	}
-	//else
-	//{
-	//	echo "Username available";
-	//}
+	else
+	{
+		echo "Event name available";
+	}
 }
 ?>
