@@ -7,8 +7,8 @@ if (isset($_POST['username']) && isset($_POST['password']))
 	{
 		$username= mysqli_real_escape_string($connection,$_POST['username']);
 		$email=mysqli_real_escape_string($connection,$_POST['email']);
-		$password= md5($_POST['password']);
-		$repassword= md5($_POST['retypepassword']);
+		$password= $_POST['password'];
+		$repassword= $_POST['retypepassword'];
 		
 	if($password == $repassword)
 		{
