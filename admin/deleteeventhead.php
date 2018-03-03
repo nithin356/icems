@@ -3,7 +3,7 @@ require('connect.php');
 if ($_SERVER['REQUEST_METHOD'] == 'DELETE') {
   if (isset($_GET['id'])) {
     $id = $_GET['id'];
-		$sql="DELETE FROM doctors WHERE doc_id=$id";
+		$sql="DELETE FROM head WHERE h_id=$id";
 		$result = mysqli_query($connection, $sql);
 		if($result)
 		{

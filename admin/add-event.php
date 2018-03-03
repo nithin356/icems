@@ -4,7 +4,7 @@ $username=$_SESSION['username'];
 require('connect.php');
 if (isset($_POST['eventsubmit']))
 	{
-		$event_name=mysqli_real_escape_string($connection,$_POST['e_eventname']);
+		$event_name=mysqli_real_escape_string($connection,$_POST['username']);
 		$e_desc=mysqli_real_escape_string($connection,$_POST['e_desc']);
 		$query="INSERT INTO `add_event`(e_eventname, e_desc) VALUES ('$event_name','$e_desc')";
 		$result = mysqli_query($connection, $query);
@@ -38,7 +38,7 @@ if (isset($_POST['eventsubmit']))
 		$('#usernameLoading').hide();
 		$('#username').keyup(function(){
 		  $('#usernameLoading').show();
-	      $.post("check-docusername.php", {
+	      $.post("check-eventname.php", {
 	        username: $('#username').val()
 	      }, function(response){
 	        $('#usernameResult').fadeOut();

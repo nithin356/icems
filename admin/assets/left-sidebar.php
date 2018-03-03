@@ -32,8 +32,8 @@
 						<span class="fa arrow"</span> 
 						<span class="label label-rouded label-danger pull-right"></span></a>
 								<ul class="nav nav-second-level">
-										<li> <a href="add-event.php">Add Event</a> </li>
-										<li> <a href="view-event.php">View Event</a> </li>
+										<li> <a href="../admin/add-event.php">Add Event</a> </li>
+										<li> <a href="../admin/view-event.php">View Event</a> </li>
 								</ul>
 						</li>
 						
@@ -41,18 +41,23 @@
 							<i data-icon=")" class="linea-icon linea-basic fa-fw"></i> 
 							<span class="hide-menu">Event Head<span class="fa arrow"></span></span></a>
 								<ul class="nav nav-second-level">
-										<li><a href="addehead.php">Add Event Head</a></li>
-										<li><a href="view_ehead.php">View Event Head</a></li>
+										<li><a href="../admin/add-eventhead.php">Add Event Head</a></li>
+										<li><a href="../admin/view_eventhead.php">View Event Head</a></li>
 								</ul>
 						</li>
 						<li><a href="" class="waves-effect"><i data-icon=")" class="linea-icon linea-basic fa-fw"></i> <span class="hide-menu">Results<span class="fa arrow"></span></span></a>
 								<ul class="nav nav-second-level">
-										<li><a href="result.php">Add Result</a></li>
+										<li><a href="../admin/result.php">Add Result</a></li>
 												</ul>
+										</li>
+						<li><a href="" class="waves-effect"><i data-icon=")" class="linea-icon linea-basic fa-fw"></i> <span class="hide-menu"><font size=2>Student Co-ordinator</font><span class="fa arrow"></span></span></a>
+								<ul class="nav nav-second-level">
+										<li><a href="../admin/view_stdco.php">View Co-ordinator</a></li>
+										</ul>
 										</li>
 						<li><a href="" class="waves-effect"><i data-icon=")" class="linea-icon linea-basic fa-fw"></i> <span class="hide-menu">Feedback<span class="fa arrow"></span></span></a>
 								<ul class="nav nav-second-level">
-										<li><a href="feedback.php">View FeedBack</a></li>
+										<li><a href="../admin/feedback.php">View FeedBack</a></li>
 										</ul>
 										</li>
 						<li><a href="logout.php" class="waves-effect"><i class="icon-logout fa-fw"></i> <span class="hide-menu">Log out</span></a></li>
