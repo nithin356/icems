@@ -3,17 +3,17 @@ include '../login/accesscontroladmin.php';
 require('connect.php');
 $username=$_SESSION['username'];
 
-if (isset($_POST['username']) && isset($_POST['password']))
+if (isset($_POST['submit']))
 	{
-		$username= mysqli_real_escape_string($connection,$_POST['username']);
+		$user= mysqli_real_escape_string($connection,$_POST['h_username']);
 		$email=mysqli_real_escape_string($connection,$_POST['email']);
-		$password= $_POST['password'];
+		$password= $_POST['h_password'];
 		$repassword= $_POST['retypepassword'];
 		
 	if($password == $repassword)
 		{
 
-			$usersql="SELECT * FROM `admin` WHERE username='$username'";
+			$usersql="SELECT * FROM `admin` WHERE username='$user'";
 			$checkuser=mysqli_query($connection, $usersql);
 			$countu=mysqli_num_rows($checkuser);
 			$emailsql="SELECT * FROM `admin` WHERE email='$email'";
@@ -21,12 +21,12 @@ if (isset($_POST['username']) && isset($_POST['password']))
 			$counte=mysqli_num_rows($checkemail);
 			if($counte==1 || $countu==1)
 			{
-				$fmsg .= " username/email alredy exists";
+				$fmsg = " username/email alredy exists";
 			}
 			else
 			{
 
-				$query="INSERT INTO `admin`(username, email, password) VALUES ('$username','$email','$password')";
+				$query="INSERT INTO `admin`(username, email, password) VALUES ('$user','$email','$password')";
 				$result = mysqli_query($connection, $query);
 	
 				if($result)
@@ -131,8 +131,8 @@ if (isset($_POST['username']) && isset($_POST['password']))
 								<?php }?>
                                 <div class="form-group">
                                     <label for="inputName1" class="control-label">Userame</label>
-                                    <input type="text" autocomplete="off" name="username" class="form-control" id="username" placeholder="Enter your username" required >
-                                    <!--value="<?php // if(isset($username) & !empty($username)){ echo $username; }?>"-->
+                                    <input type="text" autocomplete="off" name="h_username" class="form-control" id="username" placeholder="Enter your username" required >
+                                    <!--value="<?php // if(isset($user) & !empty($user)){ echo $user; }?>"-->
                                     <!-- username check start -->
 										<div>
 										<span id="usernameLoading"><img src="../plugins/images/busy.gif" alt="Ajax Indicator" height="15" width="15" /></span>
@@ -150,7 +150,7 @@ if (isset($_POST['username']) && isset($_POST['password']))
                                     <label for="inputPassword" class="control-label">Password</label>
                                     <div class="row">
                                         <div class="form-group col-sm-6">
-                                            <input type="password" name="password" data-toggle="validator" data-minlength="8" class="form-control" id="inputPassword" placeholder="Password" required>
+                                            <input type="password" name="h_password" data-toggle="validator" data-minlength="8" class="form-control" id="inputPassword" placeholder="Password" required>
                                             <span class="help-block">Minimum of 8 characters</span> </div>
                                         <div class="form-group col-sm-6">
                                             <input type="password" name="retypepassword" class="form-control" id="inputPasswordConfirm" data-match="#inputPassword" data-match-error="Password don't match" placeholder="Confirm" required>
@@ -159,7 +159,7 @@ if (isset($_POST['username']) && isset($_POST['password']))
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <button type="submit" class="btn btn-info waves-effect waves-light">Submit</button>
+                                    <button type="submit" name="submit" class="btn btn-info waves-effect waves-light">Submit</button>
                                 </div>
                             </form>
                         </div>
