@@ -5,9 +5,10 @@ $username=$_SESSION['username'];
 if (isset($_POST['event']) && isset($_POST['participant']))
 	{
 		$eventname= mysqli_real_escape_string($connection,$_POST['event']);
-		$round=mysqli_real_escape_string($connection,$_POST['participant']);
-		$particpant=mysqli_real_escape_string($connection,$_POST['round']);
-		$query="INSERT INTO `result`(r_eventname, r_pname, round) VALUES ('$eventname','$particpant','$round')";
+		$round=mysqli_real_escape_string($connection,$_POST['round']);
+		$particpant=mysqli_real_escape_string($connection,$_POST['participant']);
+		$particpant1=mysqli_real_escape_string($connection,$_POST['participant1']);
+		$query="INSERT INTO `result`(r_eventname, r_pname, r_pname2, round) VALUES ('$eventname','$particpant','$particpant1','$round')";
 				$result = mysqli_query($connection, $query);
 	
 				if($result)
@@ -140,7 +141,15 @@ if (isset($_POST['event']) && isset($_POST['participant']))
 								</div>
 								<div class="form-group">
                                     <label for="inputName1" class="control-label">Enter Participant | TeamName</label>
-                                    <input type="text" autocomplete="off" name="participant" class="form-control" id="username" placeholder="Enter the results" required >
+									<?php
+									$parti="SELECT * FROM participant ";
+									$row=mysqli_query($connection, $parti);
+									?>
+                                    <select name="participant" class="form-control" required >
+										<option><?php while($rows = mysqli_fetch_assoc($row)) { ?>
+   									 <option>
+								     <?php echo $rows["p_name1"]; ?></option>
+								     <?php } ?>
                                     <!--value="<?php // if(isset($username) & !empty($username)){ echo $username; }?>"-->
                                     <!-- username check start -->
 										<div>

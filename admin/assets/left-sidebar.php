@@ -55,6 +55,11 @@
 										<li><a href="../admin/view_stdco.php">View Co-ordinator</a></li>
 										</ul>
 										</li>
+			<li><a href="" class="waves-effect"><i data-icon=")" class="linea-icon linea-basic fa-fw"></i> <span class="hide-menu"><font size=2>Participants</font><span class="fa arrow"></span></span></a>
+								<ul class="nav nav-second-level">
+										<li><a href="../admin/view-participant.php">View Participant</a></li>
+										</ul>
+										</li>
 						<li><a href="" class="waves-effect"><i data-icon=")" class="linea-icon linea-basic fa-fw"></i> <span class="hide-menu">Feedback<span class="fa arrow"></span></span></a>
 								<ul class="nav nav-second-level">
 										<li><a href="../admin/feedback.php">View FeedBack</a></li>

@@ -18,14 +18,48 @@ if (isset($_POST['username']) && isset($_POST['password']))
             //<script type="text/javascript">location.href = 'newurl';</script>
             echo '<script> window.location="../admin/";</script>';            
         }
-        else
+	else
+	{
+        $querys="SELECT * FROM `std_co` WHERE (s_username='$username' OR s_email='$username') AND s_password='$password'";
+        $results = mysqli_query($connection,$querys);
+        $rows = mysqli_fetch_assoc($results);
+        $counts = mysqli_num_rows($results);
+        if($counts==1)
         {
-            $fmsg="Invalid Username/Password";
+            $_SESSION['s_username'] = $rows["s_username"];
+            // alternative redirect (die() should be there)
+            // echo "<script>location.href='target-page.php';</script>";
+            //define('BASEPATH',TRUE);
+            //<script type="text/javascript">location.href = 'newurl';</script>
+            echo'<script> window.location="../std_co/";</script>';
+            //header('Location: index.html');
+            
         }
-    }
-
-
-
+        else
+          {
+        $queryh="SELECT * FROM `head` WHERE (h_username='$username' OR h_email='$username') AND h_password='$password'";
+        $resulth = mysqli_query($connection,$queryh);
+        $rowh = mysqli_fetch_assoc($resulth);
+        $counth = mysqli_num_rows($resulth);
+        if($counth==1)
+        {
+            $_SESSION['h_username'] = $rowh["h_username"];
+            // alternative redirect (die() should be there)
+            // echo "<script>location.href='target-page.php';</script>";
+            //define('BASEPATH',TRUE);
+            //<script type="text/javascript">location.href = 'newurl';</script>
+            echo'<script> window.location="../head/";</script>';
+            //header('Location: index.html');
+            
+        } 
+        else
+		{
+			$fmsg="Invalid UserName/Password";
+		}
+		}
+	}
+	
+}
 if(isset($_POST['resetemail']))
 {
     

@@ -5,17 +5,19 @@ if (isset($_POST['username']) && isset($_POST['password']))
         // real eacape sting is used to prevent sql injection hacking
         $username= mysqli_real_escape_string($connection,$_POST['username']);
         $email=mysqli_real_escape_string($connection,$_POST['email']);
-        $password= $_POST['password'];
+        $college=mysqli_real_escape_string($connection,$_POST['college']);
+        $phone=$_POST['phone'];
+		$password= $_POST['password'];
         $repassword= $_POST['repassword'];
         //sqll query
         //double quotes outside so we can use single quotes inside
         if($password == $repassword) 
         {
             
-            $usersql="SELECT * FROM `admin` WHERE username='$username'";
+            $usersql="SELECT * FROM `std_co` WHERE s_username='$username'";
             $checkuser=mysqli_query($connection, $usersql);
             $countu=mysqli_num_rows($checkuser);
-            $emailsql="SELECT * FROM `admin` WHERE email='$email'";
+            $emailsql="SELECT * FROM `std_co` WHERE s_email='$email'";
             $checkemail=mysqli_query($connection, $emailsql);
             $counte=mysqli_num_rows($checkemail);
             if($counte==1 || $countu==1)
@@ -25,7 +27,7 @@ if (isset($_POST['username']) && isset($_POST['password']))
             else
             {
             
-                $query="INSERT INTO `admin`(username, email, password) VALUES ('$username','$email','$password')";
+                $query="INSERT INTO `std_co`(s_username, s_email, s_phone, s_college, s_password) VALUES ('$username','$email','$phone','$college','$password')";
                 $result = mysqli_query($connection, $query); 
                 //takes two arguments 
                 if($result)
@@ -96,7 +98,7 @@ if (isset($_POST['username']) && isset($_POST['password']))
                         </div> 
                     <?php }?>
                     
-                    <h3 class="box-title m-b-20"><U>Sign Up</u></h3>
+					<h3 class="box-title m-b-20">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font face="algerian">Sign Up only for Student Co-ordinator</font></h3>
                     
                     <div class="form-group ">
                         <div class="col-xs-12">
@@ -108,6 +110,16 @@ if (isset($_POST['username']) && isset($_POST['password']))
                             <input class="form-control" type="email" required="" placeholder="Email" name="email">
                         </div>
                     </div>
+					<div class="form-group ">
+                        <div class="col-xs-12">
+                            <input class="form-control" type="number" required="" placeholder="Phone Number" name="phone">
+                        </div>
+                    </div>
+					 <div class="form-group ">
+                        <div class="col-xs-12">
+                            <input class="form-control" type="text" required="" placeholder="College Name" name="college">
+                        </div>
+                    </div>
                     <div class="form-group ">
                         <div class="col-xs-12">
                             <input class="form-control" type="password" required="" placeholder="Password" name="password">
@@ -117,15 +129,7 @@ if (isset($_POST['username']) && isset($_POST['password']))
                         <div class="col-xs-12">
                             <input class="form-control" type="password" required="" placeholder="Confirm Password" name="repassword">
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-md-12">
-                            <div class="checkbox checkbox-primary p-t-0">
-                                <input id="checkbox-signup" type="checkbox">
-                                <label for="checkbox-signup"> I agree to all Terms</a></label>
-                            </div>
-                        </div>
-                    </div>
+					</div>
 
                     <div class="form-group text-center m-t-20">
                         <div class="col-xs-12">

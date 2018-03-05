@@ -5,8 +5,9 @@ require('connect.php');
 if (isset($_POST['eventsubmit']))
 	{
 		$event_name=mysqli_real_escape_string($connection,$_POST['username']);
+		$fest=mysqli_real_escape_string($connection,$_POST['fest']);
 		$e_desc=mysqli_real_escape_string($connection,$_POST['e_desc']);
-		$query="INSERT INTO `add_event`(e_eventname, e_desc) VALUES ('$event_name','$e_desc')";
+		$query="INSERT INTO `add_event`(fest, e_eventname, e_desc) VALUES ('$fest','$event_name','$e_desc')";
 		$result = mysqli_query($connection, $query);
 
 	if($result)
@@ -107,6 +108,10 @@ if (isset($_POST['eventsubmit']))
 							<?php }?>
 
                          		<div class="form-group">
+                                    <label class="control-label">Fest name</label>
+                                    <input type="text" autocomplete="off" name="fest" class="form-control" placeholder="Enter your Fest name" required ></input>
+								<br/>
+								<div class="form-group">
                                     <label for="inputName1" class="control-label">Event name</label>
                                     <input type="text" autocomplete="off" name="username" class="form-control" id="username" placeholder="Enter your Event name" required >
                                     <!--value="<?php // if(isset($username) & !empty($username)){ echo $username; }?>"-->

@@ -49,10 +49,14 @@ $username=$_SESSION['username'];
                         <div class="white-box">
                             <div class="row">
                                   <div class="col-md-8 col-sm-8">
-                                    <h3 class="box-title m-b-0"><?php echo $result['e_eventname']; ?></h3>
+									  
+                                    Fest Name:<h3 class="box-title m-b-0"><?php echo $result['fest']; ?></h2>
+									 <p></p>
+									  Event:<h3 class="box-title m-b-0"><?php echo $result['e_eventname']; ?></h3>
                                     <p>
 
-                                      <i class="fa fa-edge"></i><?php echo $result['e_desc']; ?>
+                                      Event Description:<h3 ><?php echo $result['e_desc']; ?></h3>
+										<p>
                   										<div class="p-t-5">
 											<a href="edit-event.php?id=<?php echo $result['e_id']; ?>" class="fcbtn btn btn-info">Edit</a>
 											<a href="#" class="fcbtn btn btn-danger model_img deleteevent" data-id="<?php echo $result['e_id']; ?>" id="deleteDoc">Delete</a>
