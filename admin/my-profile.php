@@ -1,7 +1,7 @@
 <?php
 include '../login/accesscontroladmin.php';
 require('connect.php');
-$username=$_SESSION['username'];
+$userid=$_SESSION['username'];
 
 $query="SELECT id, email, password FROM admin WHERE username='$username'";
 $result = mysqli_query($connection, $query);

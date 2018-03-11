@@ -1,7 +1,7 @@
 <?php
 include '../login/accesscontroladmin.php';
 require('connect.php');
-$username=$_SESSION['username'];
+$userid=$_SESSION['username'];
 
 ?>
 <!DOCTYPE html>

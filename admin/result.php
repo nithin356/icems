@@ -1,7 +1,7 @@
 <?php
 include '../login/accesscontroladmin.php';
 require('connect.php');
-$username=$_SESSION['username'];
+$userid=$_SESSION['username'];
 if (isset($_POST['event']) && isset($_POST['participant']))
 	{
 		$eventname= mysqli_real_escape_string($connection,$_POST['event']);
@@ -111,7 +111,7 @@ if (isset($_POST['event']) && isset($_POST['participant']))
 									 $resultevent = mysqli_query($connection, $selectevent);
 									?>
 									 <select required class="form-control" name="event">
-								   	 <option value="disabled hidden selected">Select Event</option>
+								   	 <option>Select Event</option>
 									 <?php while($rowevent = mysqli_fetch_assoc($resultevent)) { ?>
    									 <option>
 								     <?php echo $rowevent["e_eventname"]; ?></option>
@@ -149,14 +149,17 @@ if (isset($_POST['event']) && isset($_POST['participant']))
 										<option><?php while($rows = mysqli_fetch_assoc($row)) { ?>
    									 <option>
 								     <?php echo $rows["p_name1"]; ?></option>
-								     <?php } ?>
-                                    <!--value="<?php // if(isset($username) & !empty($username)){ echo $username; }?>"-->
-                                    <!-- username check start -->
-										<div>
-										<span id="usernameLoading"><img src="../plugins/images/busy.gif" alt="Ajax Indicator" height="15" width="15" /></span>
-										<span id="usernameResult" style="color: #E40003"></span>
-										</div>
-				                     <!-- username check end -->
+										<?php } ?></select>
+									<?php
+									$parti="SELECT * FROM participant ";
+									$rowz=mysqli_query($connection, $parti);
+									?>
+                                    <select name="participant1" class="form-control"  >
+										<option><?php while($rowes = mysqli_fetch_assoc($rowz)) { ?>
+   									 <option>
+								     <?php echo $rowes["p_name2"]; ?></option>
+										<?php } ?></select>
+                                    
 								</div>
 
                                 <div class="form-group">

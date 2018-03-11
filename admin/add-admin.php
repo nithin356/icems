@@ -1,13 +1,13 @@
 <?php
 include '../login/accesscontroladmin.php';
 require('connect.php');
-$username=$_SESSION['username'];
+$userid=$_SESSION['username'];
 
 if (isset($_POST['submit']))
 	{
-		$user= mysqli_real_escape_string($connection,$_POST['h_username']);
+		$user= mysqli_real_escape_string($connection,$_POST['username']);
 		$email=mysqli_real_escape_string($connection,$_POST['email']);
-		$password= $_POST['h_password'];
+		$password= $_POST['password'];
 		$repassword= $_POST['retypepassword'];
 		
 	if($password == $repassword)
@@ -130,8 +130,8 @@ if (isset($_POST['submit']))
 										</div>
 								<?php }?>
                                 <div class="form-group">
-                                    <label for="inputName1" class="control-label">Userame</label>
-                                    <input type="text" autocomplete="off" name="h_username" class="form-control" id="username" placeholder="Enter your username" required >
+                                    <label for="inputName1" class="control-label">Username</label>
+                                    <input type="text" autocomplete="off" name="username" class="form-control" id="username" placeholder="Enter your username" required >
                                     <!--value="<?php // if(isset($user) & !empty($user)){ echo $user; }?>"-->
                                     <!-- username check start -->
 										<div>
@@ -150,10 +150,10 @@ if (isset($_POST['submit']))
                                     <label for="inputPassword" class="control-label">Password</label>
                                     <div class="row">
                                         <div class="form-group col-sm-6">
-                                            <input type="password" name="h_password" data-toggle="validator" data-minlength="8" class="form-control" id="inputPassword" placeholder="Password" required>
+                                            <input type="password" name="password" data-toggle="validator" data-minlength="8" class="form-control" id="inputPassword" placeholder="Password" required>
                                             <span class="help-block">Minimum of 8 characters</span> </div>
                                         <div class="form-group col-sm-6">
-                                            <input type="password" name="retypepassword" class="form-control" id="inputPasswordConfirm" data-match="#inputPassword" data-match-error="Password don't match" placeholder="Confirm" required>
+                                            <input type="password" name="retypepassword" class="form-control" id="inputPasswordConfirm" data-match="#inputPassword" data-match-error="Password don't match" placeholder="Confirm" min="8" required>
                                             <div class="help-block with-errors"></div>
                                         </div>
                                     </div>

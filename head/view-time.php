@@ -51,12 +51,12 @@ $username=$_SESSION['h_username'];
                                   <div class="col-md-8 col-sm-8">
                                     <h3 class="box-title m-b-0"><?php echo $result['t_event']; ?></h3>
                                     <p>
-
                                       <b>From:</b>&nbsp;<?php echo $result['t_from']; ?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                   					  <b>To:</b>&nbsp;<?php echo $result['t_to']; ?>
-                  										<div class="p-t-5">
+                  										
+									  <div class="p-t-5">
 											<a href="edit_time.php?id=<?php echo $result['t_id']; ?>" class="fcbtn btn btn-info">Edit</a>
-											&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" class="fcbtn btn btn-danger model_img deleteevent" data-id="<?php echo $result['t_id']; ?>" id="deleteDoc">Delete</a>
+									  <a href="#" class="fcbtn btn btn-danger model_img deleteevent" data-id="<?php echo $result['t_id']; ?>" id="deleteDoc">Delete</a>
 									    </div>
                                     </p>
                                 </div>

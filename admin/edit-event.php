@@ -1,7 +1,7 @@
 <?php
 include '../login/accesscontroladmin.php';
 require('connect.php');
-$username=$_SESSION['username'];
+$userid=$_SESSION['username'];
 $e_id = $_GET['id'];
 
 $query="SELECT e_eventname, e_desc FROM add_event WHERE e_id='$e_id'";
@@ -20,7 +20,7 @@ if(isset($_POST['updateprofile']))
 		$squery="SELECT e_eventname, e_desc FROM add_event WHERE e_id='$e_id'";
 		$sresult = mysqli_query($connection, $squery);
 		$row = mysqli_fetch_assoc($sresult);
-		$smsg="Profile updated successfully!";
+		$smsg="Event updated successfully!";
 
 	}
 	else
@@ -35,7 +35,8 @@ if(isset($_POST['updateprofile']))
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
+	<title>ICEMS | EDIT</title>
+	<meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -113,10 +114,15 @@ if(isset($_POST['updateprofile']))
                 <div class="row">
                     <div class="col-md-4 col-xs-12">
                         <div class="white-box">
-                            <div class="user-bg"> <img width="100%" height="100%" alt="user" src="../plugins/images/profile-menu.png">
+                           <div class="white-box">
+                            <div class="user-bg">
+								<br><center><img width="50%" height="50%"  alt="user" src="../plugins/images/download.png"></center>
+								
                                 <div class="overlay-box">
+									<br><center><img width="50%" height="50%"  alt="user" src="../plugins/images/download.png"></center>
                                     <div class="user-content">
                                        </div>
+                                </div>
                                 </div>
                             </div>
                             <!--<div class="user-btm-box">

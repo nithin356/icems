@@ -1,6 +1,6 @@
 <?php
 include '../login/accesscontroladmin.php';
-$username=$_SESSION['username'];
+$userid=$_SESSION['username'];
 require('connect.php');
 if (isset($_POST['eventsubmit']))
 	{
@@ -54,7 +54,7 @@ if (isset($_POST['eventsubmit']))
 	  $('#'+id).html(unescape(response));
 	  $('#'+id).fadeIn();
 	} //finishAjax
-</script>
+	</script>
 <!-- username check js end -->
 </head>
 
@@ -84,8 +84,14 @@ if (isset($_POST['eventsubmit']))
 				<!--Script to copy the input from fname to username-->
 				<script>
 					function copyTextValue() {
-					var text1 = document.getElementById("e_eventname").value;
+					var text1 = document.getElementById("username").value;
 					document.getElementById("username").value = text1;
+					}
+				</script>
+				<script>
+					function copyTextValue() {
+					var text1 = document.getElementById("fest").value;
+					document.getElementById("fest").value = text1;
 					}
 				</script>
 
@@ -109,7 +115,18 @@ if (isset($_POST['eventsubmit']))
 
                          		<div class="form-group">
                                     <label class="control-label">Fest name</label>
-                                    <input type="text" autocomplete="off" name="fest" class="form-control" placeholder="Enter your Fest name" required ></input>
+                                    <?php
+									 $selectfest="SELECT fest FROM fest";
+									 $resultfest = mysqli_query($connection, $selectfest);
+									?>
+									 <select required class="form-control" name="fest">
+								   	 <option disabled hidden selected>Select Event</option>
+									 <?php while($rowfest = mysqli_fetch_assoc($resultfest)) { ?>
+   									 <option>
+								     <?php echo $rowfest["fest"]; ?></option>
+								     <?php } ?>
+									 </select>
+										
 								<br/>
 								<div class="form-group">
                                     <label for="inputName1" class="control-label">Event name</label>

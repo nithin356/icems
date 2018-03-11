@@ -36,8 +36,8 @@ if (isset($_POST['username']) && isset($_POST['password']))
             
         }
         else
-          {
-        $queryh="SELECT * FROM `head` WHERE (h_username='$username' OR h_email='$username') AND h_password='$password'";
+			{
+				$queryh="SELECT * FROM `head` WHERE (h_username='$username' OR h_email='$username') AND h_password='$password'";
         $resulth = mysqli_query($connection,$queryh);
         $rowh = mysqli_fetch_assoc($resulth);
         $counth = mysqli_num_rows($resulth);
@@ -56,10 +56,9 @@ if (isset($_POST['username']) && isset($_POST['password']))
 		{
 			$fmsg="Invalid UserName/Password";
 		}
-		}
-	}
-	
-}
+       }
+	 }
+   }
 if(isset($_POST['resetemail']))
 {
     
@@ -213,8 +212,9 @@ if(isset($_POST['resetemail']))
                 
                 <?php if(isset($smsg)) { ?> <div class="alert alert-success"> <?php echo $smsg; ?> </div><?php }?>
                <!--add image-->
-                <a href="javascript:void(0)" class="text-center db"><img src="../plugins/images/eliteadmin-logo-dark.png" alt="Home" />
-                <br/><img src="../plugins/images/eliteadmin-text-dark.png" alt="Home" /></a>
+                <a href="javascript:void(0)" class="text-center db">
+				
+                <br/><img src="../plugins/images/eliteadmin-text.png" alt="" /></a>
                         
                     <h3 class="box-title m-b-20"><u>Sign In</u></h3>
                     <div class="form-group ">
@@ -229,9 +229,8 @@ if(isset($_POST['resetemail']))
                     </div>
                     <div class="form-group">
                         <div class="col-md-12">
-                            <div class="checkbox checkbox-primary pull-left p-t-0">
-                                <input id="checkbox-signup" type="checkbox">
-                                <label for="checkbox-signup"> Remember me </label>
+                            <div >
+                                <label>  </label>
                             </div>
                             <a href="javascript:void(0)" id="to-recover" class="text-dark pull-right"><i class="fa fa-lock m-r-5"></i> Forgot Password ?</a> </div>
                     </div>

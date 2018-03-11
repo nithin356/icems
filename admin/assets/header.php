@@ -14,9 +14,9 @@
                 
 				<!-- Logo -->
                 <div class="top-left-part">
-                    <a class="logo" href="index.html">
+                    <a class="logo" href="../index.html">
                         <!-- Logo icon image, you can use font-icon also -->
-                        <b><img src="../plugins/images/eliteadmin-logo.png" alt="home" /></b>
+                        <b><img hieght="100" width="100" /></b>
                         <!-- Logo text image you can use text also -->
                         <span class="hidden-xs"><img src="../plugins/images/eliteadmin-text.png" alt="home" /></span>
                     </a>
@@ -29,7 +29,7 @@
                 
 				<ul class="nav navbar-top-links navbar-right pull-right">
                     <li class="dropdown">
-                        <a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#"> <img src="../plugins/images/users/user(2).png" alt="user-img" width="36" class="img-circle"><b class="hidden-xs"><?php echo $username; ?></b> </a>
+                        <a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#"> <img src="../plugins/images/users/user(2).png" alt="user-img" width="36" class="img-circle"><b class="hidden-xs"><?php echo $userid; ?></b> </a>
                         <ul class="dropdown-menu dropdown-user scale-up">
 							<li><a href="my-profile.php"><i class="ti-user"></i> My Profile</a></li>   <li><a href="logout.php"><i class="fa fa-power-off"></i> Logout</a></li>
                         </ul>

@@ -275,7 +275,8 @@ input.search-form:hover {
  }
 
 .navbar-nav>li{
-font-family:GUARDIANS;
+font-family:GUARDIaNS;
+	font-size: 11px;
   padding-bottom: 15px;
 }
 

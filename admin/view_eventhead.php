@@ -1,7 +1,7 @@
 <?php
 include '../login/accesscontroladmin.php';
 require('connect.php');
-$username=$_SESSION['username'];
+$userid=$_SESSION['username'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -46,13 +46,20 @@ $username=$_SESSION['username'];
 					foreach($result as $key=>$result)
 				{ ?>
                 <div class="col-md-4 col-sm-4">
+					
                         <div class="white-box">
                             <div class="row">
                                   <div class="col-md-8 col-sm-8">
                                     <h3 class="box-title m-b-0"><?php echo $result['h_username']; ?></h3>
                                     <p>
+										<h3 class="box-title m-b-0"><?php echo $result['h_pno']; ?></h3>
 
-                                      <i class="fa fa-edge"></i><?php echo $result['h_event']; ?>
+                                     Fest Name:&nbsp;&nbsp;<?php echo $result['h_fest']; ?>
+                                      <br/>
+										Event Name:&nbsp;&nbsp;<?php echo $result['h_event']; ?>
+									  <br/>
+									  Phone Number:&nbsp;&nbsp;<?php echo $result['h_pno']; ?>
+									
                   										<div class="p-t-5">
 											<a href="edit-eventhead.php?id=<?php echo $result['h_id']; ?>" class="fcbtn btn btn-info">Edit</a>
 											<a href="#" class="fcbtn btn btn-danger model_img deleteevent" data-id="<?php echo $result['h_id']; ?>" id="deleteDoc">Delete</a>

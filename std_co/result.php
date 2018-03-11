@@ -24,7 +24,7 @@ $username=$_SESSION['s_username'];
 	include 'assets/breadcrumbs.php';
 	?>
         <!-- Page Content -->
-        <div id="page-wrapper">
+        <div id="page-wrapper" align="justify">
             <div class="container-fluid">
                 <div class="row bg-title">
                     <!-- .page title -->
