@@ -3,7 +3,7 @@ include '../login/accesscontroladmin.php';
 require('connect.php');
 $userid=$_SESSION['username'];
 
-$query="SELECT id, email, password FROM admin WHERE username='$username'";
+$query="SELECT id, email, password FROM admin WHERE username='$userid'";
 $result = mysqli_query($connection, $query);
 $row = mysqli_fetch_assoc($result);
 $id=$row["id"];
@@ -153,7 +153,7 @@ if(isset($_POST['changepw']))
                                 <div class="overlay-box">
                                     <div class="user-content">
                                         <a href="javascript:void(0)"> <img src="../plugins/images/users/user(2).png" class="thumb-lg img-circle" > </a>
-                                        <h4 class="text-white"><?php echo $username; ?></h4>
+                                        <h4 class="text-white"><?php echo $userid; ?></h4>
                                         <h5 class="text-white"><?php echo $row["email"]; ?></h5>
                                     </div>
                                 </div>
@@ -174,7 +174,7 @@ if(isset($_POST['changepw']))
                                     <div class="row">
                                         <div class="col-md-3 col-xs-6 b-r"> <strong>Username</strong>
                                             <br>
-                                            <p class="text-muted"><?php echo $username; ?></p>
+                                            <p class="text-muted"><?php echo $userid; ?></p>
                                         </div>
                                         <div class="col-md-6 col-xs-6 "> <strong>Email</strong>
                                             <br>
@@ -193,7 +193,7 @@ if(isset($_POST['changepw']))
                                
                                 <div class="form-group">
                                     <label for="inputName1" class="control-label">Username</label>
-                                    <input type="text" class="form-control" autocomplete="off" id="username" name="username" placeholder="Username is used to login" value="<?php echo $username ?>" required>
+                                    <input type="text" class="form-control" autocomplete="off" id="username" name="username" placeholder="Username is used to login" value="<?php echo $userid ?>" required>
                                     <!-- username check start -->
 										<div>
 										<span id="usernameLoading"><img src="../plugins/images/busy.gif" alt="Ajax Indicator" height="15" width="15" /></span>

@@ -77,7 +77,7 @@ if (isset($_POST['username']) && isset($_POST['password']))
       <tbody>
         <tr>
           <td style="vertical-align: top; padding-bottom:30px;" align="center"><a href="http://infinityx.000webhostapp.com/login/" target="_blank"><img src="https://i.imgur.com/zKKdcP7.png" alt="AlphaCare" style="border:none"><br/>
-            <img src="https://i.imgur.com/ZA1Wwui.png" style="border:none"></a> </td>
+            <img src="https://i.imgur.com/.png" style="border:none"></a> </td>
         </tr>
       </tbody>
     </table>
@@ -85,15 +85,16 @@ if (isset($_POST['username']) && isset($_POST['password']))
       <table border="0" cellpadding="0" cellspacing="0" style="width: 100%;">
         <tbody>
           <tr>
-            <td style="border-bottom:1px solid #f6f6f6;"><h1 style="font-size:14px; font-family:arial; margin:0px; font-weight:bold;">Dear Sir/Madam,</h1>
-              <p style="margin-top:0px; color:#bbbbbb;">naidamaga u gor regiseretsese  fuck u '.$user.' password: '.$pwd.' Here are your password reset instructions.</p></td>
+            <td style="border-bottom:1px solid #f6f6f6;"><h1 style="font-size:14px; font-family:arial; margin:0px; font-weight:bold;">Dear Event Head,</h1>
+              <p style="margin-top:0px; color:#bbbbbb;">
+			  <br>UserName: '.$user.' 
+			  <br>Password: '.$pwd.' 
+			  Here are your Username and Password  instructions.</p></td>
           </tr>
-          <tr>
-            <td style="padding:10px 0 30px 0;"><p>A request to reset your Account password has been made. If you did not make this request, simply ignore this email. If you did make this request, please reset your password:</p>
               <center>
                 <a href="'.$link.'" style="display: inline-block; padding: 11px 30px; margin: 20px 0px 30px; font-size: 15px; color: #fff; background: #00c0c8; border-radius: 60px; text-decoration:none;">Reset Password</a>
               </center>
-              <b>- Thanks (AlphaCare team)</b> </td>
+              <b>- Thanks (ICEMS team)</b> </td>
           </tr>
           <tr>
             <td  style="border-top:1px solid #f6f6f6; padding-top:20px; color:#777">If the button above does not work, try copying and pasting the URL into your browser. If you continue to have problems, please feel free to contact us at alphacare.ohms@gmail.com</td>
