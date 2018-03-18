@@ -5,9 +5,11 @@ require('connect.php');
 if (isset($_POST['eventsubmit']))
 	{
 		$event_name=mysqli_real_escape_string($connection,$_POST['username']);
-		$fest=mysqli_real_escape_string($connection,$_POST['fest']);
+		$festid=$_POST['festid'];
 		$e_desc=mysqli_real_escape_string($connection,$_POST['e_desc']);
-		$query="INSERT INTO `add_event`(fest, e_eventname, e_desc) VALUES ('$fest','$event_name','$e_desc')";
+		$round=mysqli_real_escape_string($connection,$_POST['round']);
+		$parti=mysqli_real_escape_string($connection,$_POST['parti']);
+		$query="INSERT INTO `add_event` (`f_id`, `e_eventname`, `e_desc`, `round`, `parti`) VALUES ('$festid', '$event_name', '$e_desc', '$round', '$parti')";
 		$result = mysqli_query($connection, $query);
 
 	if($result)
@@ -16,7 +18,7 @@ if (isset($_POST['eventsubmit']))
 				}
 				else
 				{
-					$fmsg = "Event Creation Failed";
+					$fmsg = "Event Creation Failed".mysqli_error($connection);
 				}
 			}
 
@@ -77,23 +79,7 @@ if (isset($_POST['eventsubmit']))
                         <a href="../index.html" target="_blank" class="btn btn-info pull-right m-l-20 btn-rounded btn-outline hidden-xs hidden-sm waves-effect waves-light">Home</a>
                         <?php echo breadcrumbs(); ?>
                     </div>
-                    <!-- /.col-lg-12 -->
                 </div>
-
-				<!--- imported add-doctors---->
-				<!--Script to copy the input from fname to username-->
-				<script>
-					function copyTextValue() {
-					var text1 = document.getElementById("username").value;
-					document.getElementById("username").value = text1;
-					}
-				</script>
-				<script>
-					function copyTextValue() {
-					var text1 = document.getElementById("fest").value;
-					document.getElementById("fest").value = text1;
-					}
-				</script>
 
 				<div class="row">
 				<div class="col-sm-12">
@@ -115,38 +101,59 @@ if (isset($_POST['eventsubmit']))
 
                          		<div class="form-group">
                                     <label class="control-label">Fest name</label>
+									<select required class="form-control" name="festid">
                                     <?php
-									 $selectfest="SELECT fest FROM fest";
+									 $selectfest="SELECT * FROM fest";
 									 $resultfest = mysqli_query($connection, $selectfest);
 									?>
-									 <select required class="form-control" name="fest">
-								   	 <option disabled hidden selected>Select Event</option>
+									 
+								   	 <option disabled hidden selected >Select Event</option>
 									 <?php while($rowfest = mysqli_fetch_assoc($resultfest)) { ?>
-   									 <option>
-								     <?php echo $rowfest["fest"]; ?></option>
+   									 <option value="<?php echo $rowfest['f_id']; ?>"> <?php echo $rowfest["fname"]; ?> </option>
 								     <?php } ?>
 									 </select>
-										
-								<br/>
+								</div>
 								<div class="form-group">
                                     <label for="inputName1" class="control-label">Event name</label>
                                     <input type="text" autocomplete="off" name="username" class="form-control" id="username" placeholder="Enter your Event name" required >
-                                    <!--value="<?php // if(isset($username) & !empty($username)){ echo $username; }?>"-->
-                                    <!-- username check start -->
-										<div>
+                                   	<div>
 										<span id="usernameLoading"><img src="../plugins/images/busy.gif" alt="Ajax Indicator" height="15" width="15" /></span>
 										<span id="usernameResult" style="color: #E40003"></span>
 										</div>
-				                     <!-- username check end -->
-                                </div>
+				              </div>
 				        
-                                <div class="form-group">
+                           <div class="form-group">
+                                
                                     <label for="inputName1" class="control-label">Event Description</label>
-                                    <textarea type="text" class="form-control" autocomplete="off" id="username" name="e_desc" placeholder="Enter Event Description" value="" required></textarea>
+                                    <textarea class="form-control" id="username" name="e_desc" placeholder="Enter Event Description" value="" required></textarea>
 								</div>
-			                    </div>
-                                </div>
-                                </div>
+			                    <div class="form-group">
+									 <label for="inputEmail" class="control-label">Event Round</label>
+								<select required class="form-control" name=round>
+									<option disabled hidden selected>SELECT ROUND</option>
+									<option value="1">1 ROUNDS</option>
+									<option value="2">2 ROUNDS</option>
+									<option value="3">3 ROUNDS</option>
+									<option value="4">4 ROUNDS</option>
+									<option value="5">5 ROUNDS</option>
+									<option value="6">6 ROUNDS</option>
+									<option value="7">7 ROUNDS</option>
+									<option value="8">8 ROUNDS</option>
+															
+								</select> 
+								</div>
+								<div class="form-group">
+									 <label class="control-label">Required Participants</label>
+								<select required class="form-control" name=parti>
+									<option disabled hidden selected>SELECT PARTICIPANTS</option>
+									<option value="1">1 Participants</option>
+									<option value="2">2 Participants</option>
+									<option value="3">3 Participants</option>
+									<option value="4">4 Participants</option>
+									<option value="5">5 Participants</option>
+									<option value="6">6 Participants</option>
+								</select> 
+								</div>
                                 <div class="form-group">
                                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button type="submit" name="eventsubmit" class="btn btn-info">Submit</button>
                                 </div>

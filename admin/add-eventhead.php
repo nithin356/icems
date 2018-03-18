@@ -5,6 +5,7 @@ $userid=$_SESSION['username'];
 if (isset($_POST['username']) && isset($_POST['password']))
 	{
 		$user= mysqli_real_escape_string($connection,$_POST['username']);
+		$hname= mysqli_real_escape_string($connection,$_POST['hname']);
 		$email=mysqli_real_escape_string($connection,$_POST['email']);
 		$fest=mysqli_real_escape_string($connection,$_POST['fest']);
 		$event=mysqli_real_escape_string($connection,$_POST['event']);
@@ -28,7 +29,7 @@ if (isset($_POST['username']) && isset($_POST['password']))
 			else
 			{
 
-				$query="INSERT INTO `head`(h_username, h_fest, h_event, h_email, h_pno, h_password) VALUES ('$user','$fest', '$event', '$email','$pno','$pwd')";
+				$query="INSERT INTO `head`(h_username, hfname, h_fest, h_event, h_email, h_pno, h_password) VALUES ('$user','$hname','$fest', '$event', '$email','$pno','$pwd')";
 				$result = mysqli_query($connection, $query);
 	
 				if($result)
@@ -37,18 +38,15 @@ if (isset($_POST['username']) && isset($_POST['password']))
 					
 					$link="http://localhost/icems/login/";
                 
-            $to_Email       = $email; // Replace with recipient email address
-            $subject        = 'Password Reset'; //Subject line for emails
+            $to_Email       = $email; 
+            $subject        = 'LOGIN DETAILS'; 
+			$host           = "smtp.gmail.com"; 
+            $username       = "icemscentre@gmail.com";
+            $password       = "icems123";
+            $SMTPSecure     = "tls"; 
+            $port           = 587;
 
-            $host           = "smtp.gmail.com"; // Your SMTP server. For example, smtp.mail.yahoo.com
-            $username      = "alphacare.ohms@gmail.com"; //For example, your.email@yahoo.com
-            $password       = "dnspnb@78"; // Your password
-            $SMTPSecure     = "tls"; // For example, ssl
-            $port           = 587; // For example, 465
-
-    //proceed with PHP email.
-    include("../login/php/PHPMailerAutoload.php"); //you have to upload class files "class.phpmailer.php" and "class.smtp.php"
- 
+    include("../login/php/PHPMailerAutoload.php"); 
     $mail = new PHPMailer();
      
     $mail->IsSMTP();
@@ -76,8 +74,9 @@ if (isset($_POST['username']) && isset($_POST['password']))
     <table border="0" cellpadding="0" cellspacing="0" style="width: 100%; margin-bottom: 20px">
       <tbody>
         <tr>
-          <td style="vertical-align: top; padding-bottom:30px;" align="center"><a href="http://infinityx.000webhostapp.com/login/" target="_blank"><img src="https://i.imgur.com/zKKdcP7.png" alt="AlphaCare" style="border:none"><br/>
-            <img src="https://i.imgur.com/.png" style="border:none"></a> </td>
+          <td style="vertical-align: top; padding-bottom:30px;" align="center"><a target="_blank">
+		  <br/>
+          <img src="https://imgur.com/h9o15Ni.png" style="border:none"></a> </td>
         </tr>
       </tbody>
     </table>
@@ -89,15 +88,15 @@ if (isset($_POST['username']) && isset($_POST['password']))
               <p style="margin-top:0px; color:#bbbbbb;">
 			  <br>UserName: '.$user.' 
 			  <br>Password: '.$pwd.' 
-			  Here are your Username and Password  instructions.</p></td>
+			  Here are your Username and Password Instructions.</p></td>
           </tr>
               <center>
-                <a href="'.$link.'" style="display: inline-block; padding: 11px 30px; margin: 20px 0px 30px; font-size: 15px; color: #fff; background: #00c0c8; border-radius: 60px; text-decoration:none;">Reset Password</a>
+                <a href="'.$link.'" style="display: inline-block; padding: 11px 30px; margin: 20px 0px 30px; font-size: 15px; color: #fff; background: #00c0c8; border-radius: 60px; text-decoration:none;">PROCEED TO LOGIN</a>
               </center>
               <b>- Thanks (ICEMS team)</b> </td>
           </tr>
           <tr>
-            <td  style="border-top:1px solid #f6f6f6; padding-top:20px; color:#777">If the button above does not work, try copying and pasting the URL into your browser. If you continue to have problems, please feel free to contact us at alphacare.ohms@gmail.com</td>
+            <td  style="border-top:1px solid #f6f6f6; padding-top:20px; color:#777">If the button above does not work, try copying and pasting the URL into your browser. If you continue to have problems, please feel free to contact us at  icemscentre@gmail.com</td>
           </tr>
         </tbody>
       </table>
@@ -117,8 +116,8 @@ if (isset($_POST['username']) && isset($_POST['password']))
         $fmsg="E-mail not sent";
 
     } else {
-        $smsg="e-mail sent successfully";
-		$smsg .= "Event Head Created Successfully.";
+		
+		$smsg = "Event Head Created Successfully.";
 					
     }
     
@@ -220,7 +219,7 @@ if (isset($_POST['username']) && isset($_POST['password']))
 								<?php }?>
                                 <div class="form-group">
                                     <label for="inputName1" class="control-label">Username</label>
-                                    <input type="text" autocomplete="off" name="username" class="form-control" id="username" placeholder="Enter your username" required >
+                                    <input type="text" autocomplete="off" name="username" class="form-control" id="username" placeholder="Enter head username For Login" required >
                                     <!--value="<?php // if(isset($username) & !empty($username)){ echo $username; }?>"-->
                                     <!-- username check start -->
 										<div>
@@ -230,10 +229,16 @@ if (isset($_POST['username']) && isset($_POST['password']))
 				                     <!-- username check end -->
                                 </div>
                                 <div class="form-group">
-                                    <label for="inputEmail" class="control-label">Email</label>
+									<label for="inputEmail" class="control-label">Full name</label>
+                                    <input name="hname" type="text" class="form-control" id="inputEmail" placeholder="Enter Event head name" required>
+                                    <div class="help-block with-errors"></div>
+                                </div>
+								<div class="form-group">
+									<label for="inputEmail" class="control-label">Email</label>
                                     <input name="email" type="email" class="form-control" id="inputEmail" placeholder="Enter your email" data-error="This email address is invalid" required>
                                     <div class="help-block with-errors"></div>
                                 </div>
+								 
 								<div class="form-group">
                                     <label class="control-label">Phone Number</label>
                                     <input name="pno" type="number" class="form-control" iplaceholder="Enter heads Phone Number" maxlength="12" required>
@@ -242,14 +247,14 @@ if (isset($_POST['username']) && isset($_POST['password']))
 								<div class="form-group">
                                     <label class="control-label">Fest name</label>
                                     <?php
-									 $selectfest="SELECT fest FROM fest";
+									 $selectfest="SELECT fname FROM fest";
 									 $resultfest = mysqli_query($connection, $selectfest);
 									?>
 									 <select required class="form-control" name="fest">
-								   	 <option disabled hidden selected>Select fests</option>
+								   	 <option disabled hidden selected class="form-control" value="">Select fests</option>
 									 <?php while($rowfest = mysqli_fetch_assoc($resultfest)) { ?>
    									 <option>
-								     <?php echo $rowfest["fest"]; ?></option>
+								     <?php echo $rowfest["fname"]; ?></option>
 								     <?php } ?>
 									 </select>
 								</div>
@@ -260,7 +265,7 @@ if (isset($_POST['username']) && isset($_POST['password']))
 									 $resultevent = mysqli_query($connection, $selectevent);
 									?>
 									 <select required class="form-control" name="event">
-								   	 <option "disabled hidden selected">Select Event</option>
+								   	 <option "disabled hidden selected" value="" class="form-control">Select Event</option>
 									 <?php while($rowevent = mysqli_fetch_assoc($resultevent)) { ?>
    									 <option>
 								     <?php echo $rowevent["e_eventname"]; ?></option>

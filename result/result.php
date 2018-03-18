@@ -51,7 +51,7 @@ require('connect.php');
                                     <tbody>
 
 										<?php
-												$sql = "SELECT r_id, r_eventname, r_pname, r_pname2, round FROM result";
+												$sql = "SELECT r_id, r_fest, r_eventname, r_pname, r_pname2, round FROM result";
 												$result = mysqli_query($connection, $sql);
 												foreach($result as $key=>$result)
 												{ ?>
@@ -60,6 +60,7 @@ require('connect.php');
 														<td> <?php echo $result["r_pname"]; ?> </td>
 														<td> <?php echo $result["r_pname2"]; ?> </td>
 														<td> <?php echo $result["r_eventname"]; ?></td>
+														<td> <?php echo $result["r_fest"]; ?></td>
 														<td> <?php echo $result["round"]; ?></td>
 													</tr>
 										  <?php

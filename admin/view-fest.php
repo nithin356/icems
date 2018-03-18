@@ -29,7 +29,7 @@ $userid=$_SESSION['username'];
                 <div class="row bg-title">
                     <!-- .page title -->
                     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                        <h4 class="page-title">Events</h4>
+                        <h4 class="page-title">Fests</h4>
                     </div>
                     <!-- /.page title -->
                     <!-- .breadcrumb -->
@@ -48,15 +48,16 @@ $userid=$_SESSION['username'];
                 <div class="col-md-4 col-sm-4">
                         <div class="white-box">
                             <div class="row">
-                                  <div class="col-md-8 col-sm-8">
+                                  <div>
 									  
-                                    Fest Name:<h3 class="box-title m-b-0"><?php echo $result['fest']; ?></h2>
+                                    College Name:<h3 class="box-title m-b-0"><?php echo $result['cname']; ?></h2>  
+                                    Fest Name:<h3 class="box-title m-b-0"><?php echo $result['fname']; ?></h2>  
+                                    Date:<h3 class="box-title m-b-0"><?php echo $result['date']; ?></h2>
 <br/>  
-                                    Description:<h3 class="box-title m-b-0"><?php echo $result['desci']; ?></h2>
-									  
-                                      	<p>
-                  										<div class="p-t-5">
-											<a href="edit-fest.php?id=<?php echo $result['f_id']; ?>" class="fcbtn btn btn-info">Edit</a>
+                                    Description:
+									  <p><?php echo $result['f_desc']; ?>
+										<div class="p-t-5">
+											<a href="events.php?id=<?php echo $result['f_id']; ?>" class="fcbtn btn btn-info">Edit</a>
 											<a href="#" class="fcbtn btn btn-danger model_img deleteevent" data-id="<?php echo $result['f_id']; ?>" id="deleteDoc">Delete</a>
 									    </div>
                                     </p>

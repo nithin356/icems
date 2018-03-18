@@ -14,12 +14,11 @@
                 
 				<!-- Logo -->
                 <div class="top-left-part">
-                    <a class="logo" href="index.html">
+                    <a class="logo" href="../index.html">
                         <!-- Logo icon image, you can use font-icon also -->
                         <b><img></b>
                         <!-- Logo text image you can use text also -->
-                        <span class="hidden-xs"><img src="../plugins/images/eliteadmin-text.png" alt="home" /></span>
-                    </a>
+						<img src="../plugins/images/eliteadmin-text.png" /></a>
                 </div>
                 <!-- Logo -->
                 

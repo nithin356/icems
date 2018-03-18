@@ -4,22 +4,22 @@ require('connect.php');
 $username=$_SESSION['h_username'];
 $t_id = $_GET['id'];
 
-$query="SELECT t_event, t_from, t_to FROM time WHERE t_id='$t_id'";
+$query="SELECT t_fest, t_event, t_from, t_to FROM time WHERE t_id='$t_id'";
 $result = mysqli_query($connection, $query);
 $row = mysqli_fetch_assoc($result);
 if(isset($_POST['update']))
 {
 	$ff= $_POST['ff'];
 	$tt= $_POST['tt'];
-	if($ff<=$tt)
+	if($ff=$tt)
 	{
 	$uquery="UPDATE time SET  t_from='$ff', t_to='$tt' WHERE t_id='$t_id'";
 	$uresult = mysqli_query($connection, $uquery);
 	if($uresult)
 	{
-		$squery="SELECT t_event, t_from, t_to FROM time WHERE t_id='$t_id'";
+		$squery="SELECT t_fest, t_event, t_from, t_to FROM time WHERE t_id='$t_id'";
 		$sresult = mysqli_query($connection, $squery);
-		$row = mysqli_fetch_assoc($sresult);
+		$rowS = mysqli_fetch_assoc($sresult);
 		$smsg="Time updated successfully!";
 	}
 	else
@@ -150,6 +150,10 @@ if(isset($_POST['update']))
                             <div class="tab-content">
                                 <div class="tab-pane active" id="profile">
                                     <div class="row">
+                                        <div class="col-md-3 col-xs-6 b-r"> Fest Name
+                                            <br><br>
+                                            <p><strong><?php echo $row["t_fest"]; ?></strong></p>
+                                        </div>
                                         <div class="col-md-3 col-xs-6 b-r"> Event Name
                                             <br><br>
                                             <p><strong><?php echo $row["t_event"]; ?></strong></p>
@@ -186,12 +190,21 @@ if(isset($_POST['update']))
                          		<div class="row">
                                 	<div class="col-md-6">
                                        <div class="form-group">
+                                        	 <label class="control-label">Fest Name</label>
+											<div class="col-sm-12 p-l-0">
+												<div class="input-group">
+											<input type="text" name="eventname" class="form-control" id="fname" placeholder="<?php echo $row['t_fest']; ?>" value="<?php echo $row['t_fest']; ?>" readonly="readonly" required>
+													<!--onKeyUp="copyTextValue();"-->
+												</div>
+											</div> 
+										   <div class="form-group">
                                         	 <label class="control-label">Event Name</label>
 											<div class="col-sm-12 p-l-0">
 												<div class="input-group">
 											<input type="text" name="eventname" class="form-control" id="fname" placeholder="<?php echo $row['t_event']; ?>" value="<?php echo $row['t_event']; ?>" readonly="readonly" required>
 													<!--onKeyUp="copyTextValue();"-->
 												</div>
+											   </div>
 											</div>
                                          </div>
                                     </div>

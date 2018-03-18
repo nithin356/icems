@@ -39,7 +39,7 @@ $username=$_SESSION['h_username'];
                 </div>
                 <!-- /.row -->
                 <div>
-				<font size="100" color="#870E10" face="batmanforeveralternate"><center>WELCOME HEAD</center>	
+				<font size="100" color="#870E10" face="batmanforeveralternate"><center>WELCOME EVENT HEAD</center>	
 					<br></font>
 					<center><div><img src="../plugins/images/users/man.png" alt="user-img" class="img-circle"></div></center>
 					<font size="100" face="algerian" color="#4F1490"><center><?php echo $_SESSION['h_username']; ?></center></font>

@@ -2,7 +2,11 @@
 include '../login/accesscontrolstdco.php';
 require('connect.php');
 $username=$_SESSION['s_username'];
-
+$getfestname="SELECT s_id, fest FROM std_co WHERE s_username='$username'";
+$getfestnameresult=mysqli_query($connection,$getfestname);
+$getfestnamerow=mysqli_fetch_assoc($getfestnameresult);
+$sid=$getfestnamerow['s_id'];
+$fid=$getfestnamerow['fest'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -51,23 +55,27 @@ $username=$_SESSION['s_username'];
                                         <tr>
                                             <th>Participant ID</th>
                                             <th>Participant 1</th>
-                                            <th>Participant 2</th>
-											<th>Event</th>
+                                           	<th>Fest</th>
+											<th>Event Name</th>
+											<th>Action</th>
+											
                                         </tr>
                                     </thead>
                                     <tbody>
 
 										<?php
-												$sql = "SELECT p_id, p_name1, p_name2, p_eventname FROM participant";
+												$sql = "SELECT *,add_event.e_eventname,fest.fname FROM participant JOIN add_event ON  participant.p_eventname=add_event.e_id JOIN fest ON fest.f_id=add_event.f_id WHERE sid='$sid'";
 												$result = mysqli_query($connection, $sql);
 												foreach($result as $key=>$result)
 												{ ?>
 													<tr>
 														<td> <?php echo $key+1; ?> </td>
-														<td> <?php echo $result["p_name1"]; ?> </td>
-														<td> <?php echo $result["p_name2"]; ?> </td>
-														<td> <?php echo $result["p_eventname"]; ?> </td>
-													</tr>
+														<td> <?php echo $result["p_name"] ?> </td>
+														<td> <?php echo $result["fname"]; ?> </td>
+														<td> <?php echo $result["e_eventname"]; ?> </td>
+														<td><a href="edit.php?id=<?php echo $result['p_id']; ?>" class="fcbtn btn btn-info">Edit</a>
+											<a href="#" class="fcbtn btn btn-danger model_img deleteevent" data-id="<?php echo $result['p_id']; ?>" id="deleteDoc">Delete</a></td>
+												</tr>
 										  <?php
 												}
 										  ?>

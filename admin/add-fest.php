@@ -4,9 +4,11 @@ $userid=$_SESSION['username'];
 require('connect.php');
 if (isset($_POST['eventsubmit']))
 	{
+		$cname=mysqli_real_escape_string($connection,$_POST['cname']);
 		$fest=mysqli_real_escape_string($connection,$_POST['fest']);
 		$desc=mysqli_real_escape_string($connection,$_POST['desc']);
-		$query="INSERT INTO `fest`(fest, desci) VALUES ('$fest','$desc')";
+		$date=mysqli_real_escape_string($connection,$_POST['date']);
+		$query="INSERT INTO `fest`(cname, fname, date, f_desc) VALUES ('$cname','$fest','$date','$desc')";
 		$result = mysqli_query($connection, $query);
 
 	if($result)
@@ -120,7 +122,7 @@ if (isset($_POST['eventsubmit']))
 				<div class="row">
 				<div class="col-sm-12">
                         <div class="white-box">
-                            <h3 class="box-title m-b-0">Events Information</h3>
+                            <h3 class="box-title m-b-0">Fest Information</h3>
                             <form data-toggle="validator" method="post">
                               <?php if(isset($fmsg)) { ?>
 									<div class="alert alert-danger alert-dismissable">
@@ -136,6 +138,11 @@ if (isset($_POST['eventsubmit']))
 							<?php }?>
 
                          		<div class="form-group">
+                                    <label class="control-label">College name</label>
+                                    <input type="text" autocomplete="off" name="cname" class="form-control" placeholder="Enter your College name" required ></input>
+								
+								</div>
+							<div class="form-group">
                                     <label class="control-label">Fest name</label>
                                     <input type="text" autocomplete="off" name="fest" class="form-control" id="fest" placeholder="Enter your Fest name" required ></input>
 								
@@ -145,11 +152,15 @@ if (isset($_POST['eventsubmit']))
 										</div>
 								</div>
 							<div class="form-group">
-                                    <label for="inputName1" class="control-label">Event Description</label>
-                                    <textarea type="text" class="form-control" autocomplete="off" id="username" name="desc" placeholder="Enter Event Description" value="" required></textarea>
+                                    <label for="inputName1" class="control-label">Date</label>
+                                    <input type="date" class="form-control" autocomplete="off" id="username" name="date" placeholder="Enter Fest Date" value="" required/>
+								</div>
+							<div class="form-group">
+                                    <label for="inputName1" class="control-label">Fest Description</label>
+                                    <textarea type="text" class="form-control" autocomplete="off" id="username" name="desc" placeholder="Enter Fest Description" value="" required></textarea>
 								</div>
 							    <div class="form-group">
-                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button type="submit" name="eventsubmit" class="btn btn-info">Submit</button>
+                                    <button type="submit" name="eventsubmit" class="btn btn-info">Submit</button>
                                 </div>
                             </form>
                         </div>

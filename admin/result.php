@@ -5,10 +5,11 @@ $userid=$_SESSION['username'];
 if (isset($_POST['event']) && isset($_POST['participant']))
 	{
 		$eventname= mysqli_real_escape_string($connection,$_POST['event']);
+		$fest= mysqli_real_escape_string($connection,$_POST['fest']);
 		$round=mysqli_real_escape_string($connection,$_POST['round']);
 		$particpant=mysqli_real_escape_string($connection,$_POST['participant']);
 		$particpant1=mysqli_real_escape_string($connection,$_POST['participant1']);
-		$query="INSERT INTO `result`(r_eventname, r_pname, r_pname2, round) VALUES ('$eventname','$particpant','$particpant1','$round')";
+		$query="INSERT INTO `result`(r_eventname, r_pname, r_pname2, r_fest, round) VALUES ('$eventname','$fest','$particpant1','$round')";
 				$result = mysqli_query($connection, $query);
 	
 				if($result)
@@ -104,6 +105,20 @@ if (isset($_POST['event']) && isset($_POST['participant']))
 											 <?php echo $smsg; ?>
 										</div>
 								<?php }?>
+								<div class="form-group">
+                                    <label class="control-label">Fest name</label>
+                                    <?php
+									 $selectfest="SELECT fname FROM fest";
+									 $resultfest = mysqli_query($connection, $selectfest);
+									?>
+									 <select required class="form-control" name="fest">
+								   	 <option disabled hidden selected class="form-control" value="">Select fests</option>
+									 <?php while($rowfest = mysqli_fetch_assoc($resultfest)) { ?>
+   									 <option>
+								     <?php echo $rowfest["fname"]; ?></option>
+								     <?php } ?>
+									 </select>
+								</div>
 								 <div class="form-group">
 									 <label for="inputEmail" class="control-label ">Event</label>
 									 <?php
@@ -111,7 +126,7 @@ if (isset($_POST['event']) && isset($_POST['participant']))
 									 $resultevent = mysqli_query($connection, $selectevent);
 									?>
 									 <select required class="form-control" name="event">
-								   	 <option>Select Event</option>
+								   	 <option disabled hidden selected class="form-control">Select Event</option>
 									 <?php while($rowevent = mysqli_fetch_assoc($resultevent)) { ?>
    									 <option>
 								     <?php echo $rowevent["e_eventname"]; ?></option>
@@ -121,7 +136,7 @@ if (isset($_POST['event']) && isset($_POST['participant']))
 								 <div class="form-group">
 									 <label for="inputEmail" class="control-label">Round</label>
 								<select required class="form-control" name=round>
-									<option value="disabled hidden selected">SELECT ROUND</option>
+									<option disabled hidden selected>SELECT ROUND</option>
 									<option>ROUND 1</option>
 									<option>ROUND 2</option>
 									<option>ROUND 3</option>

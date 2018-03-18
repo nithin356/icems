@@ -190,7 +190,7 @@ if(isset($_POST['updateprofile']))
                                         	 <label class="control-label">User Name</label>
 											<div class="col-sm-12 p-l-0">
 												<div class="input-group">
-											<input type="text" name="headname" class="form-control" id="fname" placeholder="<?php echo $row['h_username']; ?>" value="<?php echo $row['h_username']; ?>" required>
+											<input type="text" readonly name="headname" class="form-control" id="fname" placeholder="<?php echo $row['h_username']; ?>" value="<?php echo $row['h_username']; ?>" required>
 													<!--onKeyUp="copyTextValue();"-->
 												</div>
 											</div>
@@ -204,7 +204,7 @@ if(isset($_POST['updateprofile']))
 									 <select required class="form-control" name="festname">
 								   	
 									 <?php while($rowfest = mysqli_fetch_assoc($resultfest)) { ?>
-   									 <option disabled hidden selected ><?php echo $rowfest["fest"]; ?></option> 
+   									 <option disabled hidden selected ><?php echo $row['h_fest']; ?></option> 
 									<option>
 								     <?php echo $rowfest["fest"]; ?></option>
 								     <?php } ?>
@@ -220,15 +220,27 @@ if(isset($_POST['updateprofile']))
                                  </div>
                                
                                 <div class="form-group">
-                                    <label for="inputName1" class="control-label">Event Name</label>
-                                    <input type="text" class="form-control" autocomplete="off" id="username" name="event" placeholder="Your Description" value="<?php echo $row["h_event"]; ?>" required>
-                                    <!-- username check start -->
+                                    <label class="control-label">Event Name</label>
+											<div class="col-sm-12 p-l-0">
+												<div class="input-group">
+											<?php
+									 $select12="SELECT e_eventname FROM add_event";
+									 $result12 = mysqli_query($connection, $select12);
+									?>
+									 <select required class="form-control" name="event">
+								   	
+									 <?php while($row12 = mysqli_fetch_assoc($result12)) { ?>
+   									 <option disabled hidden selected ><?php echo $row["h_event"]; ?></option> 
+									<option>
+								     <?php echo $row12["e_eventname"]; ?></option>
+								     <?php } ?>
+									 </select>
 										<div>
 						                </div>
                                         </div>
                                   
                                 <div class="form-group p-t-0">
-                                    
+                                    <br>
                                         <button class="btn btn-success" name="updateprofile">Update Event </button>
 								 </div>
 								 </div>

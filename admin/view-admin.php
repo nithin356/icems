@@ -2,8 +2,8 @@
 include '../login/accesscontroladmin.php';
 require('connect.php');
 $userid=$_SESSION['username'];
-
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -48,7 +48,7 @@ $userid=$_SESSION['username'];
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                            <h4 class="modal-title">Importent Instruction</h4>
+                                            <h4 class="modal-title">Important Instruction</h4>
                                         </div>
                                         <div class="modal-body">
                                        	 To Edit Admin information or to delete Admin account you need to login to that admin account and go to "My Profile".
@@ -74,20 +74,22 @@ $userid=$_SESSION['username'];
                                         <tr>
                                             <th>Admin ID</th>
                                             <th>Username</th>
-                                            <th>Email</th>
+                                            <th>Full name</th>
+                                            <th>E-Mail</th>
                                             <th class="text-nowrap">Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
 
 										<?php
-												$sql = "SELECT id, username, email FROM admin";
+												$sql = "SELECT * FROM admin";
 												$result = mysqli_query($connection, $sql);
 												foreach($result as $key=>$result)
 												{ ?>
 													<tr>
 														<td> <?php echo $key+1; ?> </td>
 														<td> <?php echo $result["username"]; ?> </td>
+														<td> <?php echo $result["full"]; ?> </td>
 														<td> <?php echo $result["email"]; ?> </td>
 														<td class="text-nowrap">
 															<a data-original-title="Edit" data-toggle="modal" data-target="#responsive-modal" > <i class="fa fa-pencil text-inverse m-r-10"></i> </a>

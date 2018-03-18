@@ -29,7 +29,7 @@ $userid=$_SESSION['username'];
                 <div class="row bg-title">
                     <!-- .page title -->
                     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                        <h4 class="page-title">Events</h4>
+                        <h4 class="page-title">Results</h4>
                     </div>
                     <!-- /.page title -->
                     <!-- .breadcrumb -->
@@ -49,7 +49,8 @@ $userid=$_SESSION['username'];
                         <div class="white-box">
                             <div class="row">
                                   <div class="col-md-8 col-sm-8">
-									  
+									Fest Name:<h3 class="box-title m-b-0"><?php echo $result['r_fest']; ?></h3>
+									 <p></p>  
                                     Event Name:<h3 class="box-title m-b-0"><?php echo $result['r_eventname']; ?></h3>
 									 <p></p>
 									  Participant 1:<h3 ><?php echo $result['r_pname']; ?></h3>
@@ -60,7 +61,7 @@ $userid=$_SESSION['username'];
 											Round :<h4><?php echo $result['round']; ?></h4>
 										<p>
                   										<div class="p-t-5">
-											<a href="edit-event.php?id=<?php echo $result['r_id']; ?>" class="fcbtn btn btn-info">Edit</a>
+											<a href="edit-result.php?id=<?php echo $result['r_id']; ?>" class="fcbtn btn btn-info">Edit</a>
 											<a href="#" class="fcbtn btn btn-danger model_img deleteevent" data-id="<?php echo $result['r_id']; ?>" id="deleteDoc">Delete</a>
 									    </div>
                                     </p>

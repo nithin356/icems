@@ -2,6 +2,11 @@
 include '../login/accesscontrolstdco.php';
 require('connect.php');
 $username=$_SESSION['s_username'];
+$getfestname="SELECT s_id, fest FROM std_co  WHERE s_username='$username'";
+$getfestnameresult=mysqli_query($connection,$getfestname);
+$getfestnamerow=mysqli_fetch_assoc($getfestnameresult);
+$sid=$getfestnamerow['s_id'];
+$fid=$getfestnamerow['fest'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -41,8 +46,9 @@ $username=$_SESSION['s_username'];
                 </div>
 				<div class="row">
                 <?php
-					$query = "SELECT * FROM participant";
+					$query = "SELECT * FROM add_event WHERE f_id='$fid'";
 					$result = mysqli_query($connection, $query);
+					echo mysqli_error($connection);
 					foreach($result as $key=>$result)
 				{ ?>
                 <div class="col-md-4 col-sm-4">
@@ -50,16 +56,16 @@ $username=$_SESSION['s_username'];
                             <div class="row">
                                   <div class="col-md-8 col-sm-8">
 									  Event :
-                                    <h3 class="box-title m-b-0"><?php echo $result['p_eventname']; ?></h3>
+                                    <h3 class="box-title m-b-0"><?php echo $result['e_eventname']; ?></h3>
                                     <p>
 										Participants:
 										<br/>
-										<strong><?php echo $result['p_name1']; ?>
+										<strong><?php echo $result['parti']; ?>
 										<br/>
-										<?php echo $result['p_name2']; ?>
+										<?php// echo $result['p_name2']; ?>
 										</strong>
                   										<div class="p-t-5">
-											<a href="edit.php?id=<?php echo $result['p_id']; ?>" class="fcbtn btn btn-info">Edit</a>
+											<a href="edit.php?id=<?php echo $result['e_id']; ?>" class="fcbtn btn btn-info">Edit</a>
 											<a href="#" class="fcbtn btn btn-danger model_img deleteevent" data-id="<?php echo $result['p_id']; ?>" id="deleteDoc">Delete</a>
 									    </div>
                                     </p>

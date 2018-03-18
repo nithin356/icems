@@ -2,9 +2,10 @@
 include '../login/accesscontrolstdco.php';
 require('connect.php');
 $username=$_SESSION['s_username'];
-$p_id = $_GET['id'];
+$eid = $_GET['id'];
 
-$query="SELECT p_name1, p_name2, p_eventname FROM participant WHERE p_id='$p_id'";
+$query="SELECT *,add_event.e_eventname,fest.fname,add_event.parti FROM participant JOIN add_event ON  participant.p_eventname=add_event.e_id JOIN fest ON fest.f_id=add_event.f_id WHERE p_eventname='$eid'";
+												
 $result = mysqli_query($connection, $query);
 $row = mysqli_fetch_assoc($result);
 
@@ -12,15 +13,13 @@ $row = mysqli_fetch_assoc($result);
 if(isset($_POST['update']))
 {
 	$p_eventname=mysqli_real_escape_string($connection,$_POST['event']);
-	$p1= mysqli_real_escape_string($connection,$_POST['p1']);
-	$p2= mysqli_real_escape_string($connection,$_POST['p2']);
 	$uquery="UPDATE participant SET p_eventname='$p_eventname', p_name1='$p1',  p_name2='$p2' WHERE p_id='$p_id'";
 	$uresult = mysqli_query($connection, $uquery);
 	if($uresult)
 	{
 		$squery="SELECT p_name1, p_name2, p_eventname FROM participant WHERE p_id='$p_id'";
 		$sresult = mysqli_query($connection, $squery);
-		$row = mysqli_fetch_assoc($sresult);
+		$rows = mysqli_fetch_assoc($sresult);
 		$smsg="Profile updated successfully!";
 
 	}
@@ -114,26 +113,12 @@ if(isset($_POST['update']))
                 <div class="row">
                     <div class="col-md-4 col-xs-12">
                         <div class="white-box">
-                            <div class="user-bg"> <img width="100%" height="100%" alt="user" src="../plugins/images/profile-menu.png">
-                                <div class="overlay-box">
+                            <div class="user-bg"> <img width="100%" height="100%" alt="user" src="../plugins/images/png.png">
+                                <div>
                                     <div class="user-content">
                                        </div>
                                 </div>
-                            </div>
-                            <!--<div class="user-btm-box">
-                                <div class="col-md-4 col-sm-4 text-center">
-                                    <p class="text-purple"><i class="ti-facebook"></i></p>
-                                    <h1>258</h1>
-                                </div>
-                                <div class="col-md-4 col-sm-4 text-center">
-                                    <p class="text-blue"><i class="ti-twitter"></i></p>
-                                    <h1>125</h1>
-                                </div>
-                                <div class="col-md-4 col-sm-4 text-center">
-                                    <p class="text-danger"><i class="ti-dribbble"></i></p>
-                                    <h1>556</h1>
-                                </div>
-                            </div>-->
+							</div>
                         </div>
                     </div>
                     <div class="col-md-8 col-xs-12">
@@ -147,19 +132,20 @@ if(isset($_POST['update']))
                             <div class="tab-content">
                                 <div class="tab-pane active" id="profile">
                                     <div class="row">
-                                        <div class="col-md-3 col-xs-6 b-r"> <strong>Event Name</strong>
+                                        <div class="col-md-6 col-xs-6 "> <strong>Fest:</strong>
                                             <br>
-                                            <p class="text-muted"><?php echo $row["p_eventname"]; ?></p>
+                                            <p class="text-muted"><?php echo $row["fname"]; ?></p>
                                         </div>
-                                        
-                                        <div class="col-md-6 col-xs-6 "> <strong>Participant:</strong>
+											<div class="col-md-6 col-xs-6 "> <strong>Event name:</strong>
                                             <br>
-                                            <p class="text-muted"><?php echo $row["p_name1"]; ?></p>
-                                        	<br>
-                                            <p class="text-muted"><?php echo $row["p_name2"]; ?></p>
+                                            <p class="text-muted"><?php echo $row["e_eventname"]; ?></p>
                                         </div>
-                                        
-                                    </div>
+											<div class="col-md-6 col-xs-6 text-uppercase"> <strong>Participant:</strong>
+                                        	 <?php $loopquery="SELECT * FROM participant WHERE p_eventname='$eid'";
+												$loopresult=mysqli_query($connection,$loopquery);
+												while($looprow=mysqli_fetch_assoc($loopresult)) { echo '<br>'.$looprow["p_name"]; }?>
+                                        </div>
+									  </div>
                                      <div class="row">
                                      <div class="col-md-3 col-xs-6 b-r">
                                             
@@ -169,7 +155,8 @@ if(isset($_POST['update']))
                                             
                                      <p class="text-muted"></p>
                                      </div>
-                                     <div class="col-md-3 col-xs-6">                                   <p class="text-muted"></p>
+                                     <div class="col-md-3 col-xs-6">
+										 <p class="text-muted"></p>
                                      </div>
 									 </div>
                                      </div>
@@ -177,10 +164,8 @@ if(isset($_POST['update']))
                                
                             <div class="tab-pane" id="settings">
                              <form data-toggle="validator" method="post">
-                              
-                              
-                         		<div class="row">
-                                	<div class="col-md-6">
+                              	<div class="row">
+                                	<div class="col-md-12">
                                        <div class="form-group">
                                         	 <label class="control-label">Event Name</label>
 											<div class="col-sm-12 p-l-0">
@@ -189,25 +174,29 @@ if(isset($_POST['update']))
 											 $selectevent="SELECT e_eventname FROM add_event";
 											 $resultevent = mysqli_query($connection, $selectevent);
 											?>
-											<select required class="form-control" name=event>
-												<option value="<?php echo $row['p_eventname']; ?>">
-													<?php echo $row['p_eventname']; ?>
-												<?php 
-												while($rowevent = mysqli_fetch_assoc($resultevent)) { ?>
-   									 			<option>
-								     			<?php echo $rowevent["e_eventname"]; ?></option>
-								     			<?php } ?>
-									 </select>
+											<input readonly class="form-control" value="<?php echo $row['e_eventname']; ?>">
 												</div>	
 											</div>
 											</div>
                                          </div>
 								 </div>                      
                                 <div class="form-group">
-                                    <label for="inputName1" class="control-label">Event Description</label>
-                                    <input type="text" class="form-control" autocomplete="off" id="username" name="p1" value="<?php echo $row['p_name1']; ?>" required>
+                                    <label for="inputName1" class="control-label">Edit Participant</label>
+                                    <!--<input type="text" class="form-control" autocomplete="off" id="username" name="p1" value="<?php //echo $row['p_name']; ?>" required>-->
 									<br>
-									<input type="text" class="form-control" autocomplete="off" id="username" name="p2" value="<?php echo $row['p_name2']; ?>" >
+									<?php $loopid=1; 
+									$loopend=$row['parti']; 
+									while($loopid<=$loopend)
+									{
+										$loopquery="SELECT * FROM participant WHERE p_eventname='$eid'";
+										$loopresult=mysqli_query($connection,$loopquery);
+										while($looprow=mysqli_fetch_assoc($loopresult)) {
+										$pname=$looprow['p_name'];
+											$pid=$looprow['p_id'];
+									echo '<input type="text" class="form-control" autocomplete="off" id="username" name="parti'.$pid.'" value="'.$pname.'" required> <br>'; 
+										$loopid++; }
+									  } ?> 
+								
 	
 										<div>
 						                </div>

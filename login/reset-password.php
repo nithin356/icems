@@ -27,17 +27,17 @@ if(isset($_POST['password']) && isset($_POST['cpassword']))
 			{
 				$smsg="Password has been reset successfully";
 				$query5="DELETE FROM reset_password WHERE tempstr='$id'";
-				$result5 = mysqli_query($connection,$query5);
+				$result9 = mysqli_query($connection,$query5);
 			}
 		}
 		else
 		{
-			$query3="SELECT * FROM doctors WHERE email='$email'";
+			$query3="SELECT * FROM std_co WHERE s_email='$email'";
 			$result3 = mysqli_query($connection,$query3);
 			$count3 = mysqli_num_rows($result3);
 			if($count3==1)
 			{
-				$query4="UPDATE doctors SET password='$password' WHERE email='$email' ";
+				$query4="UPDATE stdco SET s_password='$password' WHERE s_email='$email' ";
 				$result4 = mysqli_query($connection, $query4);
 				if($result4)
 				{
@@ -46,8 +46,24 @@ if(isset($_POST['password']) && isset($_POST['cpassword']))
 					$result6 = mysqli_query($connection,$query6);
 				}
 			}
+			else
+				{
+			$query4="SELECT * FROM head WHERE h_email='$email'";
+			$result4 = mysqli_query($connection,$query3);
+			$count4 = mysqli_num_rows($result3);
+			if($count4==1)
+			{
+				$query5="UPDATE head SET h_password='$password' WHERE h_email='$email' ";
+				$result5 = mysqli_query($connection, $query4);
+				if($result5)
+				{
+					$smsg="Password has been reset successfully";
+					$query7="DELETE FROM reset_password WHERE tempstr='$id'";
+					$result7 = mysqli_query($connection,$query6);
+				}
+			}
 		}
-
+	}
 
 	}
 	else

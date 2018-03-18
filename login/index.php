@@ -4,8 +4,8 @@ require('connect.php');
 if (isset($_POST['username']) && isset($_POST['password']))
     {
         $username = mysqli_real_escape_string($connection,$_POST['username']);
-        $password = $_POST['password'];
-        $query ="SELECT * FROM `admin` WHERE (username='$username' OR email='$username')  AND password='$password'";
+        $password = mysqli_real_escape_string($connection,$_POST['password']);
+        $query ="SELECT * FROM `admin` WHERE BINARY (BINARY username='$username' OR email='$username') AND BINARY password='$password'";
         $result = mysqli_query($connection,$query);
         $row = mysqli_fetch_assoc($result);
         $count = mysqli_num_rows($result);
@@ -20,7 +20,9 @@ if (isset($_POST['username']) && isset($_POST['password']))
         }
 	else
 	{
-        $querys="SELECT * FROM `std_co` WHERE (s_username='$username' OR s_email='$username') AND s_password='$password'";
+        $susername = mysqli_real_escape_string($connection,$_POST['username']);
+        $spassword = $_POST['password'];
+        $querys="SELECT * FROM `std_co` WHERE (s_username='$susername' OR s_email='$susername') AND s_password='$spassword'";
         $results = mysqli_query($connection,$querys);
         $rows = mysqli_fetch_assoc($results);
         $counts = mysqli_num_rows($results);
@@ -37,7 +39,10 @@ if (isset($_POST['username']) && isset($_POST['password']))
         }
         else
 			{
-				$queryh="SELECT * FROM `head` WHERE (h_username='$username' OR h_email='$username') AND h_password='$password'";
+		$husername = mysqli_real_escape_string($connection,$_POST['username']);
+        $hpassword = $_POST['password'];
+        
+			$queryh="SELECT * FROM `head` WHERE (h_username='$husername' OR h_email='$husername') AND h_password='$hpassword'";
         $resulth = mysqli_query($connection,$queryh);
         $rowh = mysqli_fetch_assoc($resulth);
         $counth = mysqli_num_rows($resulth);
@@ -64,9 +69,15 @@ if(isset($_POST['resetemail']))
     
     $remail=$_POST['resetemail'];
     $query="SELECT * FROM `admin` WHERE email='$remail'";
+	$hquery="SELECT * FROM `head` WHERE h_email='$remail'";
+	$squery="SELECT * FROM `std_co` WHERE s_email='$remail'";
     $result = mysqli_query($connection,$query);
-    $count = mysqli_num_rows($result);
-        if($count==1||$count1==1)
+    $hresult = mysqli_query($connection,$hquery);
+    $sresult = mysqli_query($connection,$squery);
+	$count = mysqli_num_rows($result);
+    $count1 = mysqli_num_rows($hresult);
+    $count2 = mysqli_num_rows($sresult);
+        if($count==1||$count1==1||$count2==1)
         {
             $str=random_int(256321,986523);
             $mdstr=md5($str);
@@ -78,8 +89,8 @@ if(isset($_POST['resetemail']))
             $subject        = 'Password Reset'; //Subject line for emails
 
             $host           = "smtp.gmail.com"; // Your SMTP server. For example, smtp.mail.yahoo.com
-            $username       = "alphacare.ohms@gmail.com"; //For example, your.email@yahoo.com
-            $password       = "dnspnb@78"; // Your password
+            $user	        = "icemscentre@gmail.com"; //For example, your.email@yahoo.com
+            $password       = "icems123"; // Your password
             $SMTPSecure     = "tls"; // For example, ssl
             $port           = 587; // For example, 465
 
@@ -92,7 +103,7 @@ if(isset($_POST['resetemail']))
     $mail->SMTPAuth = true;
     
     $mail->Host = $host;
-    $mail->Username = $username;
+    $mail->Username = $user;
 
 
 
@@ -102,7 +113,7 @@ if(isset($_POST['resetemail']))
     $mail->Port = $port;
     
      
-    $mail->setFrom($username);
+    $mail->setFrom($user);
     $mail->addReplyTo($remail);
      
     $mail->AddAddress($to_Email);
@@ -113,8 +124,9 @@ if(isset($_POST['resetemail']))
     <table border="0" cellpadding="0" cellspacing="0" style="width: 100%; margin-bottom: 20px">
       <tbody>
         <tr>
-          <td style="vertical-align: top; padding-bottom:30px;" align="center"><a href="http://infinityx.000webhostapp.com/login/" target="_blank"><img src="https://i.imgur.com/zKKdcP7.png" alt="AlphaCare" style="border:none"><br/>
-            <img src="https://i.imgur.com/ZA1Wwui.png" style="border:none"></a> </td>
+          <td style="vertical-align: top; padding-bottom:30px;" align="center">
+		  <img src="https://imgur.com/h9o15Ni.png" style="border:none"></a> </td>
+        </td>
         </tr>
       </tbody>
     </table>
@@ -130,10 +142,10 @@ if(isset($_POST['resetemail']))
               <center>
                 <a href="'.$link.'" style="display: inline-block; padding: 11px 30px; margin: 20px 0px 30px; font-size: 15px; color: #fff; background: #00c0c8; border-radius: 60px; text-decoration:none;">Reset Password</a>
               </center>
-              <b>- Thanks (AlphaCare team)</b> </td>
+              <b>- Thanks (ICEMS team)</b> </td>
           </tr>
           <tr>
-            <td  style="border-top:1px solid #f6f6f6; padding-top:20px; color:#777">If the button above does not work, try copying and pasting the URL into your browser. If you continue to have problems, please feel free to contact us at alphacare.ohms@gmail.com</td>
+            <td  style="border-top:1px solid #f6f6f6; padding-top:20px; color:#777">If the button above does not work, try copying and pasting the URL into your browser. If you continue to have problems, please feel free to contact us at icemscentre@gmail.com</td>
           </tr>
         </tbody>
       </table>
@@ -219,14 +231,24 @@ if(isset($_POST['resetemail']))
                     <h3 class="box-title m-b-20"><u>Sign In</u></h3>
                     <div class="form-group ">
                         <div class="col-xs-12">
-                            <input class="form-control" type="text" required="" placeholder="Username" name="username" value="<?php if(isset($username) & !empty($username)){ echo $username; }?>" >
+                            <input class="form-control" type="text" required="" placeholder="Username" name="username" autofocus value="<?php if(isset($username) & !empty($username)){ echo $username; }?>" >
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="col-xs-12">
-                            <input class="form-control" type="password" required="" placeholder="Password" name="password">
+                            <input class="form-control" type="password" required="" placeholder="Password"  onkeypress="capLock(event)" name="password">
+							<div id="divMayus" style="visibility:hidden">Caps Lock is on.</div> 
                         </div>
                     </div>
+<script>
+function capLock(e){
+  var kc = e.keyCode ? e.keyCode : e.which;
+  var sk = e.shiftKey ? e.shiftKey : kc === 16;
+  var visibility = ((kc >= 65 && kc <= 90) && !sk) || 
+      ((kc >= 97 && kc <= 122) && sk) ? 'visible' : 'hidden';
+  document.getElementById('divMayus').style.visibility = visibility
+}
+	</script>
                     <div class="form-group">
                         <div class="col-md-12">
                             <div >
@@ -243,7 +265,8 @@ if(isset($_POST['resetemail']))
                         <div class="col-sm-12 text-center">
                             <p>Don't have an account? <a href="../register/" class="text-primary m-l-5"><b>Sign Up</b></a></p>
                         </div>
-                    </div>
+                    &nbsp; &nbsp;Inter Collegiate Event Management System © 2018
+					</div>
                 </form>
                 <form class="form-horizontal form-material" id="recoverform" method="post">
                    <?php if(isset($fmsg)) { ?><div class="alert alert-danger"> <?php echo $fmsg; ?> </div> <?php }?>

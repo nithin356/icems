@@ -29,7 +29,7 @@ $userid=$_SESSION['username'];
                 <div class="row bg-title">
                     <!-- .page title -->
                     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                        <h4 class="page-title">Events</h4>
+                        <h4 class="page-title">Fests</h4>
                     </div>
                     <!-- /.page title -->
                     <!-- .breadcrumb -->
@@ -41,7 +41,7 @@ $userid=$_SESSION['username'];
                 </div>
 				<div class="row">
                 <?php
-					$query = "SELECT * FROM add_event";
+					$query = "SELECT * FROM fest";
 					$result = mysqli_query($connection, $query);
 					foreach($result as $key=>$result)
 				{ ?>
@@ -49,20 +49,20 @@ $userid=$_SESSION['username'];
                         <div class="white-box">
                             <div class="row">
                                   <div class="col-md-8 col-sm-8">
-									  
-                                    Fest Name:<h3 class="box-title m-b-0"><?php echo $result['fest']; ?></h2>
-									 <p></p>
-									  Event:<h3 class="box-title m-b-0"><?php echo $result['e_eventname']; ?></h3>
+									College Name:<h3 class="box-title m-b-0"><?php echo $result['cname']; ?></h3>
+                                    <p>  
+                                    Fest Name:<h3 class="box-title m-b-0"><?php echo $result['fname']; ?></h3>
+									 <p>
+									Date:<h3 class="box-title m-b-0"><?php echo $result['date']; ?></h3>
+									  <p>
+									College Name:
+									  <h3 class="box-title m-b-0"><?php echo $result['cname']; ?></h3>
                                     <p>
-
-                                      Event Description:<h3 ><?php echo $result['e_desc']; ?></h3>
-										<p>
-                  										<div class="p-t-5">
-											<a href="edit-event.php?id=<?php echo $result['e_id']; ?>" class="fcbtn btn btn-info">Edit</a>
-											<a href="#" class="fcbtn btn btn-danger model_img deleteevent" data-id="<?php echo $result['e_id']; ?>" id="deleteDoc">Delete</a>
-									    </div>
-                                    </p>
-                                </div>
+									Fest Description:<h4 class="box-title m-b-0"><?php echo $result['f_desc']; ?></h4>
+									  <br/>
+								   
+								<a href="events.php?id=<?php echo $result['f_id']; ?>" class="fcbtn btn btn-danger model_img">VIEW EVENTS</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								</div>
                             </div>
                         </div>
                     </div>
@@ -83,37 +83,3 @@ $userid=$_SESSION['username'];
 </body>
 
 </html>
-<script>
-$(document).ready(function() {
-  $('.deleteevent').click(function(){
-    id = $(this).attr('data-id');
-      swal({
-          title: "Are you sure?",
-          text: "You will not be able to recover this data!",
-          type: "warning",
-          showCancelButton: true,
-          confirmButtonColor: "#DD6B55",
-          confirmButtonText: "Yes, delete it!",
-          closeOnConfirm: false,
-		  closeOnCancel: false
-      },function(isConfirm)
-		 {
-           if (isConfirm) {
-			   $.ajax({
-			  url: 'delete.php?id='+id,
-			  type: 'DELETE',
-			  data: {id:id},
-			  success: function(){
-				swal("Deleted!", "User has been deleted.", "success");
-				window.location.replace("view-event.php");
-          }
-        });
-            } else {
-                swal("Cancelled", "User data is safe :)", "error");
-            }
-      });
-  });
-
-});
-
-</script>

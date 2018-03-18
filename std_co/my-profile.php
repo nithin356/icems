@@ -3,29 +3,28 @@ include '../login/accesscontrolstdco.php';
 require('connect.php');
 $username=$_SESSION['s_username'];
 
-$query="SELECT id, email, password FROM admin WHERE username='$username'";
+$query="SELECT s_id, s_name, s_email, s_phone, s_college, s_password FROM std_co WHERE s_username='$username'";
 $result = mysqli_query($connection, $query);
 $row = mysqli_fetch_assoc($result);
-$id=$row["id"];
+$id=$row["s_id"];
 
 //update profile
 if(isset($_POST['updateprofile']))
 {
 	$username= mysqli_real_escape_string($connection,$_POST['username']);
+	$name=mysqli_real_escape_string($connection,$_POST['name']);
 	$email=mysqli_real_escape_string($connection,$_POST['email']);
 	
-	$uquery="UPDATE admin SET username='$username', email='$email' WHERE id='$id'";
+	$uquery="UPDATE std_co SET s_username='$username', s_name='$name', s_email='$email' WHERE s_id='$id'";
 	$uresult = mysqli_query($connection, $uquery);
 	if($uresult)
 	{
-		$squery="SELECT username, email FROM admin WHERE a_id='$id'";
+		$squery="SELECT s_username, s_name, s_email, s_phone, s_college, s_password FROM std_co WHERE s_id='$id'";
 		$sresult = mysqli_query($connection, $squery);
 		$row = mysqli_fetch_assoc($sresult);
 		$smsg="Profile updated successfully!";
-		$_SESSION['username']=$row['username'];
-		$username=$_SESSION['username'];
-		
-
+		$_SESSION['s_username']=$row['s_username'];
+		$username=$_SESSION['s_username'];
 	}
 	else
 	{
@@ -36,10 +35,10 @@ if(isset($_POST['updateprofile']))
 if(isset($_POST['changepw']))
 {
 	$oldpw=$_POST['oldpassword'];
-	if($oldpw==$row["password"])
+	if($oldpw==$row["s_password"])
 	{
-		$npw=md5($_POST['newpassword']);
-		$pwquery="UPDATE admin SET password='$npw' WHERE username='$username'";
+		$npw=$_POST['newpassword'];
+		$pwquery="UPDATE std_co SET s_password='$npw' WHERE s_username='$username'";
 		$pwresult = mysqli_query($connection, $pwquery);
 		$smsg="Password updated successfully!";
 		
@@ -138,7 +137,7 @@ if(isset($_POST['changepw']))
                                     <div class="user-content">
                                         <a href="javascript:void(0)"> <img src="../plugins/images/users/user(2).png" class="thumb-lg img-circle" > </a>
                                         <h4 class="text-white"><?php echo $username; ?></h4>
-                                        <h5 class="text-white"><?php echo $row["email"]; ?></h5>
+                                        <h5 class="text-white"><?php echo $row["s_email"]; ?></h5>
                                     </div>
                                 </div>
                             </div>
@@ -160,9 +159,13 @@ if(isset($_POST['changepw']))
                                             <br>
                                             <p class="text-muted"><?php echo $username; ?></p>
                                         </div>
-                                        <div class="col-md-6 col-xs-6 "> <strong>Email</strong>
+                                        <div class="col-md-6 col-xs-6 "> <strong>Full name</strong>
                                             <br>
-                                            <p class="text-muted"><?php echo $row["email"]; ?></p>
+                                            <p class="text-muted"><?php echo $row["s_name"]; ?></p>
+                                        </div>
+										<div class="col-md-6 col-xs-6 "> <strong>Email</strong>
+                                            <br>
+                                            <p class="text-muted"><?php echo $row["s_email"]; ?></p>
                                         </div>
                                         
                                     </div>
@@ -186,8 +189,12 @@ if(isset($_POST['changepw']))
 				                     <!-- username check end -->
                                 </div>
                                 <div class="form-group">
+                                    <label class="control-label">Full name</label>
+                                    <input type="text" name="name" class="form-control" placeholder="Full name" value="<?php echo $row["s_name"]; ?>" required>
+                               </div>
+								 <div class="form-group">
                                     <label for="inputEmail" class="control-label">Email</label>
-                                    <input type="email" name="email" class="form-control" id="inputEmail" placeholder="Email" value="<?php echo $row["email"]; ?>" data-error="This email address is invalid" required>
+                                    <input type="email" name="email" class="form-control" id="inputEmail" placeholder="Email" value="<?php echo $row["s_email"]; ?>" data-error="This email address is invalid" required>
                                     <div class="help-block with-errors"></div>
                                 </div>
                                 
@@ -232,7 +239,7 @@ if(isset($_POST['changepw']))
 								</div>
                               	<div class="tab-pane" id="remove">
                               		<div class="text-center">
-                              		<a href="#" class="fcbtn btn btn-danger model_img deleteAdmin" data-id="<?php echo $id ?>" id="deleteDoc">Remove Admin Account</a>
+                              		<a href="#" class="fcbtn btn btn-danger model_img deleteAdmin" data-id="<?php echo $id ?>" id="deleteDoc">Remove Account</a>
 									</div>
 								</div>
 							  </div>
@@ -288,7 +295,7 @@ $(document).ready(function() {
 		 {   
            if (isConfirm) {
 			   $.ajax({
-			  url: 'deleteadmin.php?id='+id,
+			  url: 'deletestdo.php?id='+id,
 			  type: 'DELETE',
 			  data: {id:id},
 			  success: function(){
@@ -297,7 +304,7 @@ $(document).ready(function() {
           }
         });   
             } else {     
-                swal("Cancelled", "Admin account is safe :)", "error");   
+                swal("Cancelled", "Your account is safe :)", "error");   
             }
       });
   });

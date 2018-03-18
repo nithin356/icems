@@ -51,6 +51,7 @@ $username=$_SESSION['s_username'];
                                             <th>Result ID</th>
                                             <th>Participant 1</th>
                                             <th>Participant 2</th>
+                                            <th>Fest</th>
 											<th>Event</th>
                                         </tr>
                                     </thead>
@@ -65,6 +66,7 @@ $username=$_SESSION['s_username'];
 														<td> <?php echo $key+1; ?> </td>
 														<td> <?php echo $result["r_pname"]; ?> </td>
 														<td> <?php echo $result["r_pname"]; ?> </td>
+														<td> <?php echo $result["r_fest"]; ?> </td>
 														<td> <?php echo $result["r_eventname"]; ?> </td>
 													</tr>
 										  <?php

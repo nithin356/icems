@@ -4,8 +4,10 @@ if (isset($_POST['username']) && isset($_POST['password']))
     {
         // real eacape sting is used to prevent sql injection hacking
         $username= mysqli_real_escape_string($connection,$_POST['username']);
+        $name= mysqli_real_escape_string($connection,$_POST['name']);
         $email=mysqli_real_escape_string($connection,$_POST['email']);
         $college=mysqli_real_escape_string($connection,$_POST['college']);
+        $fest=mysqli_real_escape_string($connection,$_POST['fest']);
         $phone=$_POST['phone'];
 		$password= $_POST['password'];
         $repassword= $_POST['repassword'];
@@ -27,7 +29,7 @@ if (isset($_POST['username']) && isset($_POST['password']))
             else
             {
             
-                $query="INSERT INTO `std_co`(s_username, s_email, s_phone, s_college, s_password) VALUES ('$username','$email','$phone','$college','$password')";
+                $query="INSERT INTO `std_co`(s_username, s_name, s_email, s_phone, s_college, fest, s_password) VALUES ('$username','$name','$email','$phone','$college','$fest', '$password')";
                 $result = mysqli_query($connection, $query); 
                 //takes two arguments 
                 if($result)
@@ -102,6 +104,11 @@ if (isset($_POST['username']) && isset($_POST['password']))
                     
                     <div class="form-group ">
                         <div class="col-xs-12">
+                            <input class="form-control" type="text" required="" placeholder="Full Name" name="name">
+                        </div>
+                    </div>
+					<div class="form-group ">
+                        <div class="col-xs-12">
                             <input class="form-control" type="text" required="" placeholder="Username" name="username">
                         </div>
                     </div>
@@ -120,6 +127,19 @@ if (isset($_POST['username']) && isset($_POST['password']))
                             <input class="form-control" type="text" required="" placeholder="College Name" name="college">
                         </div>
                     </div>
+					<div class="form-group">
+									<select required class="form-control" name="fest">
+                                    <?php
+									 $selectfest="SELECT * FROM fest";
+									 $resultfest = mysqli_query($connection, $selectfest);
+									?>
+									 
+								   	 <option disabled hidden selected >Select Fest</option>
+									 <?php while($rowfest = mysqli_fetch_assoc($resultfest)) { ?>
+   									 <option value="<?php echo $rowfest['f_id']; ?>"> <?php echo $rowfest["fname"]; ?> </option>
+								     <?php } ?>
+									 </select>
+								</div>
                     <div class="form-group ">
                         <div class="col-xs-12">
                             <input class="form-control" type="password" required="" placeholder="Password(Max 7)" name="password" maxlength="7">
@@ -140,6 +160,7 @@ if (isset($_POST['username']) && isset($_POST['password']))
                         <div class="col-sm-12 text-center">
                             <p>Already have an account? <a href="../login/" class="text-primary m-l-5"><b>Sign In</b></a></p>
                         </div>
+						Inter Collegiate Event Management System © 2018
                     </div>
                 </form>
             </div>

@@ -58,13 +58,14 @@ $username=$_SESSION['h_username'];
                                         <tr>
                                             <th>Participant ID</th>
 											<th colspan="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Participant Name</th>
+											<th>Fest Name</th>
 											<th>Event Name</th>
                                         </tr>
                                     </thead>
                                     <tbody>
 
 										<?php
-												$sql = "SELECT p_id, p_name1, p_name2, p_eventname FROM participant";
+												$sql = "SELECT p_id, p_name1, p_name2, p_fest, p_eventname FROM participant";
 												$result = mysqli_query($connection, $sql);
 												foreach($result as $key=>$result)
 												{ ?>
@@ -72,6 +73,7 @@ $username=$_SESSION['h_username'];
 														<td> <?php echo $key+1; ?> </td>
 														<td> <?php echo $result["p_name1"]; ?> </td>
 														<td> <?php echo $result["p_name2"]; ?> </td>
+														<td> <?php echo $result["p_fest"]; ?> </td>
 														<td> <?php echo $result["p_eventname"]; ?> </td>
 														
 													</tr>

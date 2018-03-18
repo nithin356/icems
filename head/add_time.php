@@ -4,12 +4,13 @@ require('connect.php');
 $username=$_SESSION['h_username'];
 if (isset($_POST['ff']) && isset($_POST['tt']))
 	{
+		$fest= mysqli_real_escape_string($connection,$_POST['fest']);
 		$eventname= mysqli_real_escape_string($connection,$_POST['event']);
 		$ff= $_POST['ff'];
 		$tt= $_POST['tt'];
 		if($ff <= $tt)
 	{	
-				$query="INSERT INTO `time`(t_event, t_from, t_to) VALUES ('$eventname','$ff','$tt')";
+				$query="INSERT INTO `time`(t_fest, t_event, t_from, t_to) VALUES ('$fest','$eventname','$ff','$tt')";
 				$result = mysqli_query($connection, $query);
 	
 				if($result)
@@ -39,6 +40,9 @@ if (isset($_POST['ff']) && isset($_POST['tt']))
     <meta name="author" content="Nithin">
     <!--csslink.php includes fevicon and title-->
     <?php include 'assets/csslink.php'; ?>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<link href="../plugins/bower_components/bootstrap-datepicker/bootstrap-datepicker.min.css" rel="stylesheet" type="text/css"/>
+	<link href="../plugins/bower_components/colorpicker/bootstrap-colorpicker.js" rel="stylesheet" type="text/css"/>
       <!-- username check js start -->
 	<script type="text/javascript" src="http://code.jquery.com/jquery-1.8.2.js"></script>
 	<script type="text/javascript">
@@ -96,7 +100,7 @@ if (isset($_POST['ff']) && isset($_POST['tt']))
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="white-box">
-                            <h3 class="box-title m-b-0">Result Information</h3>
+                            <h3 class="box-title m-b-0">Event Info</h3>
                             <form data-toggle="validator" method="post">
                                <?php if(isset($fmsg)) { ?>
 									<div class="alert alert-danger alert-dismissable">
@@ -110,7 +114,21 @@ if (isset($_POST['ff']) && isset($_POST['tt']))
 											 <?php echo $smsg; ?>
 										</div>
 								<?php }?>
-								 <div class="form-group">
+								<div class="form-group">
+                                    <label class="control-label">Fest name</label>
+                                    <?php
+									 $selectfest="SELECT fest FROM fest";
+									 $resultfest = mysqli_query($connection, $selectfest);
+									?>
+									 <select required class="form-control" name="fest">
+								   	 <option disabled hidden selected value="">Select fest</option>
+									 <?php while($rowfest = mysqli_fetch_assoc($resultfest)) { ?>
+   									 <option>
+								     <?php echo $rowfest["fest"]; ?></option>
+								     <?php } ?>
+									 </select> 
+								</div>
+								<div class="form-group">
 									 <label for="inputEmail" class="control-label ">Event</label>
 									 <?php
 									 $selectevent="SELECT e_eventname FROM add_event";
@@ -128,9 +146,11 @@ if (isset($_POST['ff']) && isset($_POST['tt']))
                                     <label for="inputName1" class="control-label">Enter Time</label>
                                     <br>
 									From:
-									<input type="time" autocomplete="off" name="ff" class="form-control" id="username" required >
+									<input id="time" type="time" name="ff" 
+									class="form-control clockpicker" required >
                                     To:
-									<input type="time" autocomplete="off" name="tt" class="form-control" id="username" required >
+									<input id="time" type="time" data-date-format="hh:mm:ss" name="ff" 
+									class="form-control clockpicker" required >
 								</div>
 
                                 <div class="form-group">
@@ -148,6 +168,8 @@ if (isset($_POST['ff']) && isset($_POST['tt']))
     </div>
     <!-- /#wrapper -->
     <!--jslink has all the JQuery links-->
+	<script src="../plugins/bower_components/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
+	<script src="js/mask.js"></script>
     <?php include'assets/jslink.php'; ?>
 </body>
 

@@ -22,21 +22,27 @@
 						</li>
 			<!--sidebar design-->
 						<li> <a href="" class="waves-effect">
-							<i class="linea-icon linea-basic fa-fw text-danger" data-icon="v"></i> <span class="hide-menu text-danger"> Admin <span class="fa arrow"</span> <span class="label label-rouded label-danger pull-right"></span></a>
+							<i class="fa fa-user" data-icon="v"></i>&nbsp;&nbsp; 
+							<span class="hide-menu text-danger"> Admin 
+								<span class="fa arrow"</span> <span class="label label-rouded label-danger pull-right"></span></a>
 								<ul class="nav nav-second-level">
 										<li> <a href="../admin/add-admin.php">Add Admin</a> </li>
 										<li> <a href="../admin/view-admin.php">View Admin</a> </li>
 								</ul>
 						</li>
-												<li><a href="" class="waves-effect"><i data-icon=")" class="linea-icon linea-basic fa-fw"></i> <span class="hide-menu">Fest<span class="fa arrow"></span></span></a>
+												
+						<li><a href="" class="waves-effect">
+							<i data-icon=")" class="fa fa-bookmark-o"></i>&nbsp;&nbsp; 
+							<span class="hide-menu">Fest<span class="fa arrow"></span></span></a>
 								<ul class="nav nav-second-level">
-										<li><a href="../admin/add-fest.php">Add Fest</a></li>
+									<li><a href="../admin/add-fest.php">Add Fest</a></li>
 									<li><a href="../admin/view-fest.php">view Fest</a></li>
-											
-									</ul>
-						<li> <a href="" class="waves-effect"><i class="linea-icon linea-basic fa-fw" data-icon="v"></i> <span class="hide-menu"> Event
-						<span class="fa arrow"</span> 
-						<span class="label label-rouded label-danger pull-right"></span></a>
+								</ul>
+						</li>
+						<li> <a href="" class="waves-effect">
+							<i class="fa fa-calendar-o" data-icon="v"></i>&nbsp;&nbsp;
+							<span class="hide-menu"> Event<span class="fa arrow"</span> 
+							<span class="label label-rouded label-danger pull-right"></span></a>
 								<ul class="nav nav-second-level">
 										<li> <a href="../admin/add-event.php">Add Event</a> </li>
 										<li> <a href="../admin/view-event.php">View Event</a> </li>
@@ -44,31 +50,42 @@
 						</li>
 						
 						<li><a href="" class="waves-effect">
-							<i data-icon=")" class="linea-icon linea-basic fa-fw"></i> 
-							<span class="hide-menu">Event Head<span class="fa arrow"></span></span></a>
+							<i data-icon=")" class="fa fa-group"></i>&nbsp;&nbsp; 
+							<span class="hide-menu">Event Head<span class="fa arrow"></span></span>
+							</a>
 								<ul class="nav nav-second-level">
 										<li><a href="../admin/add-eventhead.php">Add Event Head</a></li>
 										<li><a href="../admin/view_eventhead.php">View Event Head</a></li>
 								</ul>
 						</li>
-						<li><a href="" class="waves-effect"><i data-icon=")" class="linea-icon linea-basic fa-fw"></i> <span class="hide-menu">Results<span class="fa arrow"></span></span></a>
+						<li><a href="" class="waves-effect">
+							<i data-icon=")" class="fa fa-bullhorn"></i>&nbsp;&nbsp;
+							<span class="hide-menu">Results<span class="fa arrow"></span></span></a>
 								<ul class="nav nav-second-level">
 										<li><a href="../admin/result.php">Add Result</a></li>
 										<li><a href="../admin/view-result.php">View Result</a></li>
 								</ul>
 										</li>
-						<li><a href="" class="waves-effect"><i data-icon=")" class="linea-icon linea-basic fa-fw"></i> <span class="hide-menu"><font size=2>Student Co-ordinator</font><span class="fa arrow"></span></span></a>
+						<li><a href="" class="waves-effect">
+							<i data-icon=")" class="fa fa-group"></i>&nbsp;&nbsp;
+							<span class="hide-menu"><font size=2>Student Co-ordinator</font><span class="fa arrow"></span></span></a>
 								<ul class="nav nav-second-level">
 										<li><a href="../admin/view-student-co-ordinator.php">View Co-ordinator</a></li>
 										</ul>
 										</li>
-			<li><a href="" class="waves-effect"><i data-icon=")" class="linea-icon linea-basic fa-fw"></i> <span class="hide-menu"><font size=2>Participants</font><span class="fa arrow"></span></span></a>
+			
+						<li><a href="" class="waves-effect">
+							<i data-icon=")" class="fa fa-group"></i>&nbsp;&nbsp;
+							<span class="hide-menu"><font size=2>Participants</font>
+								<span class="fa arrow"></span></span></a>
 								<ul class="nav nav-second-level">
 										<li><a href="../admin/view-participant.php">View Participant</a></li>
 										</ul>
-										</li>
+						</li>
 	
-										</li><li><a href="" class="waves-effect"><i data-icon=")" class="linea-icon linea-basic fa-fw"></i> <span class="hide-menu">Feedback<span class="fa arrow"></span></span></a>
+						<li><a href="" class="waves-effect">
+							<i data-icon=")" class="linea-icon linea-basic fa-fw"></i>&nbsp;&nbsp;
+							<span class="hide-menu">Feedback<span class="fa arrow"></span></span></a>
 								<ul class="nav nav-second-level">
 										<li><a href="../admin/feedback.php">View FeedBack</a></li>
 										</ul>

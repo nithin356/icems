@@ -17,28 +17,30 @@
 				<ul class="nav" id="side-menu">
 								<!-- /input-group -->
 						</li>
-						<li class="nav-small-cap m-t-10"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						<li class="nav-small-cap m-t-10"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 						Main Menu
 						</li>
 			<!--sidebar design-->
 						<li> <a href="" class="waves-effect">
-							<i class="linea-icon linea-basic fa-fw text-danger" data-icon="v"></i> <span class="hide-menu text-danger"> Participant <span class="fa arrow"</span> <span class="label label-rouded label-danger pull-right"></span></a>
+							<i class="fa fa-bookmark-o" data-icon="v"></i>&nbsp;&nbsp;
+							<span class="hide-menu"> Fest <span class="fa arrow"</span> 
+							<span class="label label-rouded label-danger pull-right"></span></a>
+								<ul class="nav nav-second-level">
+								<li> <a href="../std_co/view-fest.php">View Fest</a> </li>
+								</ul>
+						</li>
+						<li> <a href="" class="waves-effect">
+							<i class="fa fa-users" data-icon="v"></i>&nbsp;&nbsp;
+							<span class="hide-menu text-danger"> Participant <span class="fa arrow"</span> <span class="label label-rouded label-danger pull-right"></span></a>
 								<ul class="nav nav-second-level">
 										<li> <a href="../std_co/add_participant.php">Add Participant</a> </li>
 										<li> <a href="../std_co/view-participant.php">View Partcipant</a> </li>
 									<li> <a href="../std_co/edit-participant.php">Edit Particixpant</a> </li>
 								</ul>
 						</li>
-						<li> <a href="" class="waves-effect"><i class="linea-icon linea-basic fa-fw" data-icon="v"></i> <span class="hide-menu"> Event
-						<span class="fa arrow"</span> 
-						<span class="label label-rouded label-danger pull-right"></span></a>
-								<ul class="nav nav-second-level">
-										<li> <a href="../std_co/view-event.php">View Event</a> </li>
-								</ul>
-						</li>
 						
 						<li><a href="" class="waves-effect">
-							<i data-icon=")" class="linea-icon linea-basic fa-fw"></i> 
+							<i data-icon=")" class="fa fa-bullhorn"></i>&nbsp;&nbsp; 
 							<span class="hide-menu">Results<span class="fa arrow"></span></span></a>
 								<ul class="nav nav-second-level">
 										<li><a href="../std_co/result.php">View Results</a></li>

@@ -1,4 +1,4 @@
-@charset "UTF-8";
+LOGIN-REGIST@charset "UTF-8";
 @import url(https://fonts.googleapis.com/css?family=Poppins:400,500,300,600,700);
 @import "spinners.css";
 .preloader {
@@ -3499,8 +3499,8 @@ table.focus-on tbody tr.focused td,table.focus-on tbody tr.focused th {
 }
 .login-register {
  background:url(../../plugins/images/login-register.jpg) center center/cover no-repeat!important;
- height:110%;
- position:absolute
+ height:150%;
+position: absolute
 }
 .login-box {
  background:#fff;

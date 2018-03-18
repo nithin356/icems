@@ -29,8 +29,8 @@ $userid=$_SESSION['username'];
             <div class="container-fluid">
                 <div class="row bg-title">
                     <!-- .page title -->
-                    <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                        <h4 class="page-title">View Admin</h4>
+                    <div >
+                        <h4 class="page-title">View Student co-ordniator</h4>
                     </div>
                     <!-- /.page title -->
                     <!-- .breadcrumb -->
@@ -42,32 +42,14 @@ $userid=$_SESSION['username'];
                 </div>
                 <!--DNS added Dashboard content-->
 
-                 <!--DNS Added Model-->
-                <div id="responsive-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                            <h4 class="modal-title">Importent Instruction</h4>
-                                        </div>
-                                        <div class="modal-body">
-                                       	 To Edit Admin information or to delete Admin account you need to login to that admin account and go to "My Profile".
-										</div>
-                                    <div class="modal-footer">
-                                            <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Close</button>
-                                            <a href="logout.php" class="btn btn-danger waves-effect waves-light">Proceed for login</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                         <!--DNS model END-->
+                
 
 
                 <!--row -->
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="white-box">
-                            <h3 class="box-title">Admin Accounts</h3>
+                            <h3 class="box-title">Student co-ordinator Accounts</h3>
                             <div class="table-responsive">
                                 <table class="table table-striped">
                                     <thead>

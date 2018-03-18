@@ -3,6 +3,12 @@ include '../login/accesscontroladmin.php';
 require('connect.php');
 $userid=$_SESSION['username'];
 
+$getfestname="SELECT s_id, fest FROM std_co WHERE s_username='$username'";
+$getfestnameresult=mysqli_query($connection,$getfestname);
+$getfestnamerow=mysqli_fetch_assoc($getfestnameresult);
+$sid=$getfestnamerow['s_id'];
+$fid=$getfestnamerow['fest'];
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -30,7 +36,7 @@ $userid=$_SESSION['username'];
                 <div class="row bg-title">
                     <!-- .page title -->
                     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                        <h4 class="page-title">View Admin</h4>
+                        <h4 class="page-title">View Participant</h4>
                     </div>
                     <!-- /.page title -->
                     <!-- .breadcrumb -->
@@ -56,23 +62,25 @@ $userid=$_SESSION['username'];
                                 <table class="table table-striped">
                                     <thead>
                                         <tr>
-                                            <th>Participant ID</th>
+                                            <th>#</th>
 											<th colspan="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Participant Name</th>
+											<th>Fest Name</th>
 											<th>Event Name</th>
                                         </tr>
                                     </thead>
                                     <tbody>
 
 										<?php
-												$sql = "SELECT p_id, p_name1, p_name2, p_eventname FROM participant";
+												$sql = "SELECT p_id, p_name1, p_name2, p_fest, p_eventname FROM participant";
 												$result = mysqli_query($connection, $sql);
 												foreach($result as $key=>$result)
 												{ ?>
 													<tr>
 														<td> <?php echo $key+1; ?> </td>
-														<td> <?php echo $result["p_name1"]; ?> </td>
-														<td> <?php echo $result["p_name2"]; ?> </td>
+														<td> <?php echo $result["p_name"]; ?> </td>
+														<td> <?php echo $result["p_fest"]; ?> </td>
 														<td> <?php echo $result["p_eventname"]; ?> </td>
+														<td> <?php echo $result["p_name2"]; ?> </td>
 														
 													</tr>
 										  <?php

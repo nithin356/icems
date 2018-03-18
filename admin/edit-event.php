@@ -4,7 +4,7 @@ require('connect.php');
 $userid=$_SESSION['username'];
 $e_id = $_GET['id'];
 
-$query="SELECT e_eventname, e_desc FROM add_event WHERE e_id='$e_id'";
+$query="SELECT e_eventname, e_desc, round, parti FROM add_event WHERE e_id='$e_id'";
 $result = mysqli_query($connection, $query);
 $row = mysqli_fetch_assoc($result);
 
@@ -12,12 +12,14 @@ $row = mysqli_fetch_assoc($result);
 if(isset($_POST['updateprofile']))
 {
 	$e_eventname=mysqli_real_escape_string($connection,$_POST['e_eventname']);
+	$round=mysqli_real_escape_string($connection,$_POST['round']);
 	$e_desc= mysqli_real_escape_string($connection,$_POST['e_desc']);
-	$uquery="UPDATE add_event SET e_eventname='$e_eventname', e_desc='$e_desc' WHERE e_id='$e_id'";
+	$parti= mysqli_real_escape_string($connection,$_POST['parti']);
+	$uquery="UPDATE add_event SET e_eventname='$e_eventname', e_desc='$e_desc', round='$round', parti='$parti' WHERE e_id='$e_id'";
 	$uresult = mysqli_query($connection, $uquery);
 	if($uresult)
 	{
-		$squery="SELECT e_eventname, e_desc FROM add_event WHERE e_id='$e_id'";
+		$squery="SELECT e_eventname, e_desc, round, parti FROM add_event WHERE e_id='$e_id'";
 		$sresult = mysqli_query($connection, $squery);
 		$row = mysqli_fetch_assoc($sresult);
 		$smsg="Event updated successfully!";
@@ -161,6 +163,14 @@ if(isset($_POST['updateprofile']))
                                             <br>
                                             <p class="text-muted"><?php echo $row["e_desc"]; ?></p>
                                         </div>
+										<div class="col-md-6 col-xs-6 "> <strong>Event Rounds</strong>
+                                            <br>
+                                            <p class="text-muted"><?php echo $row["round"]; ?></p>
+                                        
+										<strong>Participant Required</strong>
+                                            <br>
+                                            <p class="text-muted"><?php echo $row["parti"]; ?></p>
+                                        </div>
                                         
                                     </div>
                                      <div class="row">
@@ -172,7 +182,8 @@ if(isset($_POST['updateprofile']))
                                             
                                      <p class="text-muted"></p>
                                      </div>
-                                     <div class="col-md-3 col-xs-6">                                   <p class="text-muted"></p>
+                                     <div class="col-md-3 col-xs-6">
+										 <p class="text-muted"></p>
                                      </div>
 									 </div>
                                      </div>
@@ -204,6 +215,39 @@ if(isset($_POST['updateprofile']))
                                     <textarea type="text" class="form-control" autocomplete="off" id="username" name="e_desc" placeholder="Your Description" value="<?php echo $row["e_desc"]; ?>" required><?php echo $row["e_desc"]; ?></textarea>
                                     <!-- username check start -->
 										<div>
+											<div class="form-group">
+									 <label for="inputEmail" class="control-label">Event Round</label>
+								<select required class="form-control" name=round>
+									<option value="<?php echo $row['round']; ?>"><?php echo $row['round']; ?></option>
+									<option>1 ROUNDS</option>
+									<option>2 ROUNDS</option>
+									<option>3 ROUNDS</option>
+									<option>4 ROUNDS</option>
+									<option>5 ROUNDS</option>
+									<option>6 ROUNDS</option>
+									<option>7 ROUNDS</option>
+									<option>8 ROUNDS</option>
+									<option>9 ROUNDS</option>
+									<option>10 ROUNDS</option>
+									<option>11 ROUNDS</option>
+									<option>12 ROUNDS</option>
+									<option>13 ROUNDS</option>
+									<option>14 ROUNDS</option>
+									
+								</select> 
+								</div>
+											<div class="form-group">
+									 <label class="control-label">Required Participants</label>
+								<select required class="form-control" name=parti>
+									<option value="<?php echo $row['parti']; ?>"><?php echo $row['parti']; ?></option>
+									<option>1 Participants</option>
+									<option>2 Participants</option>
+									<option>3 Participants</option>
+									<option>4 Participants</option>
+									<option>5 Participants</option>
+									<option>6 Participants</option>
+								</select> 
+								</div>
 						                </div>
                                         </div>
                                   

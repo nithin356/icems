@@ -15,6 +15,89 @@ if(isset($_POST['f_email']) && isset($_POST['f_message']))
 					$fmsg = "Posting Failed";
 				}
 }
+if (isset($_POST['submit']))
+	{
+					           
+            $to_Email       = $email; // Replace with recipient email address
+            $subject        = 'Password Reset'; //Subject line for emails
+
+            $host           = "smtp.gmail.com"; // Your SMTP server. For example, smtp.mail.yahoo.com
+            $username      = "alphacare.ohms@gmail.com"; //For example, your.email@yahoo.com
+            $password       = "dnspnb@78"; // Your password
+            $SMTPSecure     = "tls"; // For example, ssl
+            $port           = 587; // For example, 465
+
+    //proceed with PHP email.
+    include("../login/php/PHPMailerAutoload.php"); //you have to upload class files "class.phpmailer.php" and "class.smtp.php"
+ 
+    $mail = new PHPMailer();
+     
+    $mail->IsSMTP();
+    $mail->SMTPAuth = true;
+    
+    $mail->Host = $host;
+    $mail->Username = $username;
+
+
+
+
+    $mail->Password = $password;
+    $mail->SMTPSecure = $SMTPSecure;
+    $mail->Port = $port;
+    
+     
+    $mail->setFrom($username);
+    $mail->addReplyTo($email);
+     
+    $mail->AddAddress($to_Email);
+    $mail->Subject = $subject;
+    
+    $mail->Body = '<div width="100%" style="background: #f8f8f8; padding: 0px 0px; font-family:arial; line-height:28px; height:100%;  width: 100%; color: #514d6a;">
+  <div style="max-width: 700px; padding:50px 0;  margin: 0px auto; font-size: 14px">
+    <table border="0" cellpadding="0" cellspacing="0" style="width: 100%; margin-bottom: 20px">
+      <tbody>
+        <tr>
+          <td style="vertical-align: top; padding-bottom:30px;" align="center"><a target="_blank">
+            <img src="https://imgur.com/h9o15Ni.png" style="border:none"></a> </td>
+        </tr>
+      </tbody>
+    </table>
+    <div style="padding: 40px; background: #fff;">
+      <table border="0" cellpadding="0" cellspacing="0" style="width: 100%;">
+        <tbody>
+          <tr>
+            <td style="border-bottom:1px solid #f6f6f6;"><h1 style="font-size:14px; font-family:arial; margin:0px; font-weight:bold;">Dear Event Head,</h1>
+              <p style="margin-top:0px; color:#bbbbbb;">
+			  
+			  <STRONG>THANK YOU FOR THE FEEDBACK</p></td>
+          </tr>
+              
+              <b>- Thanks (ICEMS team)</b> </td>
+          </tr>
+          
+        </tbody>
+      </table>
+    </div>
+    <div style="text-align: center; font-size: 12px; color: #b2b2b5; margin-top: 20px">
+      <p>Inter Collegiate Event Management System © 2018 <br>
+      </p>
+    </div>
+  </div>
+</div>';
+    
+    $mail->WordWrap = 200;
+    $mail->IsHTML(true);
+
+    if(!$mail->send()) {
+
+        $fmsg="E-mail not sent";
+
+    }
+	else {
+        $smsg="e-mail sent successfully";
+	}
+}
+	
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -71,7 +154,7 @@ if(isset($_POST['f_email']) && isset($_POST['f_message']))
 
                     <div class="form-group text-center m-t-20">
                         <div class="col-xs-12">
-                            <button class="btn btn-info btn-lg btn-block text-uppercase waves-effect waves-light" type="submit" id="reset-button">Post</button>
+                            <button class="btn btn-info btn-lg btn-block text-uppercase waves-effect waves-light" type="submit" name="submit" id="reset-button">Post</button>
                         </div>
                     </div>
 
