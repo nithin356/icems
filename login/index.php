@@ -192,7 +192,7 @@ if(isset($_POST['resetemail']))
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" type="image/png" sizes="16x16" href="../plugins/images/favicon.png">
+    <link rel="icon" type="image/png" sizes="100*100" href="../plugins/images/favicon.png">
     <title>Login | ICEMS</title>
     <!-- Bootstrap Core CSS -->
     <link href="../plugins/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">

@@ -12,23 +12,92 @@ $row = mysqli_fetch_assoc($result);
 //update profile
 if(isset($_POST['update']))
 {
-	$p_eventname=mysqli_real_escape_string($connection,$_POST['event']);
-	$uquery="UPDATE participant SET p_eventname='$p_eventname', p_name1='$p1',  p_name2='$p2' WHERE p_id='$p_id'";
+	if(isset($_POST['parti1']))
+	{
+	$p1=mysqli_real_escape_string($connection,$_POST['parti1']);
+	$partid=mysqli_real_escape_string($connection,$_POST['partid1']);
+	$uquery="UPDATE participant SET p_name='$p1' WHERE p_id='$partid'";
 	$uresult = mysqli_query($connection, $uquery);
 	if($uresult)
 	{
-		$squery="SELECT p_name1, p_name2, p_eventname FROM participant WHERE p_id='$p_id'";
+		$squery="SELECT *,add_event.e_eventname,fest.fname,add_event.parti FROM participant JOIN add_event ON  participant.p_eventname=add_event.e_id JOIN fest ON fest.f_id=add_event.f_id WHERE p_eventname='$eid'";
 		$sresult = mysqli_query($connection, $squery);
-		$rows = mysqli_fetch_assoc($sresult);
+		$row = mysqli_fetch_assoc($sresult);
 		$smsg="Profile updated successfully!";
-
 	}
-	else
+	}
+	if(isset($_POST['parti2']))
 	{
-		$fmsg="error!";
+	$p1=mysqli_real_escape_string($connection,$_POST['parti2']);
+	$partid=mysqli_real_escape_string($connection,$_POST['partid2']);
+	$uquery="UPDATE participant SET p_name='$p1' WHERE p_id='$partid'";
+	$uresult = mysqli_query($connection, $uquery);
+	
+		if($uresult)
+	{
+		$squery="SELECT *,add_event.e_eventname,fest.fname,add_event.parti FROM participant JOIN add_event ON  participant.p_eventname=add_event.e_id JOIN fest ON fest.f_id=add_event.f_id WHERE p_eventname='$eid'";
+		$sresult = mysqli_query($connection, $squery);
+		$row = mysqli_fetch_assoc($sresult);
+		$smsg="Profile updated successfully!";
+	}
+	}
+	if(isset($_POST['parti3']))
+	{
+	$p1=mysqli_real_escape_string($connection,$_POST['parti3']);
+	$partid=mysqli_real_escape_string($connection,$_POST['partid3']);
+	$uquery="UPDATE participant SET p_name='$p1' WHERE p_id='$partid'";
+	$uresult = mysqli_query($connection, $uquery);
+	if($uresult)
+	{
+		$squery="SELECT *,add_event.e_eventname,fest.fname,add_event.parti FROM participant JOIN add_event ON  participant.p_eventname=add_event.e_id JOIN fest ON fest.f_id=add_event.f_id WHERE p_eventname='$eid'";
+		$sresult = mysqli_query($connection, $squery);
+		$row = mysqli_fetch_assoc($sresult);
+		$smsg="Profile updated successfully!";
+	}
+	}
+	if(isset($_POST['parti4']))
+	{
+	$p1=mysqli_real_escape_string($connection,$_POST['parti4']);
+	$partid=mysqli_real_escape_string($connection,$_POST['partid4']);
+	$uquery="UPDATE participant SET p_name='$p1' WHERE p_id='$partid'";
+	$uresult = mysqli_query($connection, $uquery);
+	if($uresult)
+	{
+		$squery="SELECT *,add_event.e_eventname,fest.fname,add_event.parti FROM participant JOIN add_event ON  participant.p_eventname=add_event.e_id JOIN fest ON fest.f_id=add_event.f_id WHERE p_eventname='$eid'";
+		$sresult = mysqli_query($connection, $squery);
+		$row = mysqli_fetch_assoc($sresult);
+		$smsg="Profile updated successfully!";
+	}
+	}
+	if(isset($_POST['parti5']))
+	{
+	$p1=mysqli_real_escape_string($connection,$_POST['parti5']);
+	$partid=mysqli_real_escape_string($connection,$_POST['partid5']);
+	$uquery="UPDATE participant SET p_name='$p1' WHERE p_id='$partid'";
+	$uresult = mysqli_query($connection, $uquery);
+	if($uresult)
+	{
+		$squery="SELECT *,add_event.e_eventname,fest.fname,add_event.parti FROM participant JOIN add_event ON  participant.p_eventname=add_event.e_id JOIN fest ON fest.f_id=add_event.f_id WHERE p_eventname='$eid'";
+		$sresult = mysqli_query($connection, $squery);
+		$row = mysqli_fetch_assoc($sresult);
+		$smsg="Profile updated successfully!";
+	}
+	}
+	if(isset($_POST['parti6']))
+	{
+	$p1=mysqli_real_escape_string($connection,$_POST['parti6']);
+	$partid=mysqli_real_escape_string($connection,$_POST['partid6']);
+	$uquery="UPDATE participant SET p_name='$p1' WHERE p_id='$partid'";
+	$uresult = mysqli_query($connection, $uquery);
+	if($uresult)
+	{
+		$squery="SELECT *,add_event.e_eventname,fest.fname,add_event.parti FROM participant JOIN add_event ON  participant.p_eventname=add_event.e_id JOIN fest ON fest.f_id=add_event.f_id WHERE p_eventname='$eid'";
+		$sresult = mysqli_query($connection, $squery);
+		$row = mysqli_fetch_assoc($sresult);
+		$smsg="Profile updated successfully!";
+	}
 	}
 }
-
 ?>
 <!--html design-->
 <!DOCTYPE html>
@@ -193,7 +262,8 @@ if(isset($_POST['update']))
 										while($looprow=mysqli_fetch_assoc($loopresult)) {
 										$pname=$looprow['p_name'];
 											$pid=$looprow['p_id'];
-									echo '<input type="text" class="form-control" autocomplete="off" id="username" name="parti'.$pid.'" value="'.$pname.'" required> <br>'; 
+										echo '<input type="hidden" class="form-control" name="partid'.$loopid.'" value="'.$pid.'" > <br>';
+									echo '<input type="text" class="form-control" autocomplete="off" id="username" name="parti'.$loopid.'" value="'.$pname.'" required> <br>'; 
 										$loopid++; }
 									  } ?> 
 								

@@ -59,14 +59,6 @@
 								</ul>
 						</li>
 						<li><a href="" class="waves-effect">
-							<i data-icon=")" class="fa fa-bullhorn"></i>&nbsp;&nbsp;
-							<span class="hide-menu">Results<span class="fa arrow"></span></span></a>
-								<ul class="nav nav-second-level">
-										<li><a href="../admin/result.php">Add Result</a></li>
-										<li><a href="../admin/view-result.php">View Result</a></li>
-								</ul>
-										</li>
-						<li><a href="" class="waves-effect">
 							<i data-icon=")" class="fa fa-group"></i>&nbsp;&nbsp;
 							<span class="hide-menu"><font size=2>Student Co-ordinator</font><span class="fa arrow"></span></span></a>
 								<ul class="nav nav-second-level">

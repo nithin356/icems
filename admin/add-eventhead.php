@@ -169,6 +169,31 @@ if (isset($_POST['username']) && isset($_POST['password']))
 	  $('#'+id).fadeIn();
 	} //finishAjax
 </script>
+		<script>
+$(document).ready(function(){
+ $('.action').change(function(){
+  if($(this).val() != '')
+  {
+   var action = $(this).attr("id");
+   var query = $(this).val();
+   var result = '';
+   if(action == "country")
+   {
+    result = 'state';
+   }
+   $.ajax({
+    url:"fetch.php",
+    method:"POST",
+    data:{action:action, query:query},
+    success:function(data){
+    $('#state').html(data);
+    }
+   })
+  }
+ });
+});
+</script>
+
 <!-- username check js end -->
 </head>
 
@@ -247,13 +272,13 @@ if (isset($_POST['username']) && isset($_POST['password']))
 								<div class="form-group">
                                     <label class="control-label">Fest name</label>
                                     <?php
-									 $selectfest="SELECT fname FROM fest";
+									 $selectfest="SELECT fname,f_id FROM fest";
 									 $resultfest = mysqli_query($connection, $selectfest);
 									?>
-									 <select required class="form-control" name="fest">
-								   	 <option disabled hidden selected class="form-control" value="">Select fests</option>
+									 <select required class="form-control action" name="fest" id="country">
+								   	 <option disabled hidden selected class="form-control">Select fests</option>
 									 <?php while($rowfest = mysqli_fetch_assoc($resultfest)) { ?>
-   									 <option>
+   									 <option value="<?php echo $rowfest['f_id']; ?>">
 								     <?php echo $rowfest["fname"]; ?></option>
 								     <?php } ?>
 									 </select>
@@ -261,15 +286,15 @@ if (isset($_POST['username']) && isset($_POST['password']))
 								 <div class="form-group">
 									 <label for="inputEmail" class="control-label">Event</label>
 									 <?php
-									 $selectevent="SELECT e_eventname FROM add_event";
-									 $resultevent = mysqli_query($connection, $selectevent);
+									// $selectevent="SELECT e_eventname FROM add_event";
+									// $resultevent = mysqli_query($connection, $selectevent);
 									?>
-									 <select required class="form-control" name="event">
+									 <select id="state" required class="form-control" name="event">
 								   	 <option "disabled hidden selected" value="" class="form-control">Select Event</option>
-									 <?php while($rowevent = mysqli_fetch_assoc($resultevent)) { ?>
-   									 <option>
-								     <?php echo $rowevent["e_eventname"]; ?></option>
-								     <?php } ?>
+									 <?php //while($rowevent = mysqli_fetch_assoc($resultevent)) { ?>
+   									 <!--<option>
+								     <?php// echo $rowevent["e_eventname"]; ?></option>-->
+								     <?php //} ?>
 									 </select>
                                 </div>
 

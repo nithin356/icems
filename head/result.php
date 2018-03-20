@@ -9,30 +9,23 @@ $hid=$gethnamerow['h_id'];
 $geteventname="SELECT h_event FROM head where h_id='$hid'";
 $getfestnameresul1=mysqli_query($connection,$geteventname);
 $getfestnamero1=mysqli_fetch_assoc($getfestnameresul1);
-
-if (isset($_POST['submit']))
+if (isset($_POST['event']) && isset($_POST['participant']))
 	{
 		$eventname= mysqli_real_escape_string($connection,$_POST['event']);
-		$ff= $_POST['ff'];
-		$tt= $_POST['tt'];
-		if($ff <= $tt)
-	{	
-				$query="INSERT INTO `time`(t_event, t_from, t_to) VALUES ('$eventname','$ff','$tt')";
+		$fest= mysqli_real_escape_string($connection,$_POST['fest']);
+		$round=mysqli_real_escape_string($connection,$_POST['round']);
+		$particpant=mysqli_real_escape_string($connection,$_POST['participant']);
+		$query="INSERT INTO `result`(r_eventname, r_pname, r_pname2, r_fest, round) VALUES ('$eventname','$fest','$particpant1','$round')";
 				$result = mysqli_query($connection, $query);
 	
 				if($result)
 				{
-					$smsg = "Time Added Succesfully";
+					$smsg = "Result Updated Succesfully";
 				}
 				else
 				{
-					$fmsg = "Time Updating Failed";
+					$fmsg = "Result Updating Failed";
 				}
-		}
-			else
-			{
-			$fmsg = "Avoid overlapping of From and To time";
-			}
 	}
 ?>
 
@@ -46,10 +39,7 @@ if (isset($_POST['submit']))
     <meta name="description" content="ICEMS Inter Collegiate Event Management System">
     <meta name="author" content="Nithin">
     <!--csslink.php includes fevicon and title-->
-    <?php include 'assets/csslink.php'; ?>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	<link href="../plugins/bower_components/bootstrap-datepicker/bootstrap-datepicker.min.css" rel="stylesheet" type="text/css"/>
-	<link href="../plugins/bower_components/colorpicker/bootstrap-colorpicker.js" rel="stylesheet" type="text/css"/>
+<?php include 'assets/csslink.php'; ?>
       <!-- username check js start -->
 	<script type="text/javascript" src="http://code.jquery.com/jquery-1.8.2.js"></script>
 	<script type="text/javascript">
@@ -73,7 +63,9 @@ if (isset($_POST['submit']))
 	  $('#'+id).fadeIn();
 	} //finishAjax
 </script>
+	
 <!-- username check js end -->
+	
 </head>
 
 	
@@ -91,7 +83,7 @@ if (isset($_POST['submit']))
                 <div class="row bg-title">
                     <!-- .page title -->
                     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                        <h4 class="page-title">Event Scheduling</h4>
+                        <h4 class="page-title">Add Event Head</h4>
                     </div>
                     <!-- /.page title -->
                     <!-- .breadcrumb -->
@@ -107,7 +99,7 @@ if (isset($_POST['submit']))
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="white-box">
-                            <h3 class="box-title m-b-0">Event Info</h3>
+                            <h3 class="box-title m-b-0">Result Information</h3>
                             <form data-toggle="validator" method="post">
                                <?php if(isset($fmsg)) { ?>
 									<div class="alert alert-danger alert-dismissable">
@@ -121,48 +113,67 @@ if (isset($_POST['submit']))
 											 <?php echo $smsg; ?>
 										</div>
 								<?php }?>
-								<!--<div class="form-group">
-                                    <label class="control-label">Fest name</label>
-                                    <?php
-									 //$selectfest="SELECT fest FROM fest";
-									 //$resultfest = mysqli_query($connection, $selectfest);
-									?>
-									 <select required class="form-control" name="fest">
-								   	 <option disabled hidden selected value="">Select fest</option>
-									 <?php //while($rowfest = mysqli_fetch_assoc($resultfest)) { ?>
-   									 <option>
-								     <?php //echo $rowfest["fest"]; ?></option>
-								     <?php //} ?>
-									 </select> 
-								</div>-->
-								<div class="form-group">
-									 <label for="inputEmail" class="control-label ">Event</label>
-									<input type="text" id="username" name="event" class="form-control" value="<?php echo $getfestnamero1['h_event']; ?>" readonly/>  
-									<?php
+								
+								 <div class="form-group">
+									 <label for="inputEmail"  class="control-label ">Event</label>
+									 <input type="text" id="username" class="form-control" value="<?php echo $getfestnamero1['h_event']; ?>" readonly/> 
+									 <?php
 									 //$selectevent="SELECT e_eventname FROM add_event";
 									 //$resultevent = mysqli_query($connection, $selectevent);
 									?>
-									<!-- <select required class="form-control" name="event">
-								   <option value="disabled hidden selected">Select Event</option>
+									 <!--<select required class="form-control" name="event">
+								   	 <!--<option disabled hidden selected class="form-control">Select Event</option>
 									 <?php //while($rowevent = mysqli_fetch_assoc($resultevent)) { ?>
-   									 <option>
+   									 <option>-->
 								     <?php //echo $rowevent["e_eventname"]; ?></option>
 								     <?php //} ?>
-									 </select>-->
+									 <!--</select>-->
                                 </div>
-								<div class="form-group">
-                                    <label for="inputName1" class="control-label">Enter Time</label>
-                                    <br>
-									From:
-									<input id="time" type="time" name="ff" 
-									class="form-control clockpicker" required >
-                                    To:
-									<input id="time" type="time" data-date-format="hh:mm:ss" name="tt" 
-									class="form-control clockpicker" required >
+								 <div class="form-group">
+									 <label for="inputEmail" class="control-label">Round</label>
+								<select required class="form-control" name=round>
+									<option disabled hidden selected>SELECT ROUND</option>
+									<option>ROUND 1</option>
+									<option>ROUND 2</option>
+									<option>ROUND 3</option>
+									<option>ROUND 4</option>
+									<option>ROUND 5</option>
+									<option>ROUND 6</option>
+									<option>ROUND 7</option>
+									<option>ROUND 8</option>
+									<option>ROUND 9</option>
+									<option>ROUND 10</option>
+									<option>ROUND 11</option>
+									<option>ROUND 12</option>
+									<option>ROUND 13</option>
+									<option>ROUND 14</option>
+									
+								</select> 
 								</div>
-
+								<!--<div class="form-group">
+                                    <label for="inputName1" class="control-label">Enter Participant</label>
+									<?php
+									//$parti="SELECT * FROM participant ";
+									//$row=mysqli_query($connection, $parti);
+									?>
+                                    <select name="participant" class="form-control" required >
+										<option><?php //while($rows = mysqli_fetch_assoc($row)) { ?>
+   									 <option>
+								     <?php //echo $rows["p_name1"]; ?></option>
+										<?php //} ?></select>
+									<?php
+									//$parti="SELECT * FROM participant ";
+									//$rowz=mysqli_query($connection, $parti);
+									?>
+                                    <select name="participant1" class="form-control"  >
+										<option><?php //while($rowes = mysqli_fetch_assoc($rowz)) { ?>
+   									 <option>
+								     <?php //echo $rowes["p_name2"]; ?></option>
+										<?php //} ?></select>
+                                    
+								</div>-->
                                 <div class="form-group">
-                                    <button type="submit" name="submit" class="btn btn-info waves-effect waves-light">Submit</button>
+                                    <button type="submit" class="btn btn-info waves-effect waves-light">Submit</button>
                                 </div>
                             </form>
                         </div>
@@ -170,15 +181,13 @@ if (isset($_POST['submit']))
 				</div>
             </div>
             <!--footer.php contains footer-->
-            <?php include'assets/footer.php'; ?>
+          <?php include'assets/footer.php'; ?>
         </div>
         <!-- /#page-wrapper -->
     </div>
     <!-- /#wrapper -->
     <!--jslink has all the JQuery links-->
-	<script src="../plugins/bower_components/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
-	<script src="js/mask.js"></script>
-    <?php include'assets/jslink.php'; ?>
+<?php include'assets/jslink.php'; ?>
 </body>
 
 </html>

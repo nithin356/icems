@@ -8,7 +8,6 @@ if (isset($_POST['event']) && isset($_POST['participant']))
 		$fest= mysqli_real_escape_string($connection,$_POST['fest']);
 		$round=mysqli_real_escape_string($connection,$_POST['round']);
 		$particpant=mysqli_real_escape_string($connection,$_POST['participant']);
-		$particpant1=mysqli_real_escape_string($connection,$_POST['participant1']);
 		$query="INSERT INTO `result`(r_eventname, r_pname, r_pname2, r_fest, round) VALUES ('$eventname','$fest','$particpant1','$round')";
 				$result = mysqli_query($connection, $query);
 	
@@ -57,6 +56,34 @@ if (isset($_POST['event']) && isset($_POST['participant']))
 	  $('#'+id).fadeIn();
 	} //finishAjax
 </script>
+	<script>
+$(document).ready(function(){
+ $('.action').change(function(){
+  if($(this).val() != '')
+  {
+   var action = $(this).attr("id");
+   var query = $(this).val();
+   var result = '';
+   if(action == "country")
+   {
+    result = 'state';
+   }
+   $.ajax({
+    url:"fetch.php",
+    method:"POST",
+    data:{action:action, query:query},
+    success:function(data){
+    
+	var div=document.createElement("div");
+	div.innerHTML=(data);
+
+var parent_div=document.getElementById('state');
+parent_div.appendChild(div);
+    }
+   })
+  }
+ });
+});
 <!-- username check js end -->
 </head>
 

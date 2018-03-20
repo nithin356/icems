@@ -73,7 +73,7 @@ $fid=$getfestnamerow['fest'];
 														<td> <?php echo $result["p_name"] ?> </td>
 														<td> <?php echo $result["fname"]; ?> </td>
 														<td> <?php echo $result["e_eventname"]; ?> </td>
-														<td><a href="edit.php?id=<?php echo $result['p_id']; ?>" class="fcbtn btn btn-info">Edit</a>
+														<td><a href="edit.php?id=<?php echo $result['e_id']; ?>" class="fcbtn btn btn-info">Edit</a>
 											<a href="#" class="fcbtn btn btn-danger model_img deleteevent" data-id="<?php echo $result['p_id']; ?>" id="deleteDoc">Delete</a></td>
 												</tr>
 										  <?php

@@ -3,8 +3,15 @@ include '../login/accesscontrolhead.php';
 require('connect.php');
 $username=$_SESSION['h_username'];
 $t_id = $_GET['id'];
+$gethname="SELECT h_id FROM head WHERE h_username='$username'";
+$gethnameresult=mysqli_query($connection,$gethname);
+$gethnamerow=mysqli_fetch_assoc($gethnameresult);
+$hid=$gethnamerow['h_id'];
+$geteventname="SELECT h_event FROM head where h_id='$hid'";
+$getfestnameresul1=mysqli_query($connection,$geteventname);
+$getfestnamero1=mysqli_fetch_assoc($getfestnameresul1);
 
-$query="SELECT t_fest, t_event, t_from, t_to FROM time WHERE t_id='$t_id'";
+$query="SELECT t_event, t_from, t_to FROM time WHERE t_id='$t_id'";
 $result = mysqli_query($connection, $query);
 $row = mysqli_fetch_assoc($result);
 if(isset($_POST['update']))
@@ -17,7 +24,7 @@ if(isset($_POST['update']))
 	$uresult = mysqli_query($connection, $uquery);
 	if($uresult)
 	{
-		$squery="SELECT t_fest, t_event, t_from, t_to FROM time WHERE t_id='$t_id'";
+		$squery="SELECT t_event, t_from, t_to FROM time WHERE t_id='$t_id'";
 		$sresult = mysqli_query($connection, $squery);
 		$rowS = mysqli_fetch_assoc($sresult);
 		$smsg="Time updated successfully!";
@@ -144,17 +151,14 @@ if(isset($_POST['update']))
                             <ul class="nav customtab nav-tabs" role="tablist">
                                 <!--<li role="presentation" class="nav-item"><a href="#home" class="nav-link " aria-controls="home" role="tab" data-toggle="tab" aria-expanded="true"><span class="visible-xs"><i class="fa fa-home"></i></span><span class="hidden-xs"> Activity</span></a></li>-->
                                 <li role="presentation" class="nav-item"><a href="#profile" class="nav-link active" aria-controls="profile" role="tab" data-toggle="tab" aria-expanded="true"><span class="visible-xs"><i class="fa fa-user"></i></span> <span class="hidden-xs">Profile</span></a></li>
-                                <li role="presentation" class="nav-item"><a href="#settings" class="nav-link" aria-controls="settings" role="tab" data-toggle="tab" aria-expanded="false"><span class="visible-xs"><i class="fa fa-cog"></i></span> <span class="hidden-xs">Setting</span></a></li>
+                                <li role="presentation" class="nav-item">
+								<a href="#settings" class="nav-link" aria-controls="settings" role="tab" data-toggle="tab" aria-expanded="false"><span class="visible-xs"><i class="fa fa-cog"></i></span> <span class="hidden-xs">Setting</span></a></li>
                                 <li role="presentation" class="nav-item">
                             </ul>
                             <div class="tab-content">
                                 <div class="tab-pane active" id="profile">
                                     <div class="row">
-                                        <div class="col-md-3 col-xs-6 b-r"> Fest Name
-                                            <br><br>
-                                            <p><strong><?php echo $row["t_fest"]; ?></strong></p>
-                                        </div>
-                                        <div class="col-md-3 col-xs-6 b-r"> Event Name
+                                         <div class="col-md-3 col-xs-6 b-r"> Event Name
                                             <br><br>
                                             <p><strong><?php echo $row["t_event"]; ?></strong></p>
                                         </div>
@@ -163,56 +167,19 @@ if(isset($_POST['update']))
                                             <br>
                                             <p><strong><?php echo $row["t_from"]; ?></strong></p>
                                       	 To :
-                                            
                                             <p><strong><?php echo $row["t_to"]; ?></strong></p>
-                                        </div>
-                                        
-                                    </div>
-                                     <div class="row">
-                                     <div class="col-md-3 col-xs-6 b-r">
-                                            
-                                     <p class="text-muted"></p>
-                                     </div>
-                                     <div class="col-md-3 col-xs-6 b-r"> 
-                                            
-                                     <p class="text-muted"></p>
-                                     </div>
-                                     <div class="col-md-3 col-xs-6">                                   <p class="text-muted"></p>
-                                     </div>
-									 </div>
-                                     </div>
-                                
-                               
-                            <div class="tab-pane" id="settings">
+										</div>
+									</div>
+								</div>
+							</div>
+								
+                            <div class="tab-pane active" id="settings">
                              <form data-toggle="validator" method="post">
-                              
-                              
-                         		<div class="row">
-                                	<div class="col-md-6">
-                                       <div class="form-group">
-                                        	 <label class="control-label">Fest Name</label>
-											<div class="col-sm-12 p-l-0">
-												<div class="input-group">
-											<input type="text" name="eventname" class="form-control" id="fname" placeholder="<?php echo $row['t_fest']; ?>" value="<?php echo $row['t_fest']; ?>" readonly="readonly" required>
-													<!--onKeyUp="copyTextValue();"-->
-												</div>
-											</div> 
-										   <div class="form-group">
-                                        	 <label class="control-label">Event Name</label>
-											<div class="col-sm-12 p-l-0">
-												<div class="input-group">
-											<input type="text" name="eventname" class="form-control" id="fname" placeholder="<?php echo $row['t_event']; ?>" value="<?php echo $row['t_event']; ?>" readonly="readonly" required>
-													<!--onKeyUp="copyTextValue();"-->
-												</div>
-											   </div>
-											</div>
-                                         </div>
-                                    </div>
-                                    <!--/span-->
-									 
-                                    <!--/span-->
-                                 </div>
-                               
+                              <div class="row">
+                           				   <div class="form-group">
+											 <label class="control-label ">Event</label>
+											<input type="text" id="username" name="eventname" class="form-control" value="<?php echo $getfestnamero1['h_event']; ?>" readonly/>  
+								  			</div>                               
                                 <div class="form-group">    
 									<label for="inputName1" class="control-label">Event Time</label>
                                     <br>
@@ -221,43 +188,16 @@ if(isset($_POST['update']))
 								 <br>
 									To:
 									<input type="time" class="form-control" autocomplete="off" id="username" name="tt" value="<?php echo $row['t_to']; ?>" required></textarea>
-							<div>
 								</div>
 							</div>
-						
-                                <div class="form-group p-t-0">
-                                    
-                                        <button class="btn btn-success" name="update">Update Time </button>
 								 </div>
-								 </div>
-								</div>
-                                </div>
-                                
-								</form>
-                                
-                                
-								</div>
-                               
-                            </div>
-                        </div>
-                    </div>
-                </div>
-              
-                <!--/row -->
-                
-                <!--DNS End-->
-                <!-- .row -->
-                <!--<div class="row">
-                    <div class="col-md-12">
-                        <div class="white-box">
-                            <h3 class="box-title">Blank Starter page</h3>
-                        </div>
-                    </div>
-                </div>-->
-                <!-- /.row -->
-                <!-- .right-sidebar -->
-                 <!-- Removed Service Panel DNS-->
-                <!-- /.right-sidebar -->
+										 <div class="form-group p-t-0">
+                                       <button class="btn btn-success" name="update">Update Time </button>
+										</div>
+					</form>
+			</div>
+			</div>
+			</div>
             </div>
             <!-- /.container-fluid -->
             <!--footer.php contains footer-->

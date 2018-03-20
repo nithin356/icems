@@ -49,9 +49,7 @@ $username=$_SESSION['h_username'];
                         <div class="white-box">
                             <div class="row">
                                   <div class="col-md-8 col-sm-8">
-                                    <h3 class="box-title m-b-0"><?php echo $result['t_fest']; ?></h3>
-                                    <p>
-									<h3 class="box-title m-b-0"><?php echo $result['t_event']; ?></h3>
+                                    <h3 class="box-title m-b-0"><?php echo $result['t_event']; ?></h3>
                                     <p>
                                       <b>From:</b>&nbsp;<?php echo $result['t_from']; ?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                   					  <b>To:</b>&nbsp;<?php echo $result['t_to']; ?>

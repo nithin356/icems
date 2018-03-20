@@ -34,6 +34,15 @@
 										<li> <a href="view-participant.php">View participant</a> </li>
 								</ul>
 						</li>
+							<li><a href="" class="waves-effect">
+							<i data-icon=")" class="fa fa-bullhorn"></i>&nbsp;&nbsp;
+							<span class="hide-menu">Results<span class="fa arrow"></span></span></a>
+								<ul class="nav nav-second-level">
+										<li><a href="../head/result.php">Add Result</a></li>
+										<li><a href="../head/view-result.php">View Result</a></li>
+								</ul>
+										</li>
+						
 						<li><a href="logout.php" class="waves-effect"><i class="icon-logout fa-fw"></i> <span class="hide-menu">Log out</span></a></li>
 		</div>
 </div>

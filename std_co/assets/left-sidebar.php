@@ -35,7 +35,6 @@
 								<ul class="nav nav-second-level">
 										<li> <a href="../std_co/add_participant.php">Add Participant</a> </li>
 										<li> <a href="../std_co/view-participant.php">View Partcipant</a> </li>
-									<li> <a href="../std_co/edit-participant.php">Edit Particixpant</a> </li>
 								</ul>
 						</li>
 						
