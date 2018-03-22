@@ -4,7 +4,7 @@ require('connect.php');
 $userid=$_SESSION['username'];
 $h_id = $_GET['id'];
 
-$query="SELECT h_username, h_fest, h_event FROM head WHERE h_id='$h_id'";
+$query="SELECT h_username, h_fest, h_event ,fest.fname FROM head JOIN fest ON head.h_fest=fest.f_id WHERE h_id='$h_id'";
 $result = mysqli_query($connection, $query);
 $row = mysqli_fetch_assoc($result);
 
@@ -157,7 +157,7 @@ if(isset($_POST['updateprofile']))
                                         
                                         <div class="col-md-6 col-xs-6 "> <strong>fest Name</strong>
                                             <br>
-                                            <p class="text-muted"><?php echo $row["h_fest"]; ?></p>
+                                            <p class="text-muted"><?php echo $row["fname"]; ?></p>
                                         </div>
 										<div class="col-md-6 col-xs-6 "> <strong>Event Name</strong>
                                             <br>
@@ -197,19 +197,11 @@ if(isset($_POST['updateprofile']))
 										   <label class="control-label">Fest Name</label>
 											<div class="col-sm-12 p-l-0">
 												<div class="input-group">
-											<?php
-									 $selectfest="SELECT fest FROM fest";
-									 $resultfest = mysqli_query($connection, $selectfest);
-									?>
-									 <select required class="form-control" name="festname">
+										
+									 <input required class="form-control" name="festname" value="<?php echo $row['fname']; ?>" readonly/>
+													
 								   	
-									 <?php while($rowfest = mysqli_fetch_assoc($resultfest)) { ?>
-   									 <option disabled hidden selected ><?php echo $row['h_fest']; ?></option> 
-									<option>
-								     <?php echo $rowfest["fest"]; ?></option>
-								     <?php } ?>
-									 </select>
-													<!--onKeyUp="copyTextValue();"-->
+										<!--onKeyUp="copyTextValue();"-->
 												</div>
 											</div>
                                          </div>

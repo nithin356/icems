@@ -194,12 +194,7 @@ if(isset($_POST['changepw']))
                                     <input type="email" name="email" class="form-control" id="inputEmail" placeholder="Email" value="<?php echo $row["h_email"]; ?>" data-error="This email address is invalid" required>
                                     <div class="help-block with-errors"></div>
                                 </div>
-								 <div class="form-group">
-                                    <label for="inputEmail" class="control-label">Event Name</label>
-                                    <input type="text" name="email" class="form-control" id="inputEmail" placeholder="Email" value="<?php echo $row["h_event"]; ?>" data-error="This email address is invalid" required>
-                                    <div class="help-block with-errors"></div>
-                                </div>
-                                
+								 
                                         <div class="form-group">
                                             <div class="col-sm-12">
                                                 <button class="btn btn-success" type="submit" name="updateprofile">Update Profile</button>
@@ -241,7 +236,7 @@ if(isset($_POST['changepw']))
 								</div>
                               	<div class="tab-pane" id="remove">
                               		<div class="text-center">
-                              		<a href="#" class="fcbtn btn btn-danger model_img deleteAdmin" data-id="<?php echo $h_id ?>" id="deleteDoc">Remove Admin Account</a>
+                              		<a href="#" class="fcbtn btn btn-danger model_img deleteAdmin" data-id="<?php echo $h_id ?>" id="deleteDoc">Remove Account</a>
 									</div>
 								</div>
 							  </div>

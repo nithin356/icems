@@ -2,7 +2,6 @@
 include '../login/accesscontrolhead.php';
 require('connect.php');
 $username=$_SESSION['h_username'];
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -57,24 +56,21 @@ $username=$_SESSION['h_username'];
                                     <thead>
                                         <tr>
                                             <th>Participant ID</th>
-											<th colspan="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Participant Name</th>
-											<th>Fest Name</th>
+											<th>Participant Name</th>
 											<th>Event Name</th>
                                         </tr>
                                     </thead>
                                     <tbody>
 
 										<?php
-												$sql = "SELECT p_id, p_name1, p_name2, p_fest, p_eventname FROM participant";
+												$sql = "SELECT *,add_event.e_eventname FROM participant JOIN add_event ON participant.p_eventname=add_event.e_id ";
 												$result = mysqli_query($connection, $sql);
 												foreach($result as $key=>$result)
 												{ ?>
 													<tr>
 														<td> <?php echo $key+1; ?> </td>
-														<td> <?php echo $result["p_name1"]; ?> </td>
-														<td> <?php echo $result["p_name2"]; ?> </td>
-														<td> <?php echo $result["p_fest"]; ?> </td>
-														<td> <?php echo $result["p_eventname"]; ?> </td>
+														<td> <?php echo $result["p_name"]; ?> </td>
+														<td> <?php echo $result["e_eventname"]; ?> </td>
 														
 													</tr>
 										  <?php

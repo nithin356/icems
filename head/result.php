@@ -172,6 +172,7 @@ if (isset($_POST['event']) && isset($_POST['participant']))
 										<?php //} ?></select>
                                     
 								</div>-->
+							
                                 <div class="form-group">
                                     <button type="submit" class="btn btn-info waves-effect waves-light">Submit</button>
                                 </div>

@@ -41,7 +41,7 @@ $userid=$_SESSION['username'];
                 </div>
 				<div class="row">
                 <?php
-					$query = "SELECT * FROM head";
+					$query = "SELECT *,fest.fname FROM head JOIN fest ON head.h_fest=fest.f_id";
 					$result = mysqli_query($connection, $query);
 					foreach($result as $key=>$result)
 				{ ?>
@@ -52,9 +52,7 @@ $userid=$_SESSION['username'];
                                   <div class="col-md-8 col-sm-8">
                                     <h3 class="box-title m-b-0"><?php echo $result['h_username']; ?></h3>
                                     <p>
-										<h3 class="box-title m-b-0"><?php echo $result['h_pno']; ?></h3>
-
-                                     Fest Name:&nbsp;&nbsp;<?php echo $result['h_fest']; ?>
+									  Fest Name:&nbsp;&nbsp;<?php echo $result['fname']; ?>
                                       <br/>
 										Event Name:&nbsp;&nbsp;<?php echo $result['h_event']; ?>
 									  <br/>
