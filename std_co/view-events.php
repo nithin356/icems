@@ -3,10 +3,11 @@ include '../login/accesscontrolstdco.php';
 require('connect.php');
 $username=$_SESSION['s_username'];
 $fid=$_GET['id'];
+include_once 'assets/checkdate.php';
 
 ?>
 
-								
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -54,21 +55,23 @@ $fid=$_GET['id'];
                             <div class="row">
                                   <div class="col-md-8 col-sm-8">
 									Event Name:<h3 class="box-title m-b-0"><?php echo $result['e_eventname']; ?></h3>
-                                    <p>  
+                                    <p>
 									Event Description:<h3 class="box-title m-b-0"><?php echo $result['e_desc']; ?></h3>
-								<p>  
-									Event Rounds:<h3 class="box-title m-b-0"><?php echo $result['round']; ?></h3>
+								<p>
+									Event Rounds:<h3 class="box-title m-b-0"><?php echo $result['round'].$timecount1.$todaydate;  ?></h3>
 									<?php
 				 					$store=$result['e_id'];
 				 					$check="SELECT * FROM participant WHERE p_eventname='$store'";
 									$part=mysqli_query($connection, $check);
 				 					$parti=mysqli_num_rows($part);
+									if($disable==0)
+									{
 				 					if($parti>=1)
 									{ ?>
 									  <a href="#" class="fcbtn btn btn-danger model_img deleteevent" data-id="<?php echo $result['e_id']; ?>" id="deleteDoc">Remove all participants</a>
 									<?php } else { ?>
 									  <a href="add_participant.php" class="fcbtn btn btn-success model_img ">Add participants</a>
-									  <?php } ?>
+									<?php } } ?>
 							</div>
                             </div>
                         </div>

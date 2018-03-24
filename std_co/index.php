@@ -2,6 +2,7 @@
 include '../login/accesscontrolstdco.php';
 require('connect.php');
 $username=$_SESSION['s_username'];
+include_once 'assets/checkdate.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -47,6 +48,7 @@ $username=$_SESSION['s_username'];
 				</div>
 				<BR>
 				<center>
+          <?php if($disable==1){ ?> <h2 class="text-danger"> NITHIN TYPE MESSAGE HERE </h2> <?php } ?>
 				You are Now Eligible to Join The Fest
 				</center>
 					</div>

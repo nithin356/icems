@@ -13,7 +13,7 @@
 								</ul>
 						</div>
 				</div>
-			
+
 				<ul class="nav" id="side-menu">
 								<!-- /input-group -->
 						</li>
@@ -21,9 +21,13 @@
 						Main Menu
 						</li>
 			<!--sidebar design-->
+			<li> <a href="index.php" class="waves-effect">
+				<i class="fa fa-dashboard" data-icon="v"></i>&nbsp;&nbsp;
+				<span class="hide-menu text-danger"> Dashboard <span class="fa arrow"</span> <span class="label label-rouded label-danger pull-right"></span></a>
+			</li>
 						<li> <a href="" class="waves-effect">
 							<i class="fa fa-bookmark-o" data-icon="v"></i>&nbsp;&nbsp;
-							<span class="hide-menu"> Fest <span class="fa arrow"</span> 
+							<span class="hide-menu"> Fest <span class="fa arrow"</span>
 							<span class="label label-rouded label-danger pull-right"></span></a>
 								<ul class="nav nav-second-level">
 								<li> <a href="../std_co/view-fest.php">View Fest</a> </li>
@@ -33,13 +37,18 @@
 							<i class="fa fa-users" data-icon="v"></i>&nbsp;&nbsp;
 							<span class="hide-menu text-danger"> Participant <span class="fa arrow"</span> <span class="label label-rouded label-danger pull-right"></span></a>
 								<ul class="nav nav-second-level">
+								<?php 	include_once 'checkdate.php';
+									if($disable==0)
+									{
+								 ?>
 										<li> <a href="../std_co/add_participant.php">Add Participant</a> </li>
+									<?php } ?>
 										<li> <a href="../std_co/view-participant.php">View Partcipant</a> </li>
 								</ul>
 						</li>
-						
+
 						<li><a href="" class="waves-effect">
-							<i data-icon=")" class="fa fa-bullhorn"></i>&nbsp;&nbsp; 
+							<i data-icon=")" class="fa fa-bullhorn"></i>&nbsp;&nbsp;
 							<span class="hide-menu">Results<span class="fa arrow"></span></span></a>
 								<ul class="nav nav-second-level">
 										<li><a href="../std_co/result.php">View Results</a></li>
