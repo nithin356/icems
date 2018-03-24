@@ -126,14 +126,14 @@ if (isset($_POST['college']))
 									$i="SELECT * FROM add_event WHERE e_eventname='$eventname'";
 									$res=mysqli_query($connection, $i);
 									$rowevent = mysqli_fetch_assoc($res);
-									$totrows=$rowevent['e_id'];
+									$totrows=$rowevent['round'];
 									$countid=1;
 									?>
 								 <div class="form-group">
 									 <label for="inputEmail" class="control-label">Round</label>
 								<select required class="form-control" name="round">
 									<option disabled hidden selected>SELECT ROUND</option>
-									<?php while($countid < $totrows) { ?>
+									<?php while($countid <= $totrows) { ?>
 									<option value="<?php echo $countid ?>"> <?php echo 'Round '.$countid; ?></option>
 									<?php $countid++; } ?>
 								</select> 
