@@ -1,4 +1,4 @@
-<?php
+ <?php
 include '../login/accesscontrolstdco.php';
 require('connect.php');
 $username=$_SESSION['s_username'];

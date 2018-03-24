@@ -57,26 +57,6 @@ require('connect.php');
                                     <p>
 									Fest Description:<h4 class="box-title m-b-0"><?php echo $result['f_desc']; ?></h4>
 								   
-								<a href="view-events.php?id=<?php echo $result['f_id']; ?>" class="fcbtn btn btn-danger model_img">More Info</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								<a href="view-events.php?id=<?php echo $result['f_id']; ?>" class="fcbtn btn btn-danger model_img">More Inf</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 								<a href="../login/" class="fcbtn btn btn-danger model_img">Register</a>
-							</div>
-                            </div>
-                        </div>
-                    </div>
-                  <?php
-					}
-				  ?>
-
-				</div>
-            </div>
-			<!--footer.php contains footer-->
-            <?php include'assets/footer.php'; ?>
-        </div>
-        <!-- /#page-wrapper -->
-    </div>
-    <!-- /#wrapper -->
-    <!--jslink has all the JQuery links-->
-    <?php include'assets/jslink.php'; ?>
-</body>
-
-</html>
+							

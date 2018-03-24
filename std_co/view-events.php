@@ -1,9 +1,12 @@
 <?php
+include '../login/accesscontrolstdco.php';
 require('connect.php');
-
+$username=$_SESSION['s_username'];
 $fid=$_GET['id'];
 
 ?>
+
+								
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,16 +23,17 @@ $fid=$_GET['id'];
      <!--header.php includes preloader, top navigarion, logo, user dropdown-->
     <!--div id wrapper in header.php-->
     <!--left-sidebar.php includes mobile search bar, user profile, menu-->
-    <?php
+    <?php include 'assets/header.php';
+	include 'assets/left-sidebar.php';
 	include 'assets/breadcrumbs.php';
 	?>
         <!-- Page Content -->
-        <div>
+        <div id="page-wrapper">
             <div class="container-fluid">
                 <div class="row bg-title">
                     <!-- .page title -->
                     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                        <h4 class="page-title">Events</h4>
+                        <h4 class="page-title">Fests</h4>
                     </div>
                     <!-- /.page title -->
                     <!-- .breadcrumb -->
@@ -61,7 +65,7 @@ $fid=$_GET['id'];
 				 					$parti=mysqli_num_rows($part);
 				 					if($parti>=1)
 									{ ?>
-									  <a href="#" class="fcbtn btn btn-danger model_img deleteevent" data-id="<?php echo $result['e_id']; ?>" id="deleteDoc">Remove participants</a>
+									  <a href="#" class="fcbtn btn btn-danger model_img deleteevent" data-id="<?php echo $result['e_id']; ?>" id="deleteDoc">Remove all participants</a>
 									<?php } else { ?>
 									  <a href="add_participant.php" class="fcbtn btn btn-success model_img ">Add participants</a>
 									  <?php } ?>

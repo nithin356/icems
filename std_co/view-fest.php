@@ -1,6 +1,10 @@
 <?php
+include '../login/accesscontrolstdco.php';
 require('connect.php');
+$username=$_SESSION['s_username'];
 ?>
+
+								
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,16 +21,17 @@ require('connect.php');
      <!--header.php includes preloader, top navigarion, logo, user dropdown-->
     <!--div id wrapper in header.php-->
     <!--left-sidebar.php includes mobile search bar, user profile, menu-->
-    <?php
+    <?php include 'assets/header.php';
+	include 'assets/left-sidebar.php';
 	include 'assets/breadcrumbs.php';
 	?>
         <!-- Page Content -->
-        <div>
+        <div id="page-wrapper">
             <div class="container-fluid">
                 <div class="row bg-title">
                     <!-- .page title -->
                     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                        <h4 class="page-title">Events</h4>
+                        <h4 class="page-title">Fests</h4>
                     </div>
                     <!-- /.page title -->
                     <!-- .breadcrumb -->
@@ -45,15 +50,20 @@ require('connect.php');
                 <div class="col-md-4 col-sm-4">
                         <div class="white-box">
                             <div class="row">
-                                  <div class="col-md-8 col-sm-8">
-									College Name:<h3 class="box-title m-b-0"><?php echo $result['cname']; ?></h3>
-                                    Fest Name:<h3 class="box-title m-b-0"><?php echo $result['fname']; ?></h3>
-									Date:<h3 class="box-title m-b-0"><?php echo $result['date']; ?></h3>
-									College Name:<h3 class="box-title m-b-0"><?php echo $result['date']; ?></h3>
-									Fest Description:<h3 class="box-title m-b-0"><?php echo $result['f_desc']; ?></h3>
-								   
+                                  <div>
+									  
+                                    College Name:<h3 class="box-title m-b-0"><?php echo $result['cname']; ?></h2>  
+                                    Fest Name:<h3 class="box-title m-b-0"><?php echo $result['fname']; ?></h2>  
+                                    Date:<h3 class="box-title m-b-0"><?php echo $result['date']; ?></h2>
+<br/>  
+                                    Description:
+									  <p><?php echo $result['f_desc']; ?>
+										<div class="p-t-5">
+											   
 								<a href="view-events.php?id=<?php echo $result['f_id']; ?>" class="fcbtn btn btn-danger model_img">More Info</a>
-							</div>
+									    </div>
+                                    </p>
+                                </div>
                             </div>
                         </div>
                     </div>
