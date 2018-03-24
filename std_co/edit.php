@@ -274,7 +274,7 @@ if(isset($_POST['update']))
                                   
                                 <div class="form-group p-t-0">
                                     
-                                        <button class="btn btn-success" name="update">Update Event </button>
+                                        <button class="btn btn-success" name="update">Update Participant</button>
 								 </div>
 								 </div>
 								</div>

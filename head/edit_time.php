@@ -18,7 +18,7 @@ if(isset($_POST['update']))
 {
 	$ff= $_POST['ff'];
 	$tt= $_POST['tt'];
-	if($ff=$tt)
+	if($ff<=$tt)
 	{
 	$uquery="UPDATE time SET  t_from='$ff', t_to='$tt' WHERE t_id='$t_id'";
 	$uresult = mysqli_query($connection, $uquery);
@@ -26,7 +26,7 @@ if(isset($_POST['update']))
 	{
 		$squery="SELECT t_event, t_from, t_to FROM time WHERE t_id='$t_id'";
 		$sresult = mysqli_query($connection, $squery);
-		$rowS = mysqli_fetch_assoc($sresult);
+		$row = mysqli_fetch_assoc($sresult);
 		$smsg="Time updated successfully!";
 	}
 	else
@@ -124,27 +124,13 @@ if(isset($_POST['update']))
                 <div class="row">
                     <div class="col-md-4 col-xs-12">
                         <div class="white-box">
-                            <div class="user-bg"> <img width="100%" height="100%" alt="user" src="../plugins/images/profile-menu.png">
-                                <div class="overlay-box">
-                                    <div class="user-content">
+                           <div class="overlay-box">
+							<div class="user-bg p-l-30 m-l-10 p-t-10"> <img width="80%" height="95%"  alt="user" src="../plugins/images/Time-Free-PNG-Image.png">
+                                  <div class="user-content">
                                        </div>
                                 </div>
                             </div>
-                            <!--<div class="user-btm-box">
-                                <div class="col-md-4 col-sm-4 text-center">
-                                    <p class="text-purple"><i class="ti-facebook"></i></p>
-                                    <h1>258</h1>
-                                </div>
-                                <div class="col-md-4 col-sm-4 text-center">
-                                    <p class="text-blue"><i class="ti-twitter"></i></p>
-                                    <h1>125</h1>
-                                </div>
-                                <div class="col-md-4 col-sm-4 text-center">
-                                    <p class="text-danger"><i class="ti-dribbble"></i></p>
-                                    <h1>556</h1>
-                                </div>
-                            </div>-->
-                        </div>
+                         </div>
                     </div>
                     <div class="col-md-8 col-xs-12">
                         <div class="white-box">
@@ -155,50 +141,80 @@ if(isset($_POST['update']))
 								<a href="#settings" class="nav-link" aria-controls="settings" role="tab" data-toggle="tab" aria-expanded="false"><span class="visible-xs"><i class="fa fa-cog"></i></span> <span class="hidden-xs">Setting</span></a></li>
                                 <li role="presentation" class="nav-item">
                             </ul>
-                            <div class="tab-content">
+                           
+							<div class="tab-content">
                                 <div class="tab-pane active" id="profile">
                                     <div class="row">
-                                         <div class="col-md-3 col-xs-6 b-r"> Event Name
+                                            <div class="col-md-3 col-xs-6 b-r"> Event Name
                                             <br><br>
                                             <p><strong><?php echo $row["t_event"]; ?></strong></p>
                                         </div>
                                         
                                         <div class="col-md-6 col-xs-6 "> From :
                                             <br>
-                                            <p><strong><?php echo $row["t_from"]; ?></strong></p>
+                                            <p><strong><?php echo date('h:i a',strtotime($row['t_from']))?></strong></p>
                                       	 To :
-                                            <p><strong><?php echo $row["t_to"]; ?></strong></p>
+                                            <p><strong><?php echo date('h:i a',strtotime($row['t_to']))?></strong></p>
 										</div>
-									</div>
-								</div>
-							</div>
-								
-                            <div class="tab-pane active" id="settings">
+                                        
+                                    </div>
+                                     <div class="row">
+                                     <div class="col-md-3 col-xs-6 b-r">
+                                            
+                                     <p class="text-muted"></p>
+                                     </div>
+                                     <div class="col-md-3 col-xs-6 b-r"> 
+                                            
+                                     <p class="text-muted"></p>
+                                     </div>
+                                     <div class="col-md-3 col-xs-6">                                   <p class="text-muted"></p>
+                                     </div>
+									 </div>
+                                     </div>
+                                
+                               
+                            <div class="tab-pane" id="settings">
                              <form data-toggle="validator" method="post">
-                              <div class="row">
-                           				   <div class="form-group">
+                              
+                              
+                         		<div class="row">
+                                	<div class="col-md-6">
+                                       <div class="form-group">
+                                        	   <div class="row">
+                           				   <div class="form-group col-md-12">
 											 <label class="control-label ">Event</label>
 											<input type="text" id="username" name="eventname" class="form-control" value="<?php echo $getfestnamero1['h_event']; ?>" readonly/>  
 								  			</div>                               
-                                <div class="form-group">    
+                                	<div class="form-group col-md-12">    
 									<label for="inputName1" class="control-label">Event Time</label>
                                     <br>
 									From:
-									<input type="time" class="form-control" autocomplete="off" id="username" name="ff" value="<?php echo $row['t_from']; ?>" required></textarea>
+									<input type="time" class="form-control" autocomplete="off" id="username" name="ff" value="<?php echo $row['t_from']; ?>" required>
 								 <br>
 									To:
-									<input type="time" class="form-control" autocomplete="off" id="username" name="tt" value="<?php echo $row['t_to']; ?>" required></textarea>
+									<input type="time" class="form-control" autocomplete="off" id="username" name="tt" value="<?php echo $row['t_to']; ?>" required>
 								</div>
 							</div>
 								 </div>
 										 <div class="form-group p-t-0">
                                        <button class="btn btn-success" name="update">Update Time </button>
 										</div>
-					</form>
-			</div>
-			</div>
-			</div>
-            </div>
+								 </div>
+								</div>
+                                </div>
+                                
+								</form>
+                                
+                                
+								</div>
+                               
+                            </div>
+                        </div>
+                    </div>
+                </div>
+							
+							
+							
             <!-- /.container-fluid -->
             <!--footer.php contains footer-->
             <?php include'assets/footer.php'; ?>

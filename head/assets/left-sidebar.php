@@ -29,7 +29,7 @@
 								</ul>
 						</li>
 							<li> <a href="" class="waves-effect">
-							<i class="linea-icon linea-basic fa-fw " data-icon="v"></i> <span class="hide-menu ">Participant<span class="fa arrow"</span> <span class="label label-rouded label-danger pull-right"></span></a>
+							<i class="fa fa-users " data-icon="v">&nbsp;&nbsp;</i> <span class="hide-menu ">Participant<span class="fa arrow"</span> <span class="label label-rouded label-danger pull-right"></span></a>
 								<ul class="nav nav-second-level">
 										<li> <a href="view-participant.php">View participant</a> </li>
 								</ul>

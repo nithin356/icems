@@ -167,11 +167,11 @@ if(isset($_POST['updateprofile']))
                                             
                                      <p class="text-muted"></p>
                                      </div>
-                                     <div class="col-md-3 col-xs-6">                                   <p class="text-muted"></p>
+                                     <div class="col-md-3 col-xs-6">      
+										 <p class="text-muted"></p>
                                      </div>
 									 </div>
                                      </div>
-                                
                                
                             <div class="tab-pane" id="settings">
                              <form data-toggle="validator" method="post">
@@ -205,7 +205,7 @@ if(isset($_POST['updateprofile']))
                                     <label for="inputName1" class="control-label">Fest date</label>
                                     <input type="date" class="form-control" autocomplete="off" id="username" name="date" placeholder="<?php echo $row['date']; ?>" value="<?php echo $row['date']; ?>" required>
 								</div>
-								</div>
+								
 								<div>
                                     <label for="inputName1" class="control-label">Fest Description</label>
                                     <input type="text" class="form-control" id="username" name="desc" required value="<?php echo $row['f_desc']; ?>">
@@ -214,7 +214,9 @@ if(isset($_POST['updateprofile']))
                               
                                 <div class="form-group p-t-0">
                                     <button class="btn btn-success" name="updateprofile">Update Fest Details </button>
-								 </div>
+						
+								</div>
+								</div>
 								 </div>
 								</div>
                                 </div>

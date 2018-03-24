@@ -2,13 +2,11 @@
 include '../login/accesscontroladmin.php';
 require('connect.php');
 $userid=$_SESSION['username'];
-
-$getfestname="SELECT s_id, fest FROM std_co WHERE s_username='$username'";
+$getfestname="SELECT s_id, fest FROM std_co";
 $getfestnameresult=mysqli_query($connection,$getfestname);
 $getfestnamerow=mysqli_fetch_assoc($getfestnameresult);
 $sid=$getfestnamerow['s_id'];
 $fid=$getfestnamerow['fest'];
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -44,45 +42,38 @@ $fid=$getfestnamerow['fest'];
                       <a href="../index.html" target="_blank" class="btn btn-info pull-right m-l-20 btn-rounded btn-outline hidden-xs hidden-sm waves-effect waves-light">Home</a>
                       <?php echo breadcrumbs(); ?>
                     </div>
-                    <!-- /.breadcrumb -->
                 </div>
-                <!--DNS added Dashboard content-->
-
-                 <!--DNS Added Model-->
-           
-                         <!--DNS model END-->
-
-
-                <!--row -->
+				
+      <!--row -->
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="white-box">
-                            <h3 class="box-title">Registered Participant</h3>
+                            <h3 class="box-title">Registered Participants</h3>
                             <div class="table-responsive">
-                                <table class="table table-striped">
+                                <table class="table table-stripped full-color-table full-dark-table">
                                     <thead>
                                         <tr>
-                                            <th>#</th>
-											<th colspan="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Participant Name</th>
-											<th>Fest Name</th>
+                                            <th>Participants</th>
+                                           	<th>Fest</th>
 											<th>Event Name</th>
+											<th>College Name</th>
+																			
                                         </tr>
                                     </thead>
                                     <tbody>
 
 										<?php
-												$sql = "SELECT p_id, p_name1, p_name2, p_fest, p_eventname FROM participant";
+												$sql = "SELECT *,add_event.e_eventname,fest.fname, std_co.s_college FROM participant JOIN add_event ON   participant.p_eventname=add_event.e_id JOIN fest ON fest.f_id=add_event.f_id JOIN std_co ON participant.sid=std_co.s_id WHERE sid='$sid'";
 												$result = mysqli_query($connection, $sql);
 												foreach($result as $key=>$result)
 												{ ?>
 													<tr>
-														<td> <?php echo $key+1; ?> </td>
-														<td> <?php echo $result["p_name"]; ?> </td>
-														<td> <?php echo $result["p_fest"]; ?> </td>
-														<td> <?php echo $result["p_eventname"]; ?> </td>
-														<td> <?php echo $result["p_name2"]; ?> </td>
+														<td> <?php echo $result["p_name"] ?> </td>
+														<td> <?php echo $result["fname"]; ?> </td>
+														<td> <?php echo $result["e_eventname"]; ?> </td>
+														<td> <?php echo $result["s_college"]; ?> </td>
 														
-													</tr>
+												</tr>
 										  <?php
 												}
 										  ?>

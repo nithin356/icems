@@ -160,7 +160,7 @@ if (isset($_POST['username']) && isset($_POST['password']))
                         <div class="col-sm-12 text-center">
                             <p>Already have an account? <a href="../login/" class="text-primary m-l-5"><b>Sign In</b></a></p>
                         </div>
-						Inter Collegiate Event Management System © 2018
+					Inter Collegiate Event Management System © 2018
                     </div>
                 </form>
             </div>

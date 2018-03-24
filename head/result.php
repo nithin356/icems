@@ -6,16 +6,19 @@ $gethname="SELECT h_id FROM head WHERE h_username='$username'";
 $gethnameresult=mysqli_query($connection,$gethname);
 $gethnamerow=mysqli_fetch_assoc($gethnameresult);
 $hid=$gethnamerow['h_id'];
-$geteventname="SELECT h_event FROM head where h_id='$hid'";
+$geteventname="SELECT h_event,h_fest FROM head where h_id='$hid'";
 $getfestnameresul1=mysqli_query($connection,$geteventname);
 $getfestnamero1=mysqli_fetch_assoc($getfestnameresul1);
-if (isset($_POST['event']) && isset($_POST['participant']))
+$festid=$getfestnamero1['h_fest'];
+if (isset($_POST['college']))
 	{
-		$eventname= mysqli_real_escape_string($connection,$_POST['event']);
-		$fest= mysqli_real_escape_string($connection,$_POST['fest']);
+		$getfid=mysqli_query($connection,"SELECT * FROM fest where f_id='$festid'");
+		$get=mysqli_fetch_assoc($getfid);
+		$fest=$get['f_id'];
+		$eventname= $getfestnamero1['h_event'];
 		$round=mysqli_real_escape_string($connection,$_POST['round']);
-		$particpant=mysqli_real_escape_string($connection,$_POST['participant']);
-		$query="INSERT INTO `result`(r_eventname, r_pname, r_pname2, r_fest, round) VALUES ('$eventname','$fest','$particpant1','$round')";
+		$college=mysqli_real_escape_string($connection,$_POST['college']);
+		$query="INSERT INTO `result`(r_eventname,f_id,cname,round) VALUES ('$eventname','$fest','$college','$round')";
 				$result = mysqli_query($connection, $query);
 	
 				if($result)
@@ -24,7 +27,7 @@ if (isset($_POST['event']) && isset($_POST['participant']))
 				}
 				else
 				{
-					$fmsg = "Result Updating Failed";
+					$fmsg = "Result Updating Failed".mysqli_error($connection);
 				}
 	}
 ?>
@@ -117,63 +120,41 @@ if (isset($_POST['event']) && isset($_POST['participant']))
 								 <div class="form-group">
 									 <label for="inputEmail"  class="control-label ">Event</label>
 									 <input type="text" id="username" class="form-control" value="<?php echo $getfestnamero1['h_event']; ?>" readonly/> 
-									 <?php
-									 //$selectevent="SELECT e_eventname FROM add_event";
-									 //$resultevent = mysqli_query($connection, $selectevent);
-									?>
-									 <!--<select required class="form-control" name="event">
-								   	 <!--<option disabled hidden selected class="form-control">Select Event</option>
-									 <?php //while($rowevent = mysqli_fetch_assoc($resultevent)) { ?>
-   									 <option>-->
-								     <?php //echo $rowevent["e_eventname"]; ?></option>
-								     <?php //} ?>
-									 <!--</select>-->
                                 </div>
+								<?php
+									$eventname=$getfestnamero1['h_event'];
+									$i="SELECT * FROM add_event WHERE e_eventname='$eventname'";
+									$res=mysqli_query($connection, $i);
+									$rowevent = mysqli_fetch_assoc($res);
+									$totrows=$rowevent['e_id'];
+									$countid=1;
+									?>
 								 <div class="form-group">
 									 <label for="inputEmail" class="control-label">Round</label>
-								<select required class="form-control" name=round>
+								<select required class="form-control" name="round">
 									<option disabled hidden selected>SELECT ROUND</option>
-									<option>ROUND 1</option>
-									<option>ROUND 2</option>
-									<option>ROUND 3</option>
-									<option>ROUND 4</option>
-									<option>ROUND 5</option>
-									<option>ROUND 6</option>
-									<option>ROUND 7</option>
-									<option>ROUND 8</option>
-									<option>ROUND 9</option>
-									<option>ROUND 10</option>
-									<option>ROUND 11</option>
-									<option>ROUND 12</option>
-									<option>ROUND 13</option>
-									<option>ROUND 14</option>
-									
+									<?php while($countid < $totrows) { ?>
+									<option value="<?php echo $countid ?>"> <?php echo 'Round '.$countid; ?></option>
+									<?php $countid++; } ?>
 								</select> 
 								</div>
-								<!--<div class="form-group">
-                                    <label for="inputName1" class="control-label">Enter Participant</label>
-									<?php
-									//$parti="SELECT * FROM participant ";
-									//$row=mysqli_query($connection, $parti);
-									?>
-                                    <select name="participant" class="form-control" required >
-										<option><?php //while($rows = mysqli_fetch_assoc($row)) { ?>
-   									 <option>
-								     <?php //echo $rows["p_name1"]; ?></option>
-										<?php //} ?></select>
-									<?php
-									//$parti="SELECT * FROM participant ";
-									//$rowz=mysqli_query($connection, $parti);
-									?>
-                                    <select name="participant1" class="form-control"  >
-										<option><?php //while($rowes = mysqli_fetch_assoc($rowz)) { ?>
-   									 <option>
-								     <?php //echo $rowes["p_name2"]; ?></option>
-										<?php //} ?></select>
-                                    
-								</div>-->
-							
-                                <div class="form-group">
+								<?php
+									 $college="SELECT s_college FROM std_co";
+									 $colres=mysqli_query($connection, $college);
+									 ?>
+								 <div class="form-group">
+									 <label for="inputEmail" class="control-label">Round</label>
+									 
+								<select required class="form-control" name="college">
+									<option disabled hidden selected>SELECT COLLEGE</option>
+									 <?php while($rowcollege = mysqli_fetch_assoc($colres)) { ?>
+									<option value= "<?php echo $rowcollege['s_college'];?>"> <?php echo $rowcollege['s_college'];?></option>
+									<?php }?>
+									</select> 
+									 
+								</div>
+								
+							    <div class="form-group">
                                     <button type="submit" class="btn btn-info waves-effect waves-light">Submit</button>
                                 </div>
                             </form>

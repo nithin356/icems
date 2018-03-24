@@ -265,7 +265,7 @@ function capLock(e){
                         <div class="col-sm-12 text-center">
                             <p>Don't have an account? <a href="../register/" class="text-primary m-l-5"><b>Sign Up</b></a></p>
                         </div>
-                    &nbsp; &nbsp;Inter Collegiate Event Management System © 2018
+                    Inter Collegiate Event Management System © 2018
 					</div>
                 </form>
                 <form class="form-horizontal form-material" id="recoverform" method="post">

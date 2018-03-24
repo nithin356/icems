@@ -2,6 +2,11 @@
 include '../login/accesscontrolhead.php';
 require('connect.php');
 $username=$_SESSION['h_username'];
+$getfestname="SELECT h_id, h_event FROM head WHERE h_username='$username'"; 
+$getfestnameresult=mysqli_query($connection,$getfestname);
+$getfestnamerow=mysqli_fetch_assoc($getfestnameresult);
+$hid=$getfestnamerow['h_id'];
+$eid=$getfestnamerow['h_event'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -41,8 +46,9 @@ $username=$_SESSION['h_username'];
                 </div>
 				<div class="row">
                 <?php
-					$query = "SELECT * FROM time";
-					$result = mysqli_query($connection, $query);
+					$query = "SELECT *,head.h_id FROM time JOIN head ON time.t_event=head.h_event WHERE h_id='$hid'";
+					//"SELECT *,add_event.e_eventname,fest.fname FROM participant JOIN add_event ON  participant.p_eventname=add_event.e_id JOIN fest ON fest.f_id=add_event.f_id WHERE sid='$sid'";
+				$result = mysqli_query($connection, $query);
 					foreach($result as $key=>$result)
 				{ ?>
                 <div class="col-md-4 col-sm-4">

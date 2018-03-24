@@ -57,7 +57,7 @@ $userid=$_SESSION['username'];
                                     Description:
 									  <p><?php echo $result['f_desc']; ?>
 										<div class="p-t-5">
-											<a href="events.php?id=<?php echo $result['f_id']; ?>" class="fcbtn btn btn-info">Edit</a>
+											<a href="edit-fest.php?id=<?php echo $result['f_id']; ?>" class="fcbtn btn btn-info">Edit</a>
 											<a href="#" class="fcbtn btn btn-danger model_img deleteevent" data-id="<?php echo $result['f_id']; ?>" id="deleteDoc">Delete</a>
 									    </div>
                                     </p>

@@ -121,34 +121,10 @@ if (isset($_POST['submit']))
 											 <?php echo $smsg; ?>
 										</div>
 								<?php }?>
-								<!--<div class="form-group">
-                                    <label class="control-label">Fest name</label>
-                                    <?php
-									 //$selectfest="SELECT fest FROM fest";
-									 //$resultfest = mysqli_query($connection, $selectfest);
-									?>
-									 <select required class="form-control" name="fest">
-								   	 <option disabled hidden selected value="">Select fest</option>
-									 <?php //while($rowfest = mysqli_fetch_assoc($resultfest)) { ?>
-   									 <option>
-								     <?php //echo $rowfest["fest"]; ?></option>
-								     <?php //} ?>
-									 </select> 
-								</div>-->
-								<div class="form-group">
+															<div class="form-group">
 									 <label for="inputEmail" class="control-label ">Event</label>
 									<input type="text" id="username" name="event" class="form-control" value="<?php echo $getfestnamero1['h_event']; ?>" readonly/>  
-									<?php
-									 //$selectevent="SELECT e_eventname FROM add_event";
-									 //$resultevent = mysqli_query($connection, $selectevent);
-									?>
-									<!-- <select required class="form-control" name="event">
-								   <option value="disabled hidden selected">Select Event</option>
-									 <?php //while($rowevent = mysqli_fetch_assoc($resultevent)) { ?>
-   									 <option>
-								     <?php //echo $rowevent["e_eventname"]; ?></option>
-								     <?php //} ?>
-									 </select>-->
+									
                                 </div>
 								<div class="form-group">
                                     <label for="inputName1" class="control-label">Enter Time</label>
@@ -157,7 +133,7 @@ if (isset($_POST['submit']))
 									<input id="time" type="time" name="ff" 
 									class="form-control clockpicker" required >
                                     To:
-									<input id="time" type="time" data-date-format="hh:mm:ss" name="tt" 
+									<input id="time" type="time" name="tt" 
 									class="form-control clockpicker" required >
 								</div>
 

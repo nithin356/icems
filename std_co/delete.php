@@ -3,7 +3,7 @@ require('connect.php');
 if ($_SERVER['REQUEST_METHOD'] == 'DELETE') {
   if (isset($_GET['id'])) {
     $id = $_GET['id'];
-		$sql="DELETE FROM participant WHERE p_id=$id";
+		$sql="DELETE FROM participant WHERE p_eventname=$id";
 		$result = mysqli_query($connection, $sql);
 		if($result)
 		{

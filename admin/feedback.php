@@ -49,16 +49,11 @@ $userid=$_SESSION['username'];
                         <div class="white-box">
                             <div class="row">
                                   <div class="col-md-8 col-sm-8">
-									  
-                                    E-Mail:<h3 class="box-title m-b-0"><?php echo $result['f_email']; ?></h2>
-									 <p>
-
-                                    FeedBack:<h3 ><?php echo $result['f_message']; ?></h3>
-										<p>
-                  					
-									    </div>
-                                    </p>
-                                </div>
+									Email Name:<h3 class="box-title m-b-0"><?php echo $result['f_email']; ?></h3>
+                                    <p>  
+                                    Message:<h3 class="box-title m-b-0"><?php echo $result['f_message']; ?></h3>
+								   
+								</div>
                             </div>
                         </div>
                     </div>
@@ -79,37 +74,3 @@ $userid=$_SESSION['username'];
 </body>
 
 </html>
-<script>
-$(document).ready(function() {
-  $('.deleteevent').click(function(){
-    id = $(this).attr('data-id');
-      swal({
-          title: "Are you sure?",
-          text: "You will not be able to recover this data!",
-          type: "warning",
-          showCancelButton: true,
-          confirmButtonColor: "#DD6B55",
-          confirmButtonText: "Yes, delete it!",
-          closeOnConfirm: false,
-		  closeOnCancel: false
-      },function(isConfirm)
-		 {
-           if (isConfirm) {
-			   $.ajax({
-			  url: 'delete.php?id='+id,
-			  type: 'DELETE',
-			  data: {id:id},
-			  success: function(){
-				swal("Deleted!", "User has been deleted.", "success");
-				window.location.replace("view-event.php");
-          }
-        });
-            } else {
-                swal("Cancelled", "User data is safe :)", "error");
-            }
-      });
-  });
-
-});
-
-</script>

@@ -54,7 +54,17 @@ $fid=$_GET['id'];
 									Event Description:<h3 class="box-title m-b-0"><?php echo $result['e_desc']; ?></h3>
 								<p>  
 									Event Rounds:<h3 class="box-title m-b-0"><?php echo $result['round']; ?></h3>
-									  
+									<?php
+				 					$store=$result['e_id'];
+				 					$check="SELECT * FROM participant WHERE p_eventname='$store'";
+									$part=mysqli_query($connection, $check);
+				 					$parti=mysqli_num_rows($part);
+				 					if($parti>=1)
+									{ ?>
+									  <a href="#" class="fcbtn btn btn-danger model_img deleteevent" data-id="<?php echo $result['e_id']; ?>" id="deleteDoc">Remove participants</a>
+									<?php } else { ?>
+									  <a href="add_participant.php" class="fcbtn btn btn-success model_img ">Add participants</a>
+									  <?php } ?>
 							</div>
                             </div>
                         </div>
@@ -76,3 +86,37 @@ $fid=$_GET['id'];
 </body>
 
 </html>
+<script>
+$(document).ready(function() {
+  $('.deleteevent').click(function(){
+    id = $(this).attr('data-id');
+      swal({
+          title: "Are you sure?",
+          text: "You will not be able to recover this data!",
+          type: "warning",
+          showCancelButton: true,
+          confirmButtonColor: "#DD6B55",
+          confirmButtonText: "Yes, delete it!",
+          closeOnConfirm: false,
+		  closeOnCancel: false
+      },function(isConfirm)
+		 {
+           if (isConfirm) {
+			   $.ajax({
+			  url: 'delete.php?id='+id,
+			  type: 'DELETE',
+			  data: {id:id},
+			  success: function(){
+				swal("Deleted!", "User has been deleted.", "success");
+				window.location.replace("view-participant.php");
+          }
+        });
+            } else {
+                swal("Cancelled", "User data is safe :)", "error");
+            }
+      });
+  });
+
+});
+
+</script>

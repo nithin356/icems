@@ -8,7 +8,7 @@ if(isset($_POST['f_email']) && isset($_POST['f_message']))
 	$result = mysqli_query($connection, $insert);
 	if($result)
 				{
-					$smsg = "Thank you for the Feedback";
+					$smsg = "Thank you for the feedback";
 				}
 				else
 				{
@@ -19,11 +19,11 @@ if (isset($_POST['submit']))
 	{
 					           
             $to_Email       = $email; // Replace with recipient email address
-            $subject        = 'Password Reset'; //Subject line for emails
+            $subject        = 'Feedback'; //Subject line for emails
 
             $host           = "smtp.gmail.com"; // Your SMTP server. For example, smtp.mail.yahoo.com
-            $username      = "alphacare.ohms@gmail.com"; //For example, your.email@yahoo.com
-            $password       = "dnspnb@78"; // Your password
+            $username      = "icemscentre@gmail.com"; //For example, your.email@yahoo.com
+            $password       = "icems123"; // Your password
             $SMTPSecure     = "tls"; // For example, ssl
             $port           = 587; // For example, 465
 
@@ -90,11 +90,11 @@ if (isset($_POST['submit']))
 
     if(!$mail->send()) {
 
-        $fmsg="E-mail not sent";
+        $fmsg="E-mail not sent,Posting Failed";
 
     }
 	else {
-        $smsg="e-mail sent successfully";
+        $smsg="e-mail sent successfully,Thank you for the Feedback.";
 	}
 }
 	

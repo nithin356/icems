@@ -51,7 +51,7 @@ $userid=$_SESSION['username'];
                         <div class="white-box">
                             <h3 class="box-title">Student co-ordinator Accounts</h3>
                             <div class="table-responsive">
-                                <table class="table table-striped">
+                                <table class="table table-striped color-bordered-table dark-bordered-table">
                                     <thead>
                                         <tr>
                                             <th>Student Co-Ordinator ID</th>

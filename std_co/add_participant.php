@@ -15,15 +15,24 @@ $getfestnamerow1=mysqli_fetch_assoc($getfestnameresult1);
 
 if (isset($_POST['submitevent']))
 {
+	$eventname= mysqli_real_escape_string($connection,$_POST['event']);
+	$check=mysqli_query($connection,"SELECT * FROM participant WHERE (sid='$sid') AND (p_eventname='$eventname') ");
+	$checkrow=mysqli_num_rows($check);
+	if($checkrow>=1)
+	{
+		$fmsg="Participants are already registered for this event";
+	}
+	else
+	{
 	if(isset($_POST['parti1']))
 	{
 		$p1= mysqli_real_escape_string($connection,$_POST['parti1']);
-		$eventname= mysqli_real_escape_string($connection,$_POST['event']);
+		
 		$query="INSERT INTO `participant`(p_name, p_eventname, sid) VALUES ('$p1', '$eventname', '$sid')";
 		$result = mysqli_query($connection, $query);
 		if($result)
 		{
-			$smsg = "Participants 1 are Selected For the Event";
+			$smsg = "1 Participants are Selected For the Event";
 		}
 	}
 	if(isset($_POST['parti2']))
@@ -33,7 +42,7 @@ if (isset($_POST['submitevent']))
 		$result = mysqli_query($connection, $query);
 		if($result)
 		{
-			$smsg = "Participants 2 are Selected For the Event";
+			$smsg = "2 Participants  are Selected For the Event";
 		}
 	}
 	if(isset($_POST['parti3']))
@@ -43,7 +52,7 @@ if (isset($_POST['submitevent']))
 		$result = mysqli_query($connection, $query);
 		if($result)
 		{
-			$smsg = "Participants 3 are Selected For the Event";
+			$smsg = "3 Participants are Selected For the Event";
 		}
 	}
 	if(isset($_POST['parti4']))
@@ -53,7 +62,7 @@ if (isset($_POST['submitevent']))
 		$result = mysqli_query($connection, $query);
 		if($result)
 		{
-			$smsg = "Participants 4 are Selected For the Event";
+			$smsg = "4 Participants are Selected For the Event";
 		}
 	}
 	if(isset($_POST['parti5']))
@@ -63,7 +72,7 @@ if (isset($_POST['submitevent']))
 		$result = mysqli_query($connection, $query);
 		if($result)
 		{
-			$smsg = "Participants 5 are Selected For the Event";
+			$smsg = "5 Participants are Selected For the Event";
 		}
 	}
 	if(isset($_POST['parti6']))
@@ -73,11 +82,11 @@ if (isset($_POST['submitevent']))
 		$result = mysqli_query($connection, $query);
 		if($result)
 		{
-			$smsg = "Participants 6 are Selected For the Event";
+			$smsg = "6 Participants are Selected For the Event";
 		}
 	}
 							
-	
+	}
 }
 
 ?>
@@ -205,13 +214,33 @@ parent_div.appendChild(div);
 									 $selectevent="SELECT e_id, e_eventname FROM add_event WHERE f_id='$fid'";
 									 $resultevent = mysqli_query($connection, $selectevent);
 									?>
-									 <select required class="form-control action" id="country" name="event">
+									 <select onChange="disableDrop(this);" required class="form-control action" id="country" name="event">
 								   	 <option disabled hidden selected>Select Event
 									 </option>
 									 <?php while($rowevent = mysqli_fetch_assoc($resultevent)) { ?>
-   									  <option value="<?php echo $rowevent['e_id'] ?>"><?php echo $rowevent['e_eventname']; ?></option>
+   									  <option value="<?php echo $rowevent['e_id']; ?>"><?php echo $rowevent['e_eventname']; ?></option>
+										 
 								     <?php } ?>
+										
 									 </select>
+									 <input type="hidden" id="getname" name="event">
+									 <div class="text-right reloadButton" id="" style="display: none"><a href=""><i onClick="window.location.href='add_participant.php'" class="fa fa-refresh p-r-10" > Press here to load other Events</i></a></div>
+									 <script>
+										function disableDrop(elem) {
+											var val=elem.value;
+
+												if(elem.value == val){
+														document.getElementById('getname').value=val;
+												document.getElementById('country').disabled = true;
+													$('.reloadButton').css('display','block');
+													
+												}
+												else{
+												 document.getElementById('country').disabled = false;        
+												}
+
+											}
+										 </script>
                                 </div>
 								<div class="form-group" id="state">
                                     <label for="inputName1"  class="control-label"><strong>Enter Participant</strong></label>
