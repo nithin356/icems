@@ -107,7 +107,7 @@ if (isset($_POST['eventsubmit']))
 									 $resultfest = mysqli_query($connection, $selectfest);
 									?>
 									 
-								   	 <option disabled hidden selected >Select Event</option>
+								   	 <option disabled hidden selected >Select Fest</option>
 									 <?php while($rowfest = mysqli_fetch_assoc($resultfest)) { ?>
    									 <option value="<?php echo $rowfest['f_id']; ?>"> <?php echo $rowfest["fname"]; ?> </option>
 								     <?php } ?>
@@ -155,7 +155,7 @@ if (isset($_POST['eventsubmit']))
 								</select> 
 								</div>
                                 <div class="form-group">
-                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button type="submit" name="eventsubmit" class="btn btn-info">Submit</button>
+                                  <button type="submit" name="eventsubmit" class="btn btn-info">Submit</button>
                                 </div>
                             </form>
                         </div>

@@ -140,6 +140,7 @@ if (isset($_POST['username']) && isset($_POST['password']))
 								     <?php } ?>
 									 </select>
 								</div>
+					
                     <div class="form-group ">
                         <div class="col-xs-12">
                             <input class="form-control" type="password" required="" placeholder="Password(Max 7)" name="password" maxlength="7">

@@ -50,14 +50,14 @@ $userid=$_SESSION['username'];
                             <div class="row">
                                   <div class="col-md-8 col-sm-8">
 									College Name:<h3 class="box-title m-b-0"><?php echo $result['cname']; ?></h3>
-                                    <p>  
+                                      
                                     Fest Name:<h3 class="box-title m-b-0"><?php echo $result['fname']; ?></h3>
-									 <p>
+									
 									Date:<h3 class="box-title m-b-0"><?php echo $result['date']; ?></h3>
-									  <p>
+									
 									College Name:
 									  <h3 class="box-title m-b-0"><?php echo $result['cname']; ?></h3>
-                                    <p>
+                                    
 									Fest Description:<h4 class="box-title m-b-0"><?php echo $result['f_desc']; ?></h4>
 									  <br/>
 								   

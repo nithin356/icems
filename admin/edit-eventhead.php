@@ -11,14 +11,12 @@ $row = mysqli_fetch_assoc($result);
 //update profile
 if(isset($_POST['updateprofile']))
 {
-	$h_username=mysqli_real_escape_string($connection,$_POST['headname']);
-	$festname=mysqli_real_escape_string($connection,$_POST['festname']);
 	$hevent=mysqli_real_escape_string($connection,$_POST['event']);
-	$uquery="UPDATE head SET h_username='$h_username', h_fest='$festname', h_event='$hevent' WHERE h_id='$h_id'";
+	$uquery="UPDATE head SET h_event='$hevent' WHERE h_id='$h_id'";
 	$uresult = mysqli_query($connection, $uquery);
 	if($uresult)
 	{
-		$squery="SELECT h_username, h_fest, h_event  FROM head WHERE h_id='$h_id'";
+		$squery="SELECT h_username, h_fest, h_event ,fest.fname FROM head JOIN fest ON head.h_fest=fest.f_id WHERE h_id='$h_id'";
 		$sresult = mysqli_query($connection, $squery);
 		$row = mysqli_fetch_assoc($sresult);
 		$smsg="Event head updated successfully!";

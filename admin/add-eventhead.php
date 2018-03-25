@@ -80,7 +80,7 @@ if (isset($_POST['username']) && isset($_POST['password']))
         </tr>
       </tbody>
     </table>
-    <div style="padding: 40px; background: #fff;">
+    <div style="padding: 40px; background: #000;">
       <table border="0" cellpadding="0" cellspacing="0" style="width: 100%;">
         <tbody>
           <tr>
@@ -95,10 +95,7 @@ if (isset($_POST['username']) && isset($_POST['password']))
               </center>
               <b>- Thanks (ICEMS team)</b> </td>
           </tr>
-          <tr>
-            <td  style="border-top:1px solid #f6f6f6; padding-top:20px; color:#777">If the button above does not work, try copying and pasting the URL into your browser. If you continue to have problems, please feel free to contact us at  icemscentre@gmail.com</td>
-          </tr>
-        </tbody>
+          </tbody>
       </table>
     </div>
     <div style="text-align: center; font-size: 12px; color: #b2b2b5; margin-top: 20px">

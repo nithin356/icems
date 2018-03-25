@@ -50,12 +50,11 @@ $userid=$_SESSION['username'];
                             <div class="row">
                                   <div>
 									  
-                                    College Name:<h3 class="box-title m-b-0"><?php echo $result['cname']; ?></h2>  
-                                    Fest Name:<h3 class="box-title m-b-0"><?php echo $result['fname']; ?></h2>  
-                                    Date:<h3 class="box-title m-b-0"><?php echo $result['date']; ?></h2>
-<br/>  
-                                    Description:
-									  <p><?php echo $result['f_desc']; ?>
+                                    <strong>College Name:</strong><h3 class="box-title m-b-0"><?php echo $result['cname']; ?></h3>  
+                                    <strong>Fest Name:</strong><h3 class="box-title m-b-0"><?php echo $result['fname']; ?></h3>  
+                                    <strong>Date:</strong><h3 class="box-title m-b-0"><?php echo $result['date']; ?></h3>
+                                    <strong>Description:</strong>
+									  <h3 class="box-title m-b-0"><?php echo $result['f_desc']; ?></h3>
 										<div class="p-t-5">
 											<a href="edit-fest.php?id=<?php echo $result['f_id']; ?>" class="fcbtn btn btn-info">Edit</a>
 											<a href="#" class="fcbtn btn btn-danger model_img deleteevent" data-id="<?php echo $result['f_id']; ?>" id="deleteDoc">Delete</a>

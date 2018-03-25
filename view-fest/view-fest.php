@@ -1,5 +1,14 @@
 <?php
 require('connect.php');
+$selectfest=mysqli_query($connection,"SELECT * FROM fest");
+$count=mysqli_num_rows($selectfest);
+if($count==0)
+{
+   echo "<script>alert('no fests')
+   window.location='../index.html'
+   </script>";	 
+
+}
 ?>
 
 								

@@ -16,9 +16,10 @@
                 <div class="top-left-part">
                     <a class="logo" href="../index.html">
                         <!-- Logo icon image, you can use font-icon also -->
-                        <b><img hieght="100" width="100" /></b>
+                        <b><img hieght="150" style="padding-right: 65px" width="150" src="../plugins/images/favicon.png" /></b>
                         <!-- Logo text image you can use text also -->
-                        <span class="hidden-xs"><img src="../plugins/images/eliteadmin-text.png" alt="home" /></span>
+						
+                        <span class="hidden-xs"><font style="padding-left: 10px" size=5 face="batmanforeveralternate">ICEMS</font></span>
                     </a>
                 </div>
                 <!-- Logo -->

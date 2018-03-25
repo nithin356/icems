@@ -210,7 +210,7 @@ if(isset($_POST['updateprofile']))
                                     <label for="inputName1" class="control-label">Fest Description</label>
                                     <input type="text" class="form-control" id="username" name="desc" required value="<?php echo $row['f_desc']; ?>">
 								</div>
-                               
+                               <br>
                               
                                 <div class="form-group p-t-0">
                                     <button class="btn btn-success" name="updateprofile">Update Fest Details </button>

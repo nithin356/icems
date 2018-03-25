@@ -47,6 +47,7 @@ $userid=$_SESSION['username'];
 					foreach($result as $key=>$result)
 				{ ?>
                 <div class="col-md-4 col-sm-4">
+									<div class="ribbon ribbon-corner ribbon-info ribbon-right" style="margin-right:10px"><i class="fa fa-calendar-check-o"></i></div>
                         <div class="white-box">
                             <div class="row">
                                   <div>
