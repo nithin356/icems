@@ -58,7 +58,7 @@ include_once 'assets/checkdate.php';
                                     <p>
 									Event Description:<h3 class="box-title m-b-0"><?php echo $result['e_desc']; ?></h3>
 								<p>
-									Event Rounds:<h3 class="box-title m-b-0"><?php echo $result['round'].$timecount1.$todaydate;  ?></h3>
+									Event Rounds:<h3 class="box-title m-b-0"><?php echo $result['round']; ?></h3>
 									<?php
 				 					$store=$result['e_id'];
 				 					$check="SELECT * FROM participant WHERE p_eventname='$store'";

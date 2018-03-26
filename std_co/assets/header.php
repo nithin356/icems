@@ -13,12 +13,14 @@
                 <a class="navbar-toggle hidden-sm hidden-md hidden-lg " href="javascript:void(0)" data-toggle="collapse" data-target=".navbar-collapse"><i class="ti-menu"></i></a>
                 
 				<!-- Logo -->
-                <div class="top-left-part">
+             <div class="top-left-part">
                     <a class="logo" href="../index.html">
                         <!-- Logo icon image, you can use font-icon also -->
-                        <b><img></b>
+                        <b><img hieght="150" style="padding-right: 65px" width="150" src="../plugins/images/favicon.png" /></b>
                         <!-- Logo text image you can use text also -->
-						<img src="../plugins/images/eliteadmin-text.png" /></a>
+						
+                        <span class="hidden-xs"><font style="padding-left: 10px" size=5 face="batmanforeveralternate">ICEMS</font></span>
+                    </a>
                 </div>
                 <!-- Logo -->
                 

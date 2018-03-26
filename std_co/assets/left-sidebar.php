@@ -23,7 +23,7 @@
 			<!--sidebar design-->
 			<li> <a href="index.php" class="waves-effect">
 				<i class="fa fa-dashboard" data-icon="v"></i>&nbsp;&nbsp;
-				<span class="hide-menu text-danger"> Dashboard <span class="fa arrow"</span> <span class="label label-rouded label-danger pull-right"></span></a>
+				<span class="hide-menu "> Dashboard <span ></span></span> <span class="label label-rouded label-danger pull-right"></span></a>
 			</li>
 						<li> <a href="" class="waves-effect">
 							<i class="fa fa-bookmark-o" data-icon="v"></i>&nbsp;&nbsp;
@@ -35,7 +35,7 @@
 						</li>
 						<li> <a href="" class="waves-effect">
 							<i class="fa fa-users" data-icon="v"></i>&nbsp;&nbsp;
-							<span class="hide-menu text-danger"> Participant <span class="fa arrow"</span> <span class="label label-rouded label-danger pull-right"></span></a>
+							<span class="hide-menu"> Participant <span class="fa arrow"</span> <span class="label label-rouded label-danger pull-right"></span></a>
 								<ul class="nav nav-second-level">
 								<?php 	include_once 'checkdate.php';
 									if($disable==0)

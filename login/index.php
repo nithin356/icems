@@ -22,7 +22,7 @@ if (isset($_POST['username']) && isset($_POST['password']))
 	{
         $susername = mysqli_real_escape_string($connection,$_POST['username']);
         $spassword = $_POST['password'];
-        $querys="SELECT * FROM `std_co` WHERE (s_username='$susername' OR s_email='$susername') AND s_password='$spassword'";
+        $querys="SELECT * FROM `std_co` WHERE BINARY (BINARY s_username='$susername' OR s_email='$susername') AND BINARY s_password='$spassword'";
         $results = mysqli_query($connection,$querys);
         $rows = mysqli_fetch_assoc($results);
         $counts = mysqli_num_rows($results);
@@ -42,7 +42,7 @@ if (isset($_POST['username']) && isset($_POST['password']))
 		$husername = mysqli_real_escape_string($connection,$_POST['username']);
         $hpassword = $_POST['password'];
         
-			$queryh="SELECT * FROM `head` WHERE (h_username='$husername' OR h_email='$husername') AND h_password='$hpassword'";
+			$queryh="SELECT * FROM `head` WHERE BINARY( BINARY h_username='$husername' OR h_email='$husername') AND BINARY h_password='$hpassword'";
         $resulth = mysqli_query($connection,$queryh);
         $rowh = mysqli_fetch_assoc($resulth);
         $counth = mysqli_num_rows($resulth);
@@ -268,7 +268,7 @@ function capLock(e){
                     Inter Collegiate Event Management System © 2018
 					</div>
                 </form>
-                <form class="form-horizontal form-material" id="recoverform" method="post">
+                <for0m class="form-horizontal form-material" id="recoverform" method="post">
                    <?php if(isset($fmsg)) { ?><div class="alert alert-danger"> <?php echo $fmsg; ?> </div> <?php }?>
   
                     <div class="form-group ">

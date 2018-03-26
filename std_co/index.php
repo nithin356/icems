@@ -41,15 +41,22 @@ include_once 'assets/checkdate.php';
                 </div>
                 <!-- /.row -->
                 <div>
+					<?php
+					$squery="SELECT * FROM std_co WHERE s_username='$username'";
+		$sresult = mysqli_query($connection, $squery);
+		$row = mysqli_fetch_assoc($sresult);
+					?>
+		
 					<font size="+3" color="#870E10" face="Castellar"><center>WELCOME STUDENT Co-ORDINATOR</center>
 					<br></font>
 					<center><div><img src="../plugins/images/users/man.png" alt="user-img" class="img-circle"></div></center>
-					<font size="100" face="algerian" color="#4F1490"><center><?php echo $_SESSION['s_username']; ?></center></font>
+					<font size="100" face="algerian" color="#4F1490"><center><?php echo $row['s_name']; ?></center></font>
 				</div>
 				<BR>
 				<center>
-          <?php if($disable==1){ ?> <h2 class="text-danger"> NITHIN TYPE MESSAGE HERE </h2> <?php } ?>
-				You are Now Eligible to Join The Fest
+          <?php if($disable==1){ ?> <h2 class="text-danger"> YOU ARE LATE !</h2> <?php } ?>
+		<?php if($disable==0){ ?> <h2>You are Now Eligible to Join The Fest</h2> <?php } ?>
+				
 				</center>
 					</div>
 				  <!--row -->
