@@ -1,6 +1,10 @@
 <?php
 include '../login/accesscontrolhead.php';
 $username=$_SESSION['h_username'];
+$query="SELECT * FROM head WHERE h_username='$username'";
+$resu=mysqli_query($connection,$query);
+$t=mysqli_fetch_assoc($resu);
+					
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -23,7 +27,7 @@ $username=$_SESSION['h_username'];
 	<?php include 'assets/left-sidebar.php'; ?>
         <!-- Left navbar-header end -->
         <!-- Page Content -->
-        <div id="page-wrapper">
+        <div id="page-wrapper" style="background-image: url(../plugins/images/700-min.jpg)">
             <div class="container-fluid">
                 <div class="row bg-title">
                     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
@@ -41,8 +45,9 @@ $username=$_SESSION['h_username'];
                 <div>
 				<font size="100" color="#870E10" face="batmanforeveralternate"><center>WELCOME EVENT HEAD</center>	
 					<br></font>
+					
 					<center><div><img src="../plugins/images/users/man.png" alt="user-img" class="img-circle"></div></center>
-					<font size="100" face="algerian" color="#4F1490"><center><?php echo $_SESSION['h_username']; ?></center></font>
+					<font size="100" face="algerian" color="#4F1490"><center><?php echo $t['hfname']; ?></center></font>
 				</div>
 				<BR>
 				<center>

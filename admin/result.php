@@ -84,6 +84,7 @@ parent_div.appendChild(div);
   }
  });
 });
+	</script>
 <!-- username check js end -->
 </head>
 
@@ -98,7 +99,7 @@ parent_div.appendChild(div);
 	?>
         <!-- Page Content -->
         <div id="page-wrapper">
-            <div class="container-fluid">
+            <div class="container-fluid" style="background-image: url(../plugins/images/w.jpg)">
                 <div class="row bg-title">
                     <!-- .page title -->
                     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">

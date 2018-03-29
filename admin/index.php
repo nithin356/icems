@@ -24,7 +24,7 @@ $userid=$_SESSION['username'];
         <!-- Left navbar-header end -->
         <!-- Page Content -->
         <div id="page-wrapper">
-            <div class="container-fluid">
+            <div class="container-fluid" style="background-image: url(../plugins/images/700-min.jpg)">
                 <div class="row bg-title">
                     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
                         <h4 class="page-title">Dashboard </h4>
@@ -38,14 +38,19 @@ $userid=$_SESSION['username'];
                     <!-- /.col-lg-12 -->
                 </div>
 				<div>
+					<?php
+					$squery="SELECT * FROM admin WHERE username='$userid'";
+		$sresult = mysqli_query($connection, $squery);
+		$row = mysqli_fetch_assoc($sresult);
+					?>
 				<font size="100" color="#870E10" face="batmanforeveralternate"><center>WELCOME ADMIN</center>	
 					<br></font>
 					<center><div><img src="../plugins/images/users/admin.png" alt="user-img" class="img-circle" height="150" width="150"></div></center>
-					<font size="100" face="algerian" color="#4F1490"><center><?php echo $_SESSION['username']; ?></center></font>
+					<font size="100" face="algerian" color="#4F1490"><center><?php echo $row['full']; ?></center></font>
 				</div>
 				<BR>
 				<center>
-				You are Now Eligible to Create/Organize The Fest
+				<font color="red">You are Now Eligible to Create/Organize The Fest</font>
 				</center>
 					</div>
 				</div>

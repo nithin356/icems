@@ -2,6 +2,10 @@
 include '../login/accesscontroladmin.php';
 require('connect.php');
 $userid=$_SESSION['username'];
+$getfestname="SELECT *,fest.f_id FROM admin INNER JOIN fest ON admin.id=fest.id WHERE username='$userid'";
+$getfestnameresult=mysqli_query($connection,$getfestname);
+$getfestnamerow=mysqli_fetch_assoc($getfestnameresult);
+$ID=$getfestnamerow['f_id'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -25,7 +29,7 @@ $userid=$_SESSION['username'];
 	?>
         <!-- Page Content -->
         <div id="page-wrapper">
-            <div class="container-fluid">
+            <div class="container-fluid" style="background-image: url(../plugins/images/w.jpg)">
                 <div class="row bg-title">
                     <!-- .page title -->
                     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
@@ -41,23 +45,22 @@ $userid=$_SESSION['username'];
                 </div>
 				<div class="row">
                 <?php
-					$query = "SELECT * FROM fest";
+					$query = "SELECT * FROM fest WHERE id='$ID'";
 					$result = mysqli_query($connection, $query);
 					foreach($result as $key=>$result)
 				{ ?>
                 <div class="col-md-4 col-sm-4">
+					<div class="ribbon ribbon-corner ribbon-info ribbon-right" style="margin-right:7px"><i class="fa fa-calendar-plus-o e"></i></div>
                         <div class="white-box">
                             <div class="row">
                                   <div class="col-md-8 col-sm-8">
-									College Name:<h3 class="box-title m-b-0"><?php echo $result['cname']; ?></h3>
+									College Name:<h3 class="box-title m-b-0"><?php echo $result['coname']; ?></h3>
                                       
                                     Fest Name:<h3 class="box-title m-b-0"><?php echo $result['fname']; ?></h3>
 									
 									Date:<h3 class="box-title m-b-0"><?php echo $result['date']; ?></h3>
 									
-									College Name:
-									  <h3 class="box-title m-b-0"><?php echo $result['cname']; ?></h3>
-                                    
+								                                   
 									Fest Description:<h4 class="box-title m-b-0"><?php echo $result['f_desc']; ?></h4>
 									  <br/>
 								   

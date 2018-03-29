@@ -2,26 +2,17 @@
 require('connect.php');
 if(isset($_POST['f_email']) && isset($_POST['f_message']))
 {
+	$fest=mysqli_real_escape_string($connection,$_POST['fest']);
 	$email=mysqli_real_escape_string($connection,$_POST['f_email']);
 	$feedback=mysqli_real_escape_string($connection,$_POST['f_message']);
-	$insert="INSERT INTO `feedback`(f_email, f_message) VALUES ('$email','$feedback')";
+	$insert="INSERT INTO `feedback`(fest,f_email, f_message) VALUES ('$fest','$email','$feedback')";
 	$result = mysqli_query($connection, $insert);
 	if($result)
 				{
-					$smsg = "Thank you for the feedback";
-				}
-				else
-				{
-					$fmsg = "Posting Failed";
-				}
-}
-if (isset($_POST['submit']))
-	{
-					           
-            $to_Email       = $email; // Replace with recipient email address
+			$smsg = "Thank you for the feedback";
+			$to_Email       = $email; // Replace with recipient email address
             $subject        = 'Feedback'; //Subject line for emails
-
-            $host           = "smtp.gmail.com"; // Your SMTP server. For example, smtp.mail.yahoo.com
+			$host           = "smtp.gmail.com"; // Your SMTP server. For example, smtp.mail.yahoo.com
             $username      = "icemscentre@gmail.com"; //For example, your.email@yahoo.com
             $password       = "icems123"; // Your password
             $SMTPSecure     = "tls"; // For example, ssl
@@ -66,8 +57,8 @@ if (isset($_POST['submit']))
       <table border="0" cellpadding="0" cellspacing="0" style="width: 100%;">
         <tbody>
           <tr>
-            <td style="border-bottom:1px solid #f6f6f6;"><h1 style="font-size:14px; font-family:arial; margin:0px; font-weight:bold;">Dear Event Head,</h1>
-              <p style="margin-top:0px; color:#bbbbbb;">
+            <td style="border-bottom:1px solid #000;"><h1 style="font-size:14px; font-family:arial; margin:0px; font-weight:bold;">Dear Event Head,</h1>
+              <p style="margin-top:0px; color:#000;">
 			  
 			  <STRONG>THANK YOU FOR THE FEEDBACK</p></td>
           </tr>
@@ -93,11 +84,12 @@ if (isset($_POST['submit']))
         $fmsg="E-mail not sent,Posting Failed";
 
     }
-	else {
-        $smsg="e-mail sent successfully,Thank you for the Feedback.";
-	}
-}
-	
+				}
+				else
+				{
+					$fmsg = "Posting Failed";
+				}
+}	
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -144,6 +136,22 @@ if (isset($_POST['submit']))
                     <div class="form-group ">
                         <div class="col-xs-12">
                             <input class="form-control" type="email" name="f_email" id="pw1" required="" placeholder="E-mail">
+                        </div>
+                    </div> 
+					<div class="form-group ">
+						
+                        <div class="col-xs-12">
+                            <select class="form-control" name="fest">
+								 <option disabled hidden selected> SELECT FEST</option>		
+                                    <?php
+									 $selectfest="SELECT * FROM fest";
+									 $resultfest = mysqli_query($connection, $selectfest);
+									?>
+									 <?php while($rowfest = mysqli_fetch_assoc($resultfest)) { ?>
+								   	
+									<option> <?php echo $rowfest["fname"]; ?></option>		
+									 <?php } ?>
+									 </select>
                         </div>
                     </div>
                     <div class="form-group">

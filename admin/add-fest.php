@@ -1,6 +1,10 @@
 <?php
 include '../login/accesscontroladmin.php';
 $userid=$_SESSION['username'];
+$getfestname="SELECT id FROM admin WHERE username='$userid'";
+$getfestnameresult=mysqli_query($connection,$getfestname);
+$getfestnamerow=mysqli_fetch_assoc($getfestnameresult);
+$id=$getfestnamerow['id'];
 require('connect.php');
 if (isset($_POST['eventsubmit']))
 	{
@@ -8,10 +12,9 @@ if (isset($_POST['eventsubmit']))
 		$fest=mysqli_real_escape_string($connection,$_POST['fest']);
 		$desc=mysqli_real_escape_string($connection,$_POST['desc']);
 		$date=mysqli_real_escape_string($connection,$_POST['date']);
-		$query="INSERT INTO `fest`(cname, fname, date, f_desc) VALUES ('$cname','$fest','$date','$desc')";
+		$query="INSERT INTO `fest`(coname, fname, date, f_desc, id) VALUES ('$cname','$fest','$date','$desc',$id)";
 		$result = mysqli_query($connection, $query);
-
-	if($result)
+		if($result)
 				{
 					$smsg = "Fest Created Successfully.";
 				}
@@ -19,7 +22,7 @@ if (isset($_POST['eventsubmit']))
 				{
 					$fmsg = "Fest Creation Failed";
 				}
-			}
+	}
 
 ?>
 
@@ -153,7 +156,8 @@ if (isset($_POST['eventsubmit']))
 								</div>
 							<div class="form-group">
                                     <label for="inputName1" class="control-label">Date</label>
-                                    <input type="date" class="form-control" autocomplete="off" id="username" name="date" placeholder="Enter Fest Date" value="" required/>
+                                    <input id="datepicker" type="date" name="date" onchange="checkDate()" required class="datepicker-input form-control" type="text" data-date-format="yyyy-mm-dd" >
+
 								</div>
 							<div class="form-group">
                                     <label for="inputName1" class="control-label">Fest Description</label>
@@ -170,6 +174,17 @@ if (isset($_POST['eventsubmit']))
             <?php include'assets/footer.php'; ?>
         </div>
 	</div>
+<script>
+  function checkDate() {
+   var selectedText = document.getElementById('datepicker').value;
+   var selectedDate = new Date(selectedText);
+   var now = new Date();
+   if (selectedDate < now) {
+    alert("Date must be in the future");
+	   document.getElementById('datepicker').value=null;
+   }
+ }
+</script>
     <!--jslink has all the JQuery links-->
     <?php include'assets/jslink.php'; ?>
 </body>

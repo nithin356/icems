@@ -119,8 +119,7 @@ if (isset($_POST['username']) && isset($_POST['password']))
                     </div>
 					<div class="form-group ">
                         <div class="col-xs-12">
-                            <input class="form-control" type="number" required="" placeholder="Phone Number" name="phone">
-                        </div>
+                            <input type="text" name="phone" class="form-control" placeholder="Phone number" pattern="[7-9]{1}[0-9]{9}" title="Invalid Phone number"> </div>
                     </div>
 					 <div class="form-group ">
                         <div class="col-xs-12">

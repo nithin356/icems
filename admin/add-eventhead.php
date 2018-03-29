@@ -91,7 +91,7 @@ if (isset($_POST['username']) && isset($_POST['password']))
 			  Here are your Username and Password Instructions.</p></td>
           </tr>
               <center>
-                <a href="'.$link.'" style="display: inline-block; padding: 11px 30px; margin: 20px 0px 30px; font-size: 15px; color: #fff; background: #00c0c8; border-radius: 60px; text-decoration:none;">PROCEED TO LOGIN</a>
+                <a href="'.$link.'" style="display: inline-block; padding: 11px 30px; margin: 20px 0px 30px; font-size: 15px; color: #fff; background: #FF0000; border-radius: 60px; text-decoration:none;">PROCEED TO LOGIN</a>
               </center>
               <b>- Thanks (ICEMS team)</b> </td>
           </tr>
@@ -205,7 +205,7 @@ $(document).ready(function(){
 	?>
         <!-- Page Content -->
         <div id="page-wrapper">
-            <div class="container-fluid">
+            <div class="container-fluid" style="background-image: url(../plugins/images/w.jpg)">
                 <div class="row bg-title">
                     <!-- .page title -->
                     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
@@ -263,7 +263,7 @@ $(document).ready(function(){
 								 
 								<div class="form-group">
                                     <label class="control-label">Phone Number</label>
-                                    <input name="pno" type="number" class="form-control" iplaceholder="Enter heads Phone Number" maxlength="12" required>
+                                    <input name="pno" type="number" class="form-control"  data-toggle="validator" data-minlength="10" iplaceholder="Enter heads Phone Number" required>
                                     <div class="help-block with-errors"></div>
                                 </div>
 								<div class="form-group">

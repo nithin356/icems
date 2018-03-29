@@ -17,12 +17,16 @@
 				<ul class="nav" id="side-menu">
 								<!-- /input-group -->
 						</li>
-						<li class="nav-small-cap m-t-10"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						<li class="nav-small-cap m-t-10"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 						Main Menu
 						</li>
 			<!--sidebar design-->
+			<li> <a href="index.php" class="waves-effect">
+				<i class="fa fa-dashboard" data-icon="v"></i>&nbsp;&nbsp;
+				<span class="hide-menu "> Dashboard <span ></span></span> <span class="label label-rouded label-danger pull-right"></span></a>
+			</li>
 						<li> <a href="" class="waves-effect">
-							<i class="linea-icon linea-basic fa-fw" data-icon="v"></i> <span class="hide-menu text-danger"> Schedule <span class="fa arrow"</span> <span class="label label-rouded label-danger pull-right"></span></a>
+							<i class="linea-icon linea-basic fa-fw" data-icon="v"></i> <span class="hide-menu "> Schedule <span class="fa arrow"</span> <span class=""></span></a>
 								<ul class="nav nav-second-level">
 										<li> <a href="add_time.php">Add Event Time</a> </li>
 										<li> <a href="view-time.php">View Event Time</a> </li>

@@ -29,8 +29,8 @@ $fid=$getfestnamerow['fest'];
 	include 'assets/breadcrumbs.php';
 	?>
         <!-- Page Content -->
-        <div id="page-wrapper">
-            <div class="container-fluid">
+        <div id="page-wrapper" style="background-image: url(../plugins/images/w.jpg)">
+            <div class="container-fluid" style="background-image: url(../plugins/images/w.jpg)">
                 <div class="row bg-title">
                     <!-- .page title -->
                     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
@@ -51,6 +51,7 @@ $fid=$getfestnamerow['fest'];
 					?>
 				       <?php while($result = mysqli_fetch_assoc($sresult)) { ?>
    					 <div class="col-md-4 col-sm-4">
+						 <div class="ribbon ribbon-corner ribbon-info ribbon-right" style="margin-right:10px"><i class="fa fa-users"></i></div>
                        	<div class="white-box">
                             <div class="row">
 								   <div>

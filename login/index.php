@@ -140,13 +140,11 @@ if(isset($_POST['resetemail']))
           <tr>
             <td style="padding:10px 0 30px 0;"><p>A request to reset your Account password has been made. If you did not make this request, simply ignore this email. If you did make this request, please reset your password:</p>
               <center>
-                <a href="'.$link.'" style="display: inline-block; padding: 11px 30px; margin: 20px 0px 30px; font-size: 15px; color: #fff; background: #00c0c8; border-radius: 60px; text-decoration:none;">Reset Password</a>
+                <a href="'.$link.'" style="display: inline-block; padding: 11px 30px; margin: 20px 0px 30px; font-size: 15px; color: #000; background: #8a2be2; border-radius: 60px; text-decoration:none;">Reset Password</a>
               </center>
               <b>- Thanks (ICEMS team)</b> </td>
           </tr>
-          <tr>
-            <td  style="border-top:1px solid #f6f6f6; padding-top:20px; color:#777">If the button above does not work, try copying and pasting the URL into your browser. If you continue to have problems, please feel free to contact us at icemscentre@gmail.com</td>
-          </tr>
+         
         </tbody>
       </table>
     </div>

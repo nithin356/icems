@@ -79,10 +79,10 @@ if(isset($_POST['password']) && isset($_POST['cpassword']))
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="description" content="AlphaCare Online Hospital Management System">
-    <meta name="author" content="Dhanush KT, Nishanth Bhat">
+	<meta name="description" content="Inter-Collegiate Event Management System">
+    <meta name="author" content="Nithin">
     <link rel="icon" type="image/png" sizes="16x16" href="../plugins/images/favicon.png">
-    <title>AlphaCare - OHMS</title>
+    <title>ICEMS</title>
     <!-- Bootstrap Core CSS -->
     <link href="../plugins/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="../plugins/bower_components/bootstrap-extension/css/bootstrap-extension.css" rel="stylesheet">

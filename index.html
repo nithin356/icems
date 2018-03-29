@@ -1,13 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-<head><!--gfgfg-->
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="nithin">
     <title>Home | ICEMS</title>
-
-	<!-- core CSS -->
     <link href=" landerpage/css/bootstrap.min.css" rel="stylesheet">
     <link href=" landerpage/css/font-awesome.min.css" rel="stylesheet">
     <link href=" landerpage/css/animate.min.css" rel="stylesheet">
@@ -16,46 +14,48 @@
     <link href=" landerpage/css/responsive.css" rel="stylesheet">
 	<link href=" landerpage/css/style.css" rel="stylesheet">
 	<link href=" landerpage/css/spinners.css" rel="stylesheet">
-	<!--[if lt IE 9]>
-    <script src="js/html5shiv.js"></script>
-    <script src="js/respond.min.js"></script>
-    <![endif]-->
-	
-    <link rel="shortcut icon" href="landerpage/images/ico/favicon.ico">
+	<link rel="shortcut icon" href="landerpage/images/ico/favicon.ico">
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href=" nitin/images/ico/apple-touch-icon-144-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href=" nitin/images/ico/apple-touch-icon-114-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href=" nitin/images/ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href=" nitin/images/ico/apple-touch-icon-57-precomposed.png">
-</head><!--/head-->
-	
-<body class="homepage">
-	<!--<div class="preloader">
-        <div class="cssload-speeding-wheel"></div>
-    </div>-->
+	<link rel="stylesheet" href="landerpage/csss/normalize.css">
+	<link rel="stylesheet" href="landerpage/csss/main.css">
+	<script src="landerpage/jss/vendor/modernizr-2.6.2.min.js"></script>
+</head>
+<body>
+	<div id="loader-wrapper">
+			<div id="loader"></div>
+			<div class="loader-section section-left"></div>
+			<div class="loader-section section-right"></div>
+	</div>
+	<div>
         <nav class="navbar navbar-inverse" role="banner">
             <div class="container">
-              <div class="navbar-header">
+              <div>
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="sr-only">Toggle navigation</span>
+                        <span class="sr-only"></span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                 </button>
                 <center>
-                  <a class="navbar-brand" href="index.html">
-                  <font face="batmanforeveralternate">ICEMS</font>
+                  <a href="index.html">
+					  <font color="#fff" size="+3" face="batmanforeveralternate">ICEMS</font>
                </a>
                </center>
                 </div>
 
-                <div class="collapse navbar-collapse navbar-right">
+                <div class="collapse navbar-collapse navbar-left">
+					
                   <ul class="nav navbar-nav">
-                   	  <li><a href="index.html"> | Home |</a></li>
-                      <li><a href="#info">| About Us |</a></li>
-					  <li><a href="view-fest/view-fest.php">| Upcoming fests |</a></li>
-					  <li><a href="result/result.php">| View Results |</a></li>
-					  <li><a href="feedback/feedback.php">| Feedback |</a></li>
-					  <li><a href="login/" class="A"><span>| Login |</span></a></li>
+                   	  <li><a href="index.html"><i class="fa fa-home">&nbsp;&nbsp;</i>Home</a></li>
+                      <li><a href="#info">&nbsp;&nbsp;<i class="fa fa-info-circle">&nbsp;&nbsp;</i>About Us</a></li>
+					  <li><a href="view-fest/view-fest.php">&nbsp;<i class="fa fa-calendar">&nbsp;&nbsp;</i>Upcoming fests </a></li>
+					  <li><a href="result/result.php">&nbsp;<i class="fa fa-bullhorn">&nbsp;&nbsp;</i>View Results </a></li>
+					  <li><a href="feedback/feedback.php">&nbsp;<i class="fa fa-envelope">&nbsp;&nbsp;</i>Feedback </a></li>
+					  <li><a href="login/" class="A"><span>&nbsp;<i class="fa fa-sign-in">&nbsp;&nbsp;</i>Login </span></a></li>
+					  <li><a href="adminreg/index.php" class="A"><span>&nbsp; <i class="fa fa-user">&nbsp;&nbsp;</i>Admin Registration </span></a></li>
 					</ul>
                 </div>
             </div>
@@ -77,7 +77,7 @@
                             <div class="col-sm-6">
                                 <div class="carousel-content">
                                     
-									<h1 class="animation animated-item-1">INTER COLLEGIATE EVENT MANAGEMENT</h1>
+									<h1 class="animation animated-item-1"><font color=" #00F4CA">INTER COLLEGIATE EVENT MANAGEMENT</h1></font>
                                     <h2 class="animation animated-item-2">THE EASIEST WAY TO JOIN ANY FEST ONLINE USING THIS WEBSITE</h2>
                                     <a class="btn-slide animation animated-item-3" href="register/index.php">Lets get Started Register Here!</a>
                                 	
@@ -153,11 +153,13 @@
                 <div class="col-sm-8">
                     <div class="media contact-info wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
                         <div class="pull-left">
-                            <i class="fa fa-event"></i>
+							<br>
+                            <i class="fa fa-info"></i>
                         </div>
                         <div class="media-body" id="#">
-                            <h2>INTER COLLEGIATE EVENT MANAGEMENT SYSTEM</h2>
-                            <p>This Website Let User to create or Join any fest.Using this website  user can Easily Participate.</p>
+							.
+                            <h2><font face="times new roman">INTER COLLEGIATE EVENT MANAGEMENT SYSTEM</font></h2>
+                            <p>This Website Let User to create or Join any fest.Using this website students can Easily Participate.</p>
                         </div>
                     </div>
                 </div>
@@ -197,11 +199,16 @@ $(function() {
   });
 });
 </script>
-    <script src="landerpage/js/jquery.js"></script>
+	<script src="landerpage/js/jquery.js"></script>
     <script src="landerpage/js/bootstrap.min.js"></script>
     <script src="landerpage/js/jquery.prettyPhoto.js"></script>
     <script src="landerpage/js/jquery.isotope.min.js"></script>
     <script src="landerpage/js/main.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+	<script src="landerpage/jss/main.js"></script>
+
     <script src="landerpage/js/wow.min.js"></script>
+	</div>
 </body>
 </html>

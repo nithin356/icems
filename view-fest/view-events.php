@@ -25,7 +25,7 @@ $fid=$_GET['id'];
 	?>
         <!-- Page Content -->
         <div>
-            <div class="container-fluid">
+            <div class="container-fluid" style="background-image: url(../plugins/images/w.jpg)">
                 <div class="row bg-title">
                     <!-- .page title -->
                     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
@@ -40,15 +40,16 @@ $fid=$_GET['id'];
                     <!-- /.breadcrumb -->
                 </div>
 				<div class="row">
+					
                 <?php
 					$query = "SELECT * FROM add_event WHERE f_id='$fid'";
 					$result = mysqli_query($connection, $query);
 					foreach($result as $key=>$result)
 				{ ?>
-                <div class="col-md-4 col-sm-4">
-                        <div class="white-box">
+					<div class="col-md-4 col-sm-4"><div class="ribbon ribbon-corner ribbon-info ribbon-right" style="margin-right:7px"><i class="fa fa-calendar"></i></div>	
+					    <div class="white-box">
                             <div class="row">
-                                  <div class="col-md-8 col-sm-8">
+                                  <div class="col-md-10 col-sm-10">
 									Event Name:<h3 class="box-title m-b-0"><?php echo $result['e_eventname']; ?></h3>
                                     <p>  
 									Event Description:<h3 class="box-title m-b-0"><?php echo $result['e_desc']; ?></h3>

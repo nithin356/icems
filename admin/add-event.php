@@ -1,6 +1,10 @@
 <?php
 include '../login/accesscontroladmin.php';
 $userid=$_SESSION['username'];
+$gethname="SELECT id FROM admin WHERE username='$userid'";
+$gethnameresult=mysqli_query($connection,$gethname);
+$gethnamerow=mysqli_fetch_assoc($gethnameresult);
+$id=$gethnamerow['id'];
 require('connect.php');
 if (isset($_POST['eventsubmit']))
 	{
@@ -70,7 +74,7 @@ if (isset($_POST['eventsubmit']))
 	?>
         <!-- Page Content -->
         <div id="page-wrapper">
-            <div class="container-fluid">
+            <div class="container-fluid" style="background-image: url(../plugins/images/w.jpg)">
                 <div class="row bg-title">
                     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
                         <h4 class="page-title">Add Event</h4>
@@ -101,17 +105,17 @@ if (isset($_POST['eventsubmit']))
 
                          		<div class="form-group">
                                     <label class="control-label">Fest name</label>
-									<select required class="form-control" name="festid">
+									<select class="form-control">
                                     <?php
-									 $selectfest="SELECT * FROM fest";
+									 $selectfest="SELECT *,admin.username FROM fest JOIN admin ON fest.f_id=admin.id where fest.id='$id'";
 									 $resultfest = mysqli_query($connection, $selectfest);
 									?>
-									 
-								   	 <option disabled hidden selected >Select Fest</option>
 									 <?php while($rowfest = mysqli_fetch_assoc($resultfest)) { ?>
-   									 <option value="<?php echo $rowfest['f_id']; ?>"> <?php echo $rowfest["fname"]; ?> </option>
+								   	 <option disabled hidden selected value="" > <?php echo $rowfest["fname"]; ?></option>		
+										<input type="hidden" name="festid" value="<?php echo $rowfest['f_id']; ?>">
 								     <?php } ?>
 									 </select>
+									
 								</div>
 								<div class="form-group">
                                     <label for="inputName1" class="control-label">Event name</label>

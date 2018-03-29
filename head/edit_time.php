@@ -93,7 +93,7 @@ if(isset($_POST['update']))
 	include 'assets/breadcrumbs.php';
 	?>
         <!-- Page Content -->
-        <div id="page-wrapper">
+        <div id="page-wrapper" style="background-image: url(../plugins/images/w.jpg)">
             <div class="container-fluid">
                 <div class="row bg-title">
                     <!-- .page title -->

@@ -86,7 +86,7 @@ if(isset($_POST['updateprofile']))
 	?>
         <!-- Page Content -->
         <div id="page-wrapper">
-            <div class="container-fluid">
+            <div class="container-fluid" style="background-image: url(../plugins/images/w.jpg)">
                 <div class="row bg-title">
                     <!-- .page title -->
                     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
@@ -118,10 +118,10 @@ if(isset($_POST['updateprofile']))
                         <div class="white-box">
                            <div class="white-box">
                             <div class="user-bg">
-								<br><center><img width="50%" height="50%"  alt="user" src="../plugins/images/download.png"></center>
+								<br><center><img width="50%" height="50%"  alt="user" src="../plugins/images/CHECK.png"></center>
 								
                                 <div class="overlay-box">
-									<br><center><img width="50%" height="50%"  alt="user" src="../plugins/images/download.png"></center>
+									<br><center><img width="50%" height="50%"  alt="user" src="../plugins/images/CHECK.png"></center>
                                     <div class="user-content">
                                        </div>
                                 </div>
@@ -166,8 +166,7 @@ if(isset($_POST['updateprofile']))
 										<div class="col-md-6 col-xs-6 "> <strong>Event Rounds</strong>
                                             <br>
                                             <p class="text-muted"><?php echo $row["round"]; ?></p>
-                                        
-										<strong>Participant Required</strong>
+                                        <strong>Participant Required</strong>
                                             <br>
                                             <p class="text-muted"><?php echo $row["parti"]; ?></p>
                                         </div>

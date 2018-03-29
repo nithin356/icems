@@ -4,7 +4,7 @@ require('connect.php');
 $userid=$_SESSION['username'];
 $f_id = $_GET['id'];
 
-$query="SELECT cname, fname, date, f_desc FROM fest WHERE f_id='$f_id'";
+$query="SELECT coname, fname, date, f_desc FROM fest WHERE f_id='$f_id'";
 $result = mysqli_query($connection, $query);
 $row = mysqli_fetch_assoc($result);
 
@@ -15,11 +15,11 @@ if(isset($_POST['updateprofile']))
 	$fest=mysqli_real_escape_string($connection,$_POST['fest']);
 	$date=mysqli_real_escape_string($connection,$_POST['date']);
 	$desc=mysqli_real_escape_string($connection,$_POST['desc']);
-	$uquery="UPDATE fest SET cname='$cname', fname='$fest', date='$date', f_desc='$desc' WHERE f_id='$f_id'";
+	$uquery="UPDATE fest SET coname='$cname', fname='$fest', date='$date', f_desc='$desc' WHERE f_id='$f_id'";
 	$uresult = mysqli_query($connection, $uquery);
 	if($uresult)
 	{
-		$squery="SELECT cname, fname, date, f_desc FROM fest WHERE f_id='$f_id'";
+		$squery="SELECT coname, fname, date, f_desc FROM fest WHERE f_id='$f_id'";
 		$sresult = mysqli_query($connection, $squery);
 		$row = mysqli_fetch_assoc($sresult);
 		$smsg="Fest Name updated successfully!";
@@ -85,7 +85,7 @@ if(isset($_POST['updateprofile']))
 	?>
         <!-- Page Content -->
         <div id="page-wrapper">
-            <div class="container-fluid">
+            <div class="container-fluid" style="background-image: url(../plugins/images/w.jpg)">
                 <div class="row bg-title">
                     <!-- .page title -->
                     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
@@ -117,10 +117,10 @@ if(isset($_POST['updateprofile']))
                         <div class="white-box">
                             <div class="white-box">
                             <div class="user-bg">
-								<br><center><img width="50%" height="50%"  alt="user" src="../plugins/images/download.png"></center>
+								<br><center><img width="50%" height="50%"  alt="user" src="../plugins/images/calendar.png"></center>
 								
                                 <div class="overlay-box">
-									<br><center><img width="50%" height="50%"  alt="user" src="../plugins/images/download.png"></center>
+									<br><center><img width="50%" height="50%"  alt="user" src="../plugins/images/calendar.png"></center>
                                     <div class="user-content">
                                        </div>
                                 </div>
@@ -141,7 +141,7 @@ if(isset($_POST['updateprofile']))
                                     <div class="row">
                                         <div class="col-md-3 col-xs-6 b-r"> <strong>College Name</strong>
                                             <br>
-                                            <p class="text-muted"><?php echo $row["cname"]; ?></p>
+                                            <p class="text-muted"><?php echo $row["coname"]; ?></p>
                                         </div> 
 										<div class="col-md-3 col-xs-6 b-r"> <strong>Fest</strong>
                                             <br>
@@ -152,7 +152,7 @@ if(isset($_POST['updateprofile']))
                                             <br>
                                             &nbsp;<i><?php echo $row["date"]; ?></i>
                                         </div>
-										<div class="col-md-3 col-xs-6 b-r"> 
+										<div class="col-md-3 col-xs-6 b-r" style="word-wrap: break-word"> 
 											&nbsp;<strong>Description</strong>
                                             <br>
                                             &nbsp;<i><?php echo $row["f_desc"]; ?></i>
@@ -183,7 +183,7 @@ if(isset($_POST['updateprofile']))
                                         	 <label class="control-label">College Name</label>
 											<div class="col-sm-12 p-l-0">
 												<div class="input-group">
-											<input type="text" name="cname" class="form-control" id="cname" placeholder="<?php echo $row['cname']; ?>" value="<?php echo $row['cname']; ?>" required>
+											<input type="text" name="cname" class="form-control" id="cname" placeholder="<?php echo $row['coname']; ?>" value="<?php echo $row['coname']; ?>" required>
 													</input>
 													<!--onKeyUp="copyTextValue();"-->
 												</div>
@@ -203,7 +203,8 @@ if(isset($_POST['updateprofile']))
 								 </div>
 									<div class="form-group">
                                     <label for="inputName1" class="control-label">Fest date</label>
-                                    <input type="date" class="form-control" autocomplete="off" id="username" name="date" placeholder="<?php echo $row['date']; ?>" value="<?php echo $row['date']; ?>" required>
+										<input id="datepicker" type="date" onchange="checkDate()" required class="datepicker-input form-control" name="date" type="text" data-date-format="yyyy-mm-dd" placeholder="<?php echo $row['date']; ?>" value="<?php echo $row['date']; ?>">
+                                    <!--<input id="datepicker" onchange="checkDate()" name="date" required class="form-control datepicker-input" type="date" data-date-format="yyyy-mm-dd" placeholder="<?php echo $row['date']; ?>" value="<?php echo $row['date']; ?>">-->
 								</div>
 								
 								<div>
@@ -254,6 +255,17 @@ if(isset($_POST['updateprofile']))
         <!-- /#page-wrapper -->
     </div>
     <!-- /#wrapper -->
+<script>
+  function checkDate() {
+   var selectedText = document.getElementById('datepicker').value;
+   var selectedDate = new Date(selectedText);
+   var now = new Date();
+   if (selectedDate < now) {
+    alert("Date must be in the future");
+	document.getElementById('datepicker').value=null;
+   }
+ }
+</script>
     <!--jslink has all the JQuery links-->
     <?php include'assets/jslink.php'; ?>
 </body>

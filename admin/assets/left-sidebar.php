@@ -18,24 +18,17 @@
 								<!-- /input-group -->
 						</li>
 						<li class="nav-small-cap m-t-10"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						&nbsp;&nbsp;&nbsp;&nbsp;
 						Main Menu
 						</li>
 			<!--sidebar design-->
-						<li> <a href="" class="waves-effect">
-							<i class="fa fa-user" data-icon="v"></i>&nbsp;&nbsp; 
-							<span class="hide-menu text-danger"> Admin 
-								<span class="fa arrow"</span> <span class="label label-rouded label-danger pull-right"></span></a>
-								<ul class="nav nav-second-level">
-										<li> <a href="../admin/add-admin.php">Add Admin</a> </li>
-										<li> <a href="../admin/view-admin.php">View Admin</a> </li>
-								</ul>
-						</li>
-												
+						<li><a href="../admin/index.php" class="waves-effect">
+							<i data-icon=")" class="fa fa-dashboard"></i>&nbsp;&nbsp; 
+							<span class="hide-menu">Dashboard</span></a>									
 						<li><a href="" class="waves-effect">
 							<i data-icon=")" class="fa fa-bookmark-o"></i>&nbsp;&nbsp; 
 							<span class="hide-menu">Fest<span class="fa arrow"></span></span></a>
 								<ul class="nav nav-second-level">
-									<li><a href="../admin/add-fest.php">Add Fest</a></li>
 									<li><a href="../admin/view-fest.php">view Fest</a></li>
 								</ul>
 						</li>

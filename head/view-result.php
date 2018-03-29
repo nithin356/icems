@@ -24,7 +24,7 @@ $username=$_SESSION['h_username'];
 	include 'assets/breadcrumbs.php';
 	?>
         <!-- Page Content -->
-        <div id="page-wrapper">
+        <div id="page-wrapper" style="background-image: url(../plugins/images/w.jpg)">
             <div class="container-fluid">
                 <div class="row bg-title">
                     <!-- .page title -->
@@ -41,27 +41,20 @@ $username=$_SESSION['h_username'];
                 </div>
 				<div class="row">
                 <?php
-					$query = "SELECT * FROM result";
+					$query = "SELECT *,fest.fname FROM result JOIN fest ON result.r_id=fest.f_id";
 					$result = mysqli_query($connection, $query);
 					foreach($result as $key=>$result)
 				{ ?>
                 <div class="col-md-4 col-sm-4">
                         <div class="white-box">
+							<div class="ribbon ribbon-corner ribbon-info ribbon-right" style="margin-right:7px"><i class="fa fa-users"></i></div>
                             <div class="row">
                                   <div class="col-md-8 col-sm-8">
-									Fest Name:<h3 class="box-title m-b-0"><?php echo $result['r_fest']; ?></h3>
-									 <p></p>  
+									Fest Name:<h3 class="box-title m-b-0"><?php echo $result['fname']; ?></h3>
                                     Event Name:<h3 class="box-title m-b-0"><?php echo $result['r_eventname']; ?></h3>
-									 <p></p>
-									  Participant 1:<h3 ><?php echo $result['r_pname']; ?></h3>
-                                    <p>
-
-                                      Participant 2:<h3 ><?php echo $result['r_pname2']; ?></h3>
-										<p>
-											Round :<h4><?php echo $result['round']; ?></h4>
-										<p>
-                  										<div class="p-t-5">
-											<a href="edit-result.php?id=<?php echo $result['r_id']; ?>" class="fcbtn btn btn-info">Edit</a>
+									Team Code:<h3 class="box-title m-b-0"><?php echo $result['cname']; ?></h3>
+									Round:<h3 class="box-title m-b-0"><?php echo $result['round']; ?></h3>
+									<div class="p-t-5">
 											<a href="#" class="fcbtn btn btn-danger model_img deleteevent" data-id="<?php echo $result['r_id']; ?>" id="deleteDoc">Delete</a>
 									    </div>
                                     </p>
@@ -103,7 +96,7 @@ $(document).ready(function() {
 		 {
            if (isConfirm) {
 			   $.ajax({
-			  url: 'delete.php?id='+id,
+			  url: 'del.php?id='+id,
 			  type: 'DELETE',
 			  data: {id:id},
 			  success: function(){

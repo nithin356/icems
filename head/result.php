@@ -81,12 +81,12 @@ if (isset($_POST['college']))
 	include 'assets/breadcrumbs.php';
 	?>
         <!-- Page Content -->
-        <div id="page-wrapper">
+        <div id="page-wrapper" style="background-image: url(../plugins/images/w.jpg)">
             <div class="container-fluid">
                 <div class="row bg-title">
                     <!-- .page title -->
                     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                        <h4 class="page-title">Add Event Head</h4>
+                        <h4 class="page-title">Add Result</h4>
                     </div>
                     <!-- /.page title -->
                     <!-- .breadcrumb -->
@@ -139,16 +139,16 @@ if (isset($_POST['college']))
 								</select> 
 								</div>
 								<?php
-									 $college="SELECT s_college FROM std_co";
+									 $college="SELECT code FROM std_co WHERE fest='$festid'";
 									 $colres=mysqli_query($connection, $college);
 									 ?>
 								 <div class="form-group">
-									 <label for="inputEmail" class="control-label">Round</label>
+									 <label for="inputEmail" class="control-label">SELECTED TEAM</label>
 									 
 								<select required class="form-control" name="college">
-									<option disabled hidden selected>SELECT COLLEGE</option>
+									<option disabled hidden selected>SELECT TEAM</option>
 									 <?php while($rowcollege = mysqli_fetch_assoc($colres)) { ?>
-									<option value= "<?php echo $rowcollege['s_college'];?>"> <?php echo $rowcollege['s_college'];?></option>
+									<option value= "<?php echo $rowcollege['code'];?>"> <?php echo $rowcollege['code'];?></option>
 									<?php }?>
 									</select> 
 									 

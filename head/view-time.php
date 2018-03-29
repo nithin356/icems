@@ -29,7 +29,7 @@ $eid=$getfestnamerow['h_event'];
 	include 'assets/breadcrumbs.php';
 	?>
         <!-- Page Content -->
-        <div id="page-wrapper">
+        <div id="page-wrapper" style="background-image: url(../plugins/images/w.jpg)">
             <div class="container-fluid">
                 <div class="row bg-title">
                     <!-- .page title -->
@@ -52,7 +52,9 @@ $eid=$getfestnamerow['h_event'];
 					foreach($result as $key=>$result)
 				{ ?>
                 <div class="col-md-4 col-sm-4">
+					<div class="ribbon ribbon-corner ribbon-info ribbon-right" style="margin-right:7px"><i class="fa fa-clock-o"></i></div>
                         <div class="white-box">
+							
                             <div class="row">
                                   <div class="col-md-8 col-sm-8">
                                     <h3 class="box-title m-b-0"><?php echo $result['t_event']; ?></h3>

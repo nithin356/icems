@@ -25,7 +25,7 @@ $userid=$_SESSION['username'];
 	?>
         <!-- Page Content -->
         <div id="page-wrapper">
-            <div class="container-fluid">
+            <div class="container-fluid" style="background-image: url(../plugins/images/w.jpg)">
                 <div class="row bg-title">
                     <!-- .page title -->
                     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
@@ -46,10 +46,11 @@ $userid=$_SESSION['username'];
 					foreach($result as $key=>$result)
 				{ ?>
                 <div class="col-md-4 col-sm-4">
+					<div class="ribbon ribbon-corner ribbon-info ribbon-right" style="margin-right:7px"><i class="fa fa-user"></i></div>
 					
                         <div class="white-box">
                             <div class="row">
-                                  <div class="col-md-8 col-sm-8">
+                                  <div class="col-md-10 col-sm-10">
                                     <h3 class="box-title m-b-0"><?php echo $result['h_username']; ?></h3>
                                     <p>
 									  Fest Name:&nbsp;&nbsp;<?php echo $result['fname']; ?>
@@ -105,7 +106,7 @@ $(document).ready(function() {
 			  type: 'DELETE',
 			  data: {id:id},
 			  success: function(){
-				swal("Deleted!", "User has been deleted.", "success");
+				swal("Deleted!", "Event Head has been deleted.", "success");
 				window.location.replace("view_eventhead.php");
           }
         });

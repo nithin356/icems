@@ -2,6 +2,15 @@
 include '../login/accesscontrolstdco.php';
 require('connect.php');
 $username=$_SESSION['s_username'];
+$getfestname="SELECT s_id, fest FROM std_co WHERE s_username='$username'";
+$getfestnameresult=mysqli_query($connection,$getfestname);
+$getfestnamerow=mysqli_fetch_assoc($getfestnameresult);
+$sid=$getfestnamerow['s_id'];
+$fid=$getfestnamerow['fest'];
+$getfname="SELECT * FROM fest where f_id='$fid'";
+$getfestnameresult1=mysqli_query($connection,$getfname);
+$getfestnamerow1=mysqli_fetch_assoc($getfestnameresult1);
+
 ?>
 
 								
@@ -26,8 +35,8 @@ $username=$_SESSION['s_username'];
 	include 'assets/breadcrumbs.php';
 	?>
         <!-- Page Content -->
-        <div id="page-wrapper">
-            <div class="container-fluid">
+        <div id="page-wrapper" style="background-image: url(../plugins/images/w.jpg)">
+            <div class="container-fluid" style="background-image: url(../plugins/images/w.jpg)">
                 <div class="row bg-title">
                     <!-- .page title -->
                     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
@@ -42,35 +51,27 @@ $username=$_SESSION['s_username'];
                     <!-- /.breadcrumb -->
                 </div>
 				<div class="row">
-                <?php
-					$query = "SELECT * FROM fest";
-					$result = mysqli_query($connection, $query);
-					foreach($result as $key=>$result)
-				{ ?>
+             
                 <div class="col-md-4 col-sm-4">
+					<div class="ribbon ribbon-corner ribbon-info ribbon-right" style="margin-right:7px"><i class="fa fa-calendar"></i></div>
                         <div class="white-box">
                             <div class="row">
-                                  <div>
-									  
-                                    College Name:<h3 class="box-title m-b-0"><?php echo $result['cname']; ?></h2>  
-                                    Fest Name:<h3 class="box-title m-b-0"><?php echo $result['fname']; ?></h2>  
-                                    Date:<h3 class="box-title m-b-0"><?php echo $result['date']; ?></h2>
-<br/>  
+                                <div class="col-md-12 col-sm-12">
+									College Name:<h3 class="box-title m-b-0"><?php echo $getfestnamerow1['coname']; ?></h3>  
+                                    Fest Name:<h3 class="box-title m-b-0"><?php echo $getfestnamerow1['fname']; ?></h3>  
+                                    Date:<h3 class="box-title m-b-0"><?php echo $getfestnamerow1['date']; ?></h3>
                                     Description:
-									  <p><?php echo $result['f_desc']; ?>
+									  <h3 class="box-title m-b-0">  <p><?php echo $getfestnamerow1['f_desc']; ?></h3>
 										<div class="p-t-5">
 											   
-								<a href="view-events.php?id=<?php echo $result['f_id']; ?>" class="fcbtn btn btn-danger model_img">More Info</a>
+								<a href="view-events.php?id=<?php echo $getfestnamerow1['f_id']; ?>" class="fcbtn btn btn-danger model_img">More Info</a>
 									    </div>
                                     </p>
                                 </div>
                             </div>
                         </div>
                     </div>
-                  <?php
-					}
-				  ?>
-
+                  
 				</div>
             </div>
 			<!--footer.php contains footer-->

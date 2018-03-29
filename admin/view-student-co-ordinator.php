@@ -2,6 +2,10 @@
 include '../login/accesscontroladmin.php';
 require('connect.php');
 $userid=$_SESSION['username'];
+$getfestname="SELECT *,fest.f_id FROM admin INNER JOIN fest ON admin.id=fest.id WHERE username='$userid'";
+$getfestnameresult=mysqli_query($connection,$getfestname);
+$getfestnamerow=mysqli_fetch_assoc($getfestnameresult);
+$ID=$getfestnamerow['f_id'];
 
 if (isset($_POST['submit']))
 {
@@ -10,8 +14,85 @@ if (isset($_POST['submit']))
 		$query="UPDATE `std_co` SET Code='$user' WHERE s_id='$getid'";
 		$sresult = mysqli_query($connection, $query);
 		if($sresult)
-			{
-				$smsg = "Team Code Updated & Sent Successfully.";
+			{ 
+			$GEET="SELECT s_email FROM std_co WHERE s_id='$getid'";
+			$result12= mysqli_query($connection, $GEET);
+			$fetch=mysqli_fetch_assoc($result12);
+			$email=$fetch['s_email'];
+			$smsg = "Team Code Updated & Sent Successfully.";
+			$to_Email       = $email; 
+            $subject        = 'TEAM CODE'; 
+			$host           = "smtp.gmail.com"; 
+            $username       = "icemscentre@gmail.com";
+            $password       = "icems123";
+            $SMTPSecure     = "tls"; 
+            $port           = 587;
+
+    include("../login/php/PHPMailerAutoload.php"); 
+    $mail = new PHPMailer();
+     
+    $mail->IsSMTP();
+    $mail->SMTPAuth = true;
+    
+    $mail->Host = $host;
+    $mail->Username = $username;
+
+
+
+
+    $mail->Password = $password;
+    $mail->SMTPSecure = $SMTPSecure;
+    $mail->Port = $port;
+    
+     
+    $mail->setFrom($username);
+    $mail->addReplyTo($email);
+     
+    $mail->AddAddress($to_Email);
+    $mail->Subject = $subject;
+    
+    $mail->Body = '<div width="100%" style="background: #f8f8f8; padding: 0px 0px; font-family:arial; line-height:28px; height:100%;  width: 100%; color: #514d6a;">
+  <div style="max-width: 700px; padding:50px 0;  margin: 0px auto; font-size: 14px">
+    <table border="0" cellpadding="0" cellspacing="0" style="width: 100%; margin-bottom: 20px">
+      <tbody>
+        <tr>
+          <td style="vertical-align: top; padding-bottom:30px;" align="center"><a target="_blank">
+		  <br/>
+          <img src="https://imgur.com/h9o15Ni.png" style="border:none"></a> </td>
+        </tr>
+      </tbody>
+    </table>
+    <div style="padding: 40px; background: #000;">
+      <table border="0" cellpadding="0" cellspacing="0" style="width: 100%;">
+        <tbody>
+          <tr>
+            <td style="border-bottom:1px solid #f6f6f6;"><h1 style="font-size:14px; font-family:arial; margin:0px; font-weight:bold;">Dear Student Coordinator,</h1>
+              <p style="margin-top:0px; color:#bbbbbb;">
+			  <br>TEAM CODE: '.$user.' 
+			  <br>
+			  Here is your TEAMCODE Please inform your respective Partcipants.</p></td>
+          </tr>
+             
+              <b>- Thanks (ICEMS team)</b> </td>
+          </tr>
+          </tbody>
+      </table>
+    </div>
+    <div style="text-align: center; font-size: 12px; color: #b2b2b5; margin-top: 20px">
+      <p>Inter Collegiate Event Management System © 2018 <br>
+      </p>
+    </div>
+  </div>
+</div>';
+    
+    $mail->WordWrap = 200;
+    $mail->IsHTML(true);
+
+    if(!$mail->send()) {
+
+        $fmsg="E-mail not sent";
+
+    }
 			}
 		else
 			{
@@ -42,8 +123,8 @@ if (isset($_POST['submit']))
 	?>
         <!-- Page Content -->
         <div id="page-wrapper">
-            <div class="container-fluid">
-                <div class="row bg-title">
+            <div class="container-fluid" style="background-image: url(../plugins/images/w.jpg)">
+                <div class="row bg-title" >
                     <!-- .page title -->
                     <div >
                         <h4 class="page-title">View Student co-ordniator</h4>
@@ -58,12 +139,8 @@ if (isset($_POST['submit']))
                     <!-- /.breadcrumb -->
                 </div>
                 <!--DNS added Dashboard content-->
-
-                
-
-
-                <!--row -->
-                <div class="row">
+	                <!--row -->
+                <div class="row" >
                     <div class="col-sm-12">
                         <div class="white-box">
                             <h3 class="box-title">Student co-ordinator Accounts</h3>
@@ -94,7 +171,8 @@ if (isset($_POST['submit']))
                                     <tbody>
 
 										<?php
-												$sql = "SELECT * FROM std_co";
+										//$selectfest="SELECT *,admin.username FROM fest JOIN admin ON fest.f_id=admin.id where fest.id='$ID'";
+												$sql = "SELECT * FROM std_co WHERE fest='$ID'";
 												$result = mysqli_query($connection, $sql);
 												foreach($result as $key=>$result)
 												{ ?>

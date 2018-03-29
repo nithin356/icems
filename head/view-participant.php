@@ -2,6 +2,11 @@
 include '../login/accesscontrolhead.php';
 require('connect.php');
 $username=$_SESSION['h_username'];
+$getfestname="SELECT h_fest FROM head WHERE h_username='$username'";
+$getfestnameresult=mysqli_query($connection,$getfestname);
+$getfestnamerow=mysqli_fetch_assoc($getfestnameresult);
+
+$fid=$getfestnamerow['h_fest'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -24,12 +29,12 @@ $username=$_SESSION['h_username'];
 	include 'assets/breadcrumbs.php';
 	?>
         <!-- Page Content -->
-        <div id="page-wrapper">
+        <div id="page-wrapper" style="background-image: url(../plugins/images/w.jpg)">
             <div class="container-fluid">
                 <div class="row bg-title">
                     <!-- .page title -->
                     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                        <h4 class="page-title">View Admin</h4>
+                        <h4 class="page-title">View Participant</h4>
                     </div>
                     <!-- /.page title -->
                     <!-- .breadcrumb -->
@@ -37,44 +42,73 @@ $username=$_SESSION['h_username'];
                       <a href="../index.html" target="_blank" class="btn btn-info pull-right m-l-20 btn-rounded btn-outline hidden-xs hidden-sm waves-effect waves-light">Home</a>
                       <?php echo breadcrumbs(); ?>
                     </div>
-                    <!-- /.breadcrumb -->
                 </div>
-                <!--DNS added Dashboard content-->
-
-                 <!--DNS Added Model-->
-           
-                         <!--DNS model END-->
-
-
-                <!--row -->
-                <div class="row">
+				<div class="row">
+      			<?php
+					$sql = "SELECT *,fest.fname FROM add_event JOIN fest ON add_event.f_id=fest.f_id WHERE add_event.f_id='$fid'";
+					$sresult = mysqli_query($connection, $sql);
+					//$result = mysqli_fetch_assoc($sresult);
+					?>
+				       <?php while($result = mysqli_fetch_assoc($sresult)) { ?>
+   					 <div class="col-md-4 col-sm-4">
+						 <div class="ribbon ribbon-corner ribbon-info ribbon-right" style="margin-right:7px"><i class="fa fa-users"></i></div>
+                       	<div class="white-box">
+                            <div class="row">
+								   <div>
+									<h4>Fest Name:</h4><h3 class="box-title m-b-0"><?php echo $result["fname"];?></h3>  
+                                    <h4>Date:</h4><h3 class="box-title m-b-0"><?php echo $result["e_eventname"];?></h3>
+									   <h4>Participants Names:<br></h4> <!--u dead ot still working?-->
+									   <?php $geteventid=$result['e_id']; $getpatrispeenkan=mysqli_query($connection,"SELECT * FROM participant WHERE p_eventname='$geteventid'"); 
+										if(mysqli_num_rows($getpatrispeenkan)<=0){ echo "No registered paricipants<br><br>"; } else {						
+									while($getparti=mysqli_fetch_assoc($getpatrispeenkan)) {   ?><strong> 
+									   <?php echo $getparti["p_name"].', ';?> </strong> <?php } } ?>
+									   <?php if(mysqli_num_rows($getpatrispeenkan)<=0){ ?>
+									   <a href="add_participant.php" class="fcbtn btn btn-info">Register</a>
+									   <?php } else { ?>
+									
+                                       <?php } ?>
+								  </div>
+								
+                               </div>
+                            </div>
+                        </div>
+					<?php
+						} 
+							?>
+                    </div>
+           		</div>
+			</div>
+				
+      <!--row -->
+               <!-- <div class="row">
                     <div class="col-sm-12">
                         <div class="white-box">
-                            <h3 class="box-title">Registered Participant</h3>
+                            <h3 class="box-title">Registered Participants</h3>
                             <div class="table-responsive">
                                 <table class="table table-striped">
                                     <thead>
                                         <tr>
                                             <th>Participant ID</th>
-											<th>Participant Name</th>
+                                            <th>Participant 1</th>
+                                           	<th>Fest</th>
 											<th>Event Name</th>
+											<th>Action</th>
+											
                                         </tr>
                                     </thead>
                                     <tbody>
 
-										<?php
-												$sql = "SELECT *,add_event.e_eventname FROM participant JOIN add_event ON participant.p_eventname=add_event.e_id ";
-												$result = mysqli_query($connection, $sql);
-												foreach($result as $key=>$result)
-												{ ?>
+										
 													<tr>
-														<td> <?php echo $key+1; ?> </td>
-														<td> <?php echo $result["p_name"]; ?> </td>
-														<td> <?php echo $result["e_eventname"]; ?> </td>
-														
-													</tr>
+														<td> <?php// echo $key+1; ?> </td>
+														<td> <?php//echo $result["p_name"] ?> </td>
+														<td> <?php //echo $result["fname"]; ?> </td>
+														<td> <?php //echo $result["e_eventname"]; ?> </td>
+														<td><a href="edit.php?id=<?php //echo $result['e_id']; ?>" class="fcbtn btn btn-info">Edit</a></td>
+											
+												</tr>
 										  <?php
-												}
+											//	}
 										  ?>
                                     </tbody>
                                 </table>
@@ -82,7 +116,7 @@ $username=$_SESSION['h_username'];
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>-->
             <!--footer.php contains footer-->
             <?php include'assets/footer.php'; ?>
         </div>
@@ -92,3 +126,4 @@ $username=$_SESSION['h_username'];
     <?php include'assets/jslink.php'; ?>
 </body>
 </html>
+

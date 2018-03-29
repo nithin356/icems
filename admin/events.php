@@ -26,7 +26,7 @@ $userid=$_SESSION['username'];
 	?>
         <!-- Page Content -->
         <div id="page-wrapper">
-            <div class="container-fluid">
+            <div class="container-fluid" style="background-image: url(../plugins/images/w.jpg)">
                 <div class="row bg-title">
                     <!-- .page title -->
                     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
@@ -47,7 +47,7 @@ $userid=$_SESSION['username'];
 					foreach($result as $key=>$result)
 				{ ?>
                 <div class="col-md-4 col-sm-4">
-									<div class="ribbon ribbon-corner ribbon-info ribbon-right" style="margin-right:10px"><i class="fa fa-calendar-check-o"></i></div>
+									<div class="ribbon ribbon-corner ribbon-info ribbon-right" style="margin-right:7px"><i class="fa fa-calendar"></i></div>
                         <div class="white-box">
                             <div class="row">
                                   <div>

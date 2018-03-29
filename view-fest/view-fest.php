@@ -27,7 +27,7 @@ if($count==0)
 <body class="fix-sidebar">
        <!-- Page Content -->
         <div >
-            <div class="container-fluid">
+            <div class="container-fluid" style="background-image: url(../plugins/images/w.jpg)">
                 <div class="row bg-title">
                     <!-- .page title -->
                     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
@@ -46,17 +46,17 @@ if($count==0)
 					$result = mysqli_query($connection, $query);
 					foreach($result as $key=>$result)
 				{ ?>
-                <div class="col-md-4 col-sm-4">
+                <div class="col-md-4 col-sm-4"><div class="ribbon ribbon-corner ribbon-info ribbon-right" style="margin-right:7px"><i class="fa fa-calendar-plus-o"></i></div>
+					
                         <div class="white-box">
                             <div class="row">
                                   <div>
 									  
-                                    College Name:<h3 class="box-title m-b-0"><?php echo $result['cname']; ?></h2>  
-                                    Fest Name:<h3 class="box-title m-b-0"><?php echo $result['fname']; ?></h2>  
-                                    Date:<h3 class="box-title m-b-0"><?php echo $result['date']; ?></h2>
-<br/>  
+                                    College Name:<h3 class="box-title m-b-0"><?php echo $result['coname']; ?></h3>  
+                                    Fest Name:<h3 class="box-title m-b-0"><?php echo $result['fname']; ?></h3>  
+                                    Date:<h3 class="box-title m-b-0"><?php echo $result['date']; ?></h3>
                                     Description:
-									  <p><?php echo $result['f_desc']; ?>
+									  <h3 class="box-title m-b-0"><?php echo $result['f_desc']; ?></h3>
 										<div class="p-t-5">
 											   
 								<a href="view-events.php?id=<?php echo $result['f_id']; ?>" class="fcbtn btn btn-danger model_img">More Info</a>
