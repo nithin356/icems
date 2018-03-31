@@ -28,7 +28,7 @@ $ID=$getfestnamerow['f_id'];
 	include 'assets/breadcrumbs.php';
 	?>
         <!-- Page Content -->
-        <div id="page-wrapper">
+        <div id="page-wrapper" style="background-image: url(../plugins/images/w.jpg)">
             <div class="container-fluid" style="background-image: url(../plugins/images/w.jpg)">
                 <div class="row bg-title">
                     <!-- .page title -->
@@ -49,7 +49,7 @@ $ID=$getfestnamerow['f_id'];
 					$result = mysqli_query($connection, $query);
 					foreach($result as $key=>$result)
 				{ ?>
-                <div class="col-md-4 col-sm-4">
+                <div class="col-md-6 col-sm-6">
 					<div class="ribbon ribbon-corner ribbon-info ribbon-right" style="margin-right:7px"><i class="fa fa-calendar-check-o"></i></div>
                         <div class="white-box">
                             <div class="row">

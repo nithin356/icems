@@ -28,7 +28,7 @@ $ID=$getfestnamerow['f_id'];
 	include 'assets/breadcrumbs.php';
 	?>
         <!-- Page Content -->
-        <div id="page-wrapper">
+        <div id="page-wrapper" style="background-image: url(../plugins/images/w.jpg)">
             <div class="container-fluid" style="background-image: url(../plugins/images/w.jpg)">
                 <div class="row bg-title">
                     <!-- .page title -->
@@ -53,7 +53,7 @@ $ID=$getfestnamerow['f_id'];
 					<div class="ribbon ribbon-corner ribbon-info ribbon-right" style="margin-right:7px"><i class="fa fa-calendar-plus-o e"></i></div>
                         <div class="white-box">
                             <div class="row">
-                                  <div class="col-md-8 col-sm-8">
+                                  <div class="col-md-12 col-sm-12">
 									College Name:<h3 class="box-title m-b-0"><?php echo $result['coname']; ?></h3>
                                       
                                     Fest Name:<h3 class="box-title m-b-0"><?php echo $result['fname']; ?></h3>
@@ -63,9 +63,8 @@ $ID=$getfestnamerow['f_id'];
 								                                   
 									Fest Description:<h4 class="box-title m-b-0"><?php echo $result['f_desc']; ?></h4>
 									  <br/>
-								   
-								<a href="events.php?id=<?php echo $result['f_id']; ?>" class="fcbtn btn btn-danger model_img">VIEW EVENTS</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-								</div>
+									<a href="events.php?id=<?php echo $result['f_id']; ?>" class="fcbtn btn btn-danger model_img">VIEW EVENTS</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+									</div>
                             </div>
                         </div>
                     </div>

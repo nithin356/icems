@@ -53,12 +53,12 @@ if(isset($_POST['f_email']) && isset($_POST['f_message']))
         </tr>
       </tbody>
     </table>
-    <div style="padding: 40px; background: #fff;">
+    <div style="padding: 40px; background: #000;">
       <table border="0" cellpadding="0" cellspacing="0" style="width: 100%;">
         <tbody>
           <tr>
-            <td style="border-bottom:1px solid #000;"><h1 style="font-size:14px; font-family:arial; margin:0px; font-weight:bold;">Dear Event Head,</h1>
-              <p style="margin-top:0px; color:#000;">
+            <td style="border-bottom:1px solid #000;"><h1 style="font-size:14px; font-family:arial; margin:0px; font-weight:bold;">Dear Users,</h1>
+              <p style="margin-top:0px; color:#fff;">
 			  
 			  <STRONG>THANK YOU FOR THE FEEDBACK</p></td>
           </tr>
@@ -163,6 +163,11 @@ if(isset($_POST['f_email']) && isset($_POST['f_message']))
                     <div class="form-group text-center m-t-20">
                         <div class="col-xs-12">
                             <button class="btn btn-info btn-lg btn-block text-uppercase waves-effect waves-light" type="submit" name="submit" id="reset-button">Post</button>
+                        </div>
+                    </div>
+					<div class="form-group text-center m-t-20">
+                        <div class="col-xs-12">
+                            <a href="../index.html"><button class="btn btn-danger btn-lg btn-block text-uppercase waves-effect waves-light" >Back</button></a>   
                         </div>
                     </div>
 

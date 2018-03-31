@@ -7,7 +7,7 @@
         <nav class="navbar navbar-default navbar-static-top m-b-0">
             <div class="navbar-header">
               <a href="../index.html"><b><img hieght="150" width="150" src="../plugins/images/favicon.png" /></b>
-                <span><font size=5 color="#fff" face="batmanforeveralternate">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Inter-Collegiate Event Management System</font></span></a>
+                <span><font size=5 color="#fff" face="batmanforeveralternate">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Inter-Collegiate Event Management System</font></span></a>
                      
             </div>
 		</nav>

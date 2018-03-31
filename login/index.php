@@ -222,7 +222,7 @@ if(isset($_POST['resetemail']))
                 
                 <?php if(isset($smsg)) { ?> <div class="alert alert-success"> <?php echo $smsg; ?> </div><?php }?>
                <!--add image-->
-                <a href="javascript:void(0)" class="text-center db">
+                <a href="../index.html" class="text-center db">
 				
                 <br/><img src="../plugins/images/eliteadmin-text.png" alt="" /></a>
                         
